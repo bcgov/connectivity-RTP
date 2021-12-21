@@ -1,4 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import BCGovTypography from '../components/BCGovTypography'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <BCGovTypography />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
