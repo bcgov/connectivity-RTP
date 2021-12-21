@@ -1,5 +1,6 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import BCGovTypography from '../components/BCGovTypography'
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import BCGovTypography from '../components/BCGovTypography';
+import 'semantic-ui-css/semantic.min.css';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,7 +14,7 @@ const theme = {
   colors: {
     primary: '#0070f3',
   },
-}
+};
 
 export default function App({ Component, pageProps }) {
   return (
@@ -25,4 +26,4 @@ export default function App({ Component, pageProps }) {
       </ThemeProvider>
     </>
   )
-}
+};

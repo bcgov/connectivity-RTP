@@ -23,11 +23,11 @@ const schema = {
     },
     "Group2": {
       "properties": {
-        "First": {
+        "Third": {
           "title": "Question #3",
           "type": "string"
         },
-        "Second": {
+        "Forth": {
           "title": "Question #4",
           "type": "string"
         }
