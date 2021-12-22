@@ -1,6 +1,5 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import BCGovTypography from '../components/BCGovTypography';
-import 'semantic-ui-css/semantic.min.css';
 
 const GlobalStyle = createGlobalStyle`
   body {

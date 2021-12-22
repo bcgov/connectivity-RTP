@@ -4,6 +4,7 @@ import Menu from '../components/Menu';
 import JsonSchemaForm from '@rjsf/semantic-ui';
 import schema from '../schemas/schema';
 import uiSchema from '../schemas/uiSchema';
+import Form from '../components/Form';
 
 const Title = styled.h1`
   font-size: 50px;
@@ -19,6 +20,7 @@ const SFooter = styled(Footer)`
 const SJsonSchemaForm = styled(JsonSchemaForm)`
   max-width: 90% !important;
   margin: auto !important;
+  margin-top: 25px !important;
 `;
 
 const handleSubmit = ({ formData }, e) => {
@@ -30,10 +32,12 @@ export default function Home({ formData }) {
     <>
       <Navigation
         header="main"
-        title="Welcome to Connectivity Intake"
-      />
-      <Title>Connectivity Intake Form</Title>
-      <SJsonSchemaForm
+        title="Connectivity Intake"
+      >
+        <Menu />
+      </Navigation>
+      <Form />
+      {/* <SJsonSchemaForm
         name="connectivity-intake"
         formData={formData}
         schema={schema}
@@ -56,7 +60,7 @@ export default function Home({ formData }) {
             Cancel
           </Button>
         </>
-      </SJsonSchemaForm>
+      </SJsonSchemaForm> */}
       <SFooter>
         <Menu />
       </SFooter>

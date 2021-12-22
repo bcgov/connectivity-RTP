@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@button-inc/bcgov-theme": "^1.0.1",
+    "@button-inc/form-schema": "^1.0.0-alpha.5",
     "@rjsf/core": "^3.2.1",
     "@rjsf/semantic-ui": "^3.2.1",
     "next": "latest",
