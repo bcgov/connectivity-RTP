@@ -1314,6 +1314,11 @@ convert-source-map@^1.5.0:
   dependencies:
     safe-buffer "~5.1.1"
 
+cookie@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.1.tgz#afd713fe26ebd21ba95ceb61f9a8116e50a537d1"
+  integrity sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==
+
 core-js-pure@^3.6.5:
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.20.0.tgz#7253feccf8bb05b72c153ddccdbe391ddbffbe03"
@@ -2489,10 +2494,18 @@ nanoid@^2.1.0:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
   integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
-nanoid@^3.1.23:
+nanoid@^3.1.23, nanoid@^3.1.25:
   version "3.1.30"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.30.tgz#63f93cc548d2a113dc5dfbc63bfa09e2b9b64362"
   integrity sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==
+
+next-session@^3.4.0:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/next-session/-/next-session-3.4.3.tgz#4ad2f5c8b44b07bb586359a00cfabab8710a30f4"
+  integrity sha512-d7gwzHzTwkhoRCKuf1R8NL/+U5Bpc6N1Uot/A+nqLyxKfPskffU6wDIrAKcp74DGqzJpu/KRyHtXdjdMgN5TLA==
+  dependencies:
+    cookie "^0.4.1"
+    nanoid "^3.1.25"
 
 next@latest:
   version "12.0.7"
