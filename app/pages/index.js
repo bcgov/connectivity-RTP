@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Link href="/1">
-        &#9997; Begin Form!
+        &#9997; Create Profile
       </Link>
     </>
   )

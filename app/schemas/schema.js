@@ -1,42 +1,64 @@
 const schema = {
   "required": [
-    "Full Name"
+    "organization",
+    "streetNumber",
+    "streetName",
+    "city",
+    "postalCode"
   ],
   "properties": {
-    "Full Name": {
-      "title": "Full Name",
-      "type": "string"
-    },
-    "Group1": {
+    "Applicant Profile:": {
       "properties": {
-        "First": {
-          "title": "Question #1",
+        "organization": {
+          "title": "Applicant organization (legal name):",
           "type": "string"
         },
-        "Second": {
-          "title": "Question #2",
-          "type": "string"
-        }
-      },
-      "type": "object",
-      "description": "Grouped Fields 1"
-    },
-    "Group2": {
-      "properties": {
-        "Third": {
-          "title": "Question #3",
-          "type": "string"
+        "registrationNumber": {
+          "type": "string",
+          "title": "Band number, society number, or business registration number (if applicable):"
         },
-        "Forth": {
-          "title": "Question #4",
-          "type": "string"
+        "streetNumber": {
+          "type": "number",
+          "title": "Street number:"
+        },
+        "streetName": {
+          "type": "string",
+          "title": "Street name:"
+        },
+        "city": {
+          "type": "string",
+          "title": "City:"
+        },
+        "postalCode": {
+          "type": "string",
+          "title": "Postal code:"
         }
       },
-      "type": "object",
-      "description": "Grouped Fields 2"
+      "type": "object"
+    },
+    "Primary Contact": {
+      "properties": {
+        "primaryContact": {
+          "type": "string",
+          "title": "Primary contact (for this application):"
+        },
+        "postion": {
+          "type": "string",
+          "title": "Position/title:"
+        },
+        "contactEmail": {
+          "type": "string",
+          "title": "Email:"
+        },
+        "telephone": {
+          "type": "number",
+          "title": "Telephone:"
+        }
+      },
+      "type": "object"
     }
   },
-  "title": "Connectivity Intake"
+  "title": "Create Organization Profile"
 };
 
 export default schema;
