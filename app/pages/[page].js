@@ -2,7 +2,8 @@ import React from "react";
 import { applySession } from "next-session";
 import { useRouter } from "next/router";
 import { Forms, getHandler } from "../form-schema";
-import Button from "@button-inc/bcgov-theme/Button";
+import SButton from '../components/SButton';
+import StyledDiv from "../components/StyledDiv";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];
@@ -20,17 +21,19 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
 
   return (
     <>
-      {validPage && (
-        <Form formData={formData} rerouteHandler={rerouteHandler}>
-          {!onFirstPage && (
-            <Button type="button" variant="secondary" onClick={handleBackClick}>
-              Back
-            </Button>
-          )}
-          <Button variant="primary">Continue</Button>
-        </Form>
-      )}
-      <Button variant="secondary" onClick={() => router.push("/")}>Cancel</Button>
+      <StyledDiv>
+        {validPage && (
+          <Form formData={formData} rerouteHandler={rerouteHandler}>
+            {!onFirstPage && (
+              <SButton type="button" variant="secondary" onClick={handleBackClick}>
+                Back
+              </SButton>
+            )}
+            <SButton variant="primary">Continue</SButton>
+          </Form>
+        )}
+        <SButton variant="secondary" onClick={() => router.push("/")}>Cancel</SButton>
+      </StyledDiv>
     </>
   );
 }

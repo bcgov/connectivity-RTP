@@ -1,17 +1,26 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`;
+import Card from '@button-inc/bcgov-theme/Card';
+import SButton from '../components/SButton';
+import StyledDiv from '../components/StyledDiv';
 
 export default function Home() {
   return (
     <>
-      <Link href="/1">
-        &#9997; Create Profile
-      </Link>
+      <StyledDiv>
+        <Card title="Online Application">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+          sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <br />
+          <Link href="/1">
+            <SButton>Click here to apply now!</SButton>
+          </Link>
+        </Card>
+      </StyledDiv>
     </>
   )
 };
