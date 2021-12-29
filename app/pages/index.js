@@ -17,7 +17,7 @@ export default function Home() {
           sunt in culpa qui officia deserunt mollit anim id est laborum.
           <br />
           <Link href="/1">
-            <SButton>Click here to apply now!</SButton>
+            <SButton>Begin New Application</SButton>
           </Link>
         </Card>
       </StyledDiv>
