@@ -4,17 +4,17 @@ export default function Menu() {
       <ul>
         <li>
           <a href=".">
-            About
+            Lorem
           </a>
         </li>
         <li>
           <a href=".">
-            Careers
+            Ipsum
           </a>
         </li>
         <li>
           <a href=".">
-            Privacy Policy
+            Dolor
           </a>
         </li>
       </ul >
