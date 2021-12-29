@@ -5,7 +5,7 @@ import { Forms, getHandler } from "../form-schema";
 import SButton from '../components/SButton';
 import StyledDiv from "../components/StyledDiv";
 
-export default function home({ formIndex, formData, validPage, prevPageUrl }) {
+export default function apply({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];
   const router = useRouter();
   const onFirstPage = prevPageUrl === -1;
