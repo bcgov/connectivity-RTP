@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@button-inc/bcgov-theme": "^1.0.1",
+    "@button-inc/form-schema": "^1.0.0-alpha.5",
+    "@rjsf/core": "^3.2.1",
+    "@rjsf/semantic-ui": "^3.2.1",
+    "next": "latest",
+    "next-session": "^3.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "react-jsonschema-form": "^1.8.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
+    "styled-components": "^5.2.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0"
+  },
+  "packageManager": "yarn@1.22.17"
+}
