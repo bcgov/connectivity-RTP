@@ -16,5 +16,5 @@ yarn dev # run the application
 ```bash
 cd app
 yarn
-yarn run cypress:run
+yarn run cypress:open
 ```
