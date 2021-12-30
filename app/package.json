@@ -4,7 +4,7 @@
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "cypress:run": "yarn dev & wait-on http:localhost:3000 & cypress run"
+    "cypress:open": "yarn dev & wait-on http:localhost:3000 & cypress open"
   },
   "dependencies": {
     "@button-inc/bcgov-theme": "^1.0.1",
