@@ -39,10 +39,10 @@ RUN asdf plugin-update --all
 RUN asdf install
 RUN asdf reshim
 
-COPY .bin/docker-entrypoint.sh ${APP_HOME}
-ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
-RUN chmod +x /usr/local/bin/dumb-init
-ENTRYPOINT ["dumb-init", "--", "./docker-entrypoint.sh"]
+# COPY .bin/docker-entrypoint.sh ${APP_HOME}
+# ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
+# RUN chmod +x /usr/local/bin/dumb-init
+# ENTRYPOINT ["dumb-init", "--", "./docker-entrypoint.sh"]
 
 ENV NODE_ENV=production
 
@@ -59,7 +59,7 @@ RUN PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 CYPRESS_INSTALL_BINARY=0 \
     chmod g=u /etc/passwd && \
     chmod -R g+rwX ${APP_HOME}
 
-EXPOSE 3000 9000
+EXPOSE 3000
 USER ${USER_ID}
 WORKDIR ${APP_HOME}
 
