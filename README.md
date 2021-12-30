@@ -9,5 +9,12 @@ Clone the repo and run the following commands:
 ```bash
 cd app
 yarn # to install dependencies
-yarn dev #run the application
+yarn dev # run the application
+```
+
+## Run End to End Cypress Test Locally
+```bash
+cd app
+yarn
+yarn run cypress:run
 ```
