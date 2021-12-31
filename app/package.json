@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cypress:open": "yarn dev & wait-on http:localhost:3000 & cypress open"
   },
   "dependencies": {
     "@button-inc/bcgov-theme": "^1.0.1",
@@ -19,10 +20,12 @@
     "react-jsonschema-form": "^1.8.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.2.3",
+    "wait-on": "^6.0.0"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.12.0"
+    "babel-plugin-styled-components": "^1.12.0",
+    "cypress": "^9.2.0"
   },
   "packageManager": "yarn@1.22.17"
 }
