@@ -14,7 +14,7 @@ yarn dev # run the application
 ## Docker
 To run application using Docker, run the following commands from the root folder:
 ```bash
-docker build . -f app/Dockerfile # will return 'Successfully built <IMAGE>'
+docker build . -f app/Dockerfile connectivity-intake:latest
 docker run -p 3000:3000 connectivity-intake:latest
 ```
 Go to: `http://localhost:3000`
