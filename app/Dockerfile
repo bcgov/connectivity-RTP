@@ -39,10 +39,9 @@ RUN asdf plugin-update --all
 RUN asdf install
 RUN asdf reshim
 
-# COPY .bin/docker-entrypoint.sh ${APP_HOME}
-# ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
-# RUN chmod +x /usr/local/bin/dumb-init
-# ENTRYPOINT ["dumb-init", "--", "./docker-entrypoint.sh"]
+ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
+RUN chmod +x /usr/local/bin/dumb-init
+ENTRYPOINT ["dumb-init", "--"]
 
 ENV NODE_ENV=production
 
