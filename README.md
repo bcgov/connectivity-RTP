@@ -11,6 +11,13 @@ cd app
 yarn # to install dependencies
 yarn dev # run the application
 ```
+## Docker
+To run application using Docker, run the following commands from the root folder:
+```bash
+docker build . -f app/Dockerfile # will return 'Successfully built <IMAGE>'
+docker run -dp 3000:3000 <IMAGE>
+```
+Go to: `http://localhost:3000`
 
 ## Run End to End Cypress Test Locally
 ```bash
