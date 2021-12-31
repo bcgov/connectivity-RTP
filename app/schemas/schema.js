@@ -1,5 +1,6 @@
 const schema = {
   "title": "Request to Participate",
+  "type": "object",
   "required": [
     "organization",
     "streetNumber",
