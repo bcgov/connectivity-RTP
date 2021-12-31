@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
-    "build:next": "next build",
+    "build": "next build",
     "start": "next start",
     "cypress:open": "yarn dev & wait-on http:localhost:3000 & cypress open"
   },

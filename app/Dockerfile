@@ -47,7 +47,7 @@ ENV NODE_ENV=production
 
 RUN PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 CYPRESS_INSTALL_BINARY=0 \
     yarn install --frozen-lockfile --production=false && \
-    yarn build:next && \
+    yarn build && \
     yarn install --frozen-lockfile --production=true && \
     yarn cache clean && \
     # Make everything in the home group-writable to support OpenShift's restricted SCC
