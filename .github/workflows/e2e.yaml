@@ -1,0 +1,13 @@
+name: E2E in Docker container
+
+on:
+  push
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.5.0-chrome94-ff93
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
