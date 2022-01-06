@@ -10,16 +10,14 @@ const uiSchema = {
       "ui:widget": "textarea"
     }
   },
-  "technologies": {
-    "transport": {
-      "ui:widget": "checkboxes"
-    },
-    "lastMile": {
-      "ui:widget": "checkboxes"
-    },
-    "highway": {
-      "ui:widget": "checkboxes"
-    }
+  "transport": {
+    "ui:widget": "checkboxes"
+  },
+  "lastMile": {
+    "ui:widget": "checkboxes"
+  },
+  "highway": {
+    "ui:widget": "checkboxes"
   }
 };
 
