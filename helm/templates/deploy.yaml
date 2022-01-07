@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Connectivity Intake
+  namespace: bc5936-dev
+spec:
+  selector:
+    matchLabels:
+      app: connectivity-intake
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: connectivity-intake
+    spec:
+      containers:
+        - name: connectivity-intake
+          image: ghcr.io/bcgov/connectivity-intake:sha-2a147891ea52cfb6b16bd64a48234ac00d26a169
+          ports:
+            - containerPort: 8080
