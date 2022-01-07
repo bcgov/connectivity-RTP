@@ -109,6 +109,7 @@ const schema = {
     "preScreen": {
       "title": "Pre-Screen Information",
       "description": "How you intend to meet the program's eligibility criteria:",
+      "type": "object",
       "properties": {
         "kindOfOrganization": {
           "title": "Kind of Organization (select all that apply):",
@@ -136,7 +137,7 @@ const schema = {
                 },
                 "ISPNetworkExperience": {
                   "title": "Network Experience (for ISPs):",
-                  "description": "Describe the type of network and location that you currently own and have operated for at least three years (transport fibre for wholesale, fibre-tothe-home, fixed wireless LTE): ",
+                  "description": "Describe the type of network and location that you currently own and have operated for at least three years (transport fibre for wholesale, fibre-to-the-home, fixed wireless LTE): ",
                   "type":"string"
                 },
                 "ISPTechnologyExperience": {
@@ -162,7 +163,7 @@ const schema = {
                 "nonISPCollaborationPlan": {
                   "title": "Collaboration Plan (for non-ISPs):",
                   "description": "Describe how you will work with an ISP with at least three years of experience and their ongoing active involvement in the operation of the network.",
-                  "type":"string"
+                  "type": "string"
                 }
               },
               "required": [
