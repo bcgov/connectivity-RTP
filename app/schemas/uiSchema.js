@@ -1,14 +1,12 @@
 const uiSchema = {
-  "preScreen": {
-    "nonISPCollaborationPlan": {
-      "ui:widget": "textarea"
-    },
-    "ISPNetworkExperience": {
-      "ui:widget": "textarea"
-    },
-    "ISPTechnologyExperience": {
-      "ui:widget": "textarea"
-    }
+  "nonISPCollaborationPlan": {
+    "ui:widget": "textarea"
+  },
+  "ISPNetworkExperience": {
+    "ui:widget": "textarea"
+  },
+  "ISPTechnologyExperience": {
+    "ui:widget": "textarea"
   },
   "transport": {
     "ui:widget": "checkboxes"
