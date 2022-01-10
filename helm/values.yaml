@@ -1,14 +1,18 @@
-# Default values for helm.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
+name: connectivity-intake
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  app:
+    repository: ghcr.io/bcgov/connectivity-intake
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: c79955e43473386b5d5a102bed4339a52acf4966
+port: 3000
+route:
+  host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
+
+networkPolicies:
+  enabled: true
 
 imagePullSecrets: []
 nameOverride: ""

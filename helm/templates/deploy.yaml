@@ -1,20 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Connectivity Intake
-  namespace: bc5936-dev
+  name: {{ .Values.name }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.name }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   selector:
     matchLabels:
-      app: connectivity-intake
+      app: {{ .Values.name }}
   replicas: 3
   template:
     metadata:
       labels:
-        app: connectivity-intake
+        app: {{ .Values.name }}
     spec:
       containers:
-        - name: connectivity-intake
-          image: ghcr.io/bcgov/connectivity-intake:sha-2a147891ea52cfb6b16bd64a48234ac00d26a169
+        - name: {{ .Values.name }}
+          image: {{ .Values.image.app.repository }}:sha-{{ .Values.image.app.tag }}
           ports:
-            - containerPort: 8080
+            - containerPort: {{ .Values.port }}
+              protocol: TCP
