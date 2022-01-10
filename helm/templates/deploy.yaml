@@ -3,8 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Values.name }}
   labels:
-    app.kubernetes.io/name: {{ .Values.name }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "connectivity-intake.labels" . | indent 4}}
 spec:
   selector:
     matchLabels:

@@ -2,6 +2,8 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: {{ .Values.name }}
+  labels:
+{{ include "connectivity-intake.labels" . | indent 4}}
 spec:
   host: {{ .Values.route.host }}
   port:
