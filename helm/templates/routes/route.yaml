@@ -9,18 +9,9 @@ spec:
   port:
     targetPort: {{ .Values.name }}
   tls:
-    termination: passthrough
+    termination: edge
     insecureEdgeTerminationPolicy: Redirect
   to:
     kind: Service
     name: {{ .Values.name }}
     weight: 100
-  wildcardPolicy: None
-status:
-  ingress:
-  - conditions:
-    - status: 'True'
-      type: Admitted
-    host: {{ .Values.route.host }}
-    routerName: router
-    wildcardPolicy: None

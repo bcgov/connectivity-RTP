@@ -20,3 +20,12 @@ spec:
           ports:
             - containerPort: {{ .Values.port }}
               protocol: TCP
+          readinessProbe: 
+            httpGet:
+              path: /
+              port: {{ .Values.port }}
+            failureThreshold: 1
+            successThreshold: 1
+            periodSeconds: 5
+            timeoutSeconds: 5
+            initialDelaySeconds: 5  
