@@ -61,5 +61,5 @@ jobs:
           insecure_skip_tls_verify: true
       - run: |
           chmod +x ./lib/helm_deploy.sh
-          ./lib/helm_deploy.sh ${{ env.OPENSHIFT_NAMESPACE }} ./helm ${{ env.TAG }}
+          ./lib/helm_deploy.sh ${{ env.OPENSHIFT_NAMESPACE }} ${{ env.TAG }}
         shell: bash
