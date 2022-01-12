@@ -9,7 +9,6 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   OPENSHIFT_NAMESPACE: bc5936-dev
-  CHART_PATH: ./helm
   TAG: ${{ github.sha }}
 
 jobs:
@@ -62,5 +61,5 @@ jobs:
           insecure_skip_tls_verify: true
       - run: |
           chmod +x ./lib/helm_deploy.sh
-          ./lib/helm_deploy.sh ${{ env.OPENSHIFT_NAMESPACE }} ${{ env.CHART_PATH }} ${{ env.TAG }}
+          ./lib/helm_deploy.sh ${{ env.OPENSHIFT_NAMESPACE }} ./helm ${{ env.TAG }}
         shell: bash
