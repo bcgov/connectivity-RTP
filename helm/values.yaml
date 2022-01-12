@@ -25,3 +25,5 @@ resources:
 
 deployer:
   namespace: bc5936-dev
+  serviceAccount:
+    enabled: true

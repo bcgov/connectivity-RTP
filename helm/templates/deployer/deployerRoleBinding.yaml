@@ -1,3 +1,5 @@
+{{ if .Values.deployer.serviceAccount.enabled }}
+
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -12,3 +14,5 @@ subjects:
   - kind: ServiceAccount
     name: {{ .Release.Name }}-deployer
     namespace: {{ .Values.deployer.namespace }}
+
+{{ end }}
