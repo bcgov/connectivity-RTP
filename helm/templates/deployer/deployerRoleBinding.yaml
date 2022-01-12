@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ .Release.Name }}-deployer
+  labels:
+{{ include "connectivity-intake.labels" . | indent 4}}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Release.Name }}-deployer
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Release.Name }}-deployer
+    namespace: {{ .Values.deployer.namespace }}
