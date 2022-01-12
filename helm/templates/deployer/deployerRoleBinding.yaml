@@ -13,6 +13,6 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ .Release.Name }}-deployer
-    namespace: {{ .Values.deployer.namespace }}
+    namespace: {{ .Release.namespace }}
 
 {{ end }}
