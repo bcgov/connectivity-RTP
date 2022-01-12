@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  labels:
+{{ include "connectivity-intake.labels" . | indent 4}}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+        - name: {{ .Values.name }}
+          image: {{ .Values.image.app.repository }}:sha-{{ .Values.image.app.tag }}
+          imagePullPolicy: {{ .Values.image.app.pullPolicy }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.app.requests.memory }}
+              cpu: {{ .Values.resources.app.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.app.limits.memory }}
+              cpu: {{ .Values.resources.app.limits.cpu }}
+          ports:
+            - containerPort: {{ .Values.port }}
+              protocol: TCP
+          readinessProbe: 
+            httpGet:
+              path: /
+              port: {{ .Values.port }}
+            failureThreshold: 1
+            successThreshold: 1
+            periodSeconds: 5
+            timeoutSeconds: 5
+            initialDelaySeconds: 5  

@@ -1,11 +1,15 @@
-name: Create and publish a Docker image to ghrc.io
+name: Create and publish a Docker image to ghrc.io and deploy to openshift
 
 on:
-  push
+  push:
+    branches:
+    - main
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  OPENSHIFT_NAMESPACE: bc5936-dev
+  TAG: ${{ github.sha }}
 
 jobs:
   build-and-push-image:
@@ -41,3 +45,21 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  deploy-to-openshift:
+    needs: build-and-push-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Authenticate, set context, and run deploy script
+        uses: redhat-actions/oc-login@v1
+        with:
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+          insecure_skip_tls_verify: true
+      - run: |
+          chmod +x ./lib/helm_deploy.sh
+          ./lib/helm_deploy.sh ${{ env.OPENSHIFT_NAMESPACE }} ./helm ${{ env.TAG }}
+        shell: bash

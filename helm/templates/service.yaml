@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name }}
+  labels:
+{{ include "connectivity-intake.labels" . | indent 4}}
+spec:
+  ports:
+  - name: {{ .Values.name }}
+    port: {{ .Values.port }}
+    protocol: TCP
+    targetPort: {{ .Values.port }}
+  selector:
+    app: {{ .Values.name }}
+  sessionAffinity: None
+  type: ClusterIP

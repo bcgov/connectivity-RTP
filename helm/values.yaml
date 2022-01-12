@@ -1,0 +1,29 @@
+name: connectivity-intake
+replicaCount: 3
+
+image:
+  app:
+    repository: ghcr.io/bcgov/connectivity-intake
+    pullPolicy: IfNotPresent
+    # The tag value must be passed in via the deploy script
+    tag: latest
+port: "3000"
+route:
+  host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
+
+networkPolicies:
+  enabled: true
+
+resources:
+  app:
+    requests: 
+      cpu: "80m"
+      memory: "150Mi"
+    limits:
+      cpu: "160m"
+      memory: "300Mi"
+
+deployer:
+  namespace: bc5936-dev
+  serviceAccount:
+    enabled: true
