@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.name }}
-  replicas: 3
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:
@@ -17,6 +17,14 @@ spec:
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.image.app.repository }}:sha-{{ .Values.image.app.tag }}
+          imagePullPolicy: {{ .Values.image.app.pullPolicy }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.app.requests.memory }}
+              cpu: {{ .Values.resources.app.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.app.limits.memory }}
+              cpu: {{ .Values.resources.app.limits.cpu }}
           ports:
             - containerPort: {{ .Values.port }}
               protocol: TCP

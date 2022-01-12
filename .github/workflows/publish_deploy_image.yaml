@@ -1,9 +1,7 @@
 name: Create and publish a Docker image to ghrc.io and deploy to openshift
 
 on:
-  push:
-    branches:
-    - main
+  push
 
 env:
   REGISTRY: ghcr.io
