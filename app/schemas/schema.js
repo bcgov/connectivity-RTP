@@ -105,76 +105,8 @@ const schema = {
         }
       },
       "type": "object"
-    },
-    "preScreen": {
-      "title": "Pre-Screen Information",
-      "description": "How you intend to meet the program's eligibility criteria:",
-      "type": "object",
-      "properties": {
-        "kindOfOrganization": {
-          "title": "Kind of Organization (select all that apply):",
-          "type": "string",
-          "enum": [
-            "Internet Service Provider (ISP)",
-            "Municipal Government (Established by BC Legislation)",
-            "Regional District (Established by BC Legislation)",
-            "First Nations or First Nationals organizations (i.e. band council or a corporation controlled by a First Nation)"
-          ]
-        }
-      },
-      "required": [
-        "kindOfOrganization"
-      ],
-      "dependencies": {
-        "kindOfOrganization": {
-          "oneOf": [
-            {
-              "properties": {
-                "kindOfOrganization": {
-                  "enum": [
-                    "Internet Service Provider (ISP)"
-                  ]
-                },
-                "ISPNetworkExperience": {
-                  "title": "Network Experience (for ISPs):",
-                  "description": "Describe the type of network and location that you currently own and have operated for at least three years (transport fibre for wholesale, fibre-to-the-home, fixed wireless LTE): ",
-                  "type":"string"
-                },
-                "ISPTechnologyExperience": {
-                  "title": "Technology Experience (for ISPs):",
-                  "description": "Describe your organization’s experience of at least three years deploying the type of technologies being proposed (i.e. Transport, Last-Mile, Cellular):",
-                  "type":"string"
-                }
-              },
-              "required": [
-                "ISPNetworkExperience",
-                "ISPTechnologyExperience"
-              ]
-            },
-            {
-              "properties": {
-                "kindOfOrganization": {
-                  "enum": [
-                    "Municipal Government (Established by BC Legislation)",
-                    "Regional District (Established by BC Legislation)",
-                    "First Nations or First Nationals organizations (i.e. band council or a corporation controlled by a First Nation)"
-                  ]
-                },
-                "nonISPCollaborationPlan": {
-                  "title": "Collaboration Plan (for non-ISPs):",
-                  "description": "Describe how you will work with an ISP with at least three years of experience and their ongoing active involvement in the operation of the network.",
-                  "type": "string"
-                }
-              },
-              "required": [
-                "nonISPCollaborationPlan"
-              ]
-            }
-          ]
-        }
-      }
     }
-  }
+  }  
 };
 
 export default schema;
