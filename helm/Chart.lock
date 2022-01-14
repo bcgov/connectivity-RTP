@@ -1,0 +1,6 @@
+dependencies:
+- name: cas-postgres
+  repository: https://bcgov.github.io/cas-postgres/
+  version: 0.8.3
+digest: sha256:e2a94174e251e6014047d68aa76eb367b292164b754a779aa09569206b67fb26
+generated: "2022-01-14T11:40:08.247794573-08:00"
