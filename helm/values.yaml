@@ -27,3 +27,30 @@ deployer:
   namespace: bc5936-dev
   serviceAccount:
     enabled: true
+
+cas-postgres:
+  patroni:
+    resources:
+      limits:
+        cpu: "15m"
+        memory: "100Mi"
+      requests:
+        cpu: "15m"
+        memory: "100Mi"
+    persistentVolume:
+      size: 1Mi
+      storageClass: netapp-block-standard
+    replicaCount: 3
+    env:
+      ALLOW_NOSSL: true
+      USE_WALG_BACKUP: "true"
+      USE_WALG_RESTORE: "true"
+    walE:
+      enable: false # to be changed when we do backups
+      gcsBucket: ~
+      # kubernetesSecret should be gcp-{{ namespace }}-{{ gcs.bucketSuffix }}-service-account-key
+      kubernetesSecret: ~
+    # options below are required if walE.enable is true
+  namespace: ~
+  gcs:
+    bucketSuffix: ~
