@@ -1,0 +1,39 @@
+casShelf:
+  image:
+    repository: gcr.io/ggl-cas-storage/cas-shelf-tfe-add-app
+    pullPolicy: Always
+    tag: "0.1"
+
+patroni:
+  image:
+    repository: gcr.io/ggl-cas-storage/cas-postgres
+    pullPolicy: Always
+    tag: "0.3.0"
+
+  replicaCount: 2
+
+  resources: {}
+  credentials:
+    random: true
+  persistentVolume:
+    storageClass: netapp-block-standard
+    size: 1Gi
+  # As per https://patroni.readthedocs.io/en/latest/kubernetes.html#use-configmaps
+  # "in some cases, for instance, when running on OpenShift, there is no alternative to using ConfigMaps."
+  kubernetes:
+    dcs:
+      enable: true
+    configmaps:
+      enable: true
+  walE:
+    enable: false
+    retainBackups: 90
+    # the GCS bucket name should be {{ namespace }}-{{ gcs.bucketSuffix }}
+    gcsBucket:
+    # kubernetesSecret should be gcp-{{ namespace }}-{{ gcs.bucketSuffix }}-service-account-key
+    kubernetesSecret:
+
+# options below are required if walE.enable is true
+namespace:
+gcs:
+  bucketSuffix:

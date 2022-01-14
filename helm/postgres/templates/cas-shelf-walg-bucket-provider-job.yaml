@@ -1,0 +1,44 @@
+{{- if .Values.patroni.walE.enable }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.name }}-cas-shelf-walg-bucket-provider
+  annotations:
+    "helm.sh/hook": "pre-install,pre-upgrade"
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+    "helm.sh/hook-weight": "0"
+spec:
+  parallelism: 1
+  completions: 1
+  backoffLimit: 0
+  activeDeadlineSeconds: 1200
+  template:
+    metadata:
+      name: {{ .Values.name }}-cas-shelf-walg-bucket-provider
+      labels: {{ include "connectivity-intake.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Values.name }}-cas-shelf-walg-bucket-provider
+          resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          image: {{ .Values.casShelf.image.repository }}:{{ .Values.casShelf.image.tag }}
+          imagePullPolicy: {{ .Values.casShelf.image.pullPolicy }}
+          env:
+            - name: TFC_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: terraform-cloud-workspace
+            - name: TFC_WORKSPACE_ID
+              valueFrom:
+                secretKeyRef:
+                  key: workspace_id
+                  name: terraform-cloud-workspace
+          command: ["bash",  "/script.sh", {{ .Values.namespace | quote }}, {{ .Values.gcs.bucketSuffix | quote }}]
+      restartPolicy: Never
+{{- end }}
