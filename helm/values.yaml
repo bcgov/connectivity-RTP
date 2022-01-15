@@ -33,12 +33,12 @@ cas-postgres:
     resources:
       limits:
         cpu: "15m"
-        memory: "100Mi"
+        memory: "150Mi"
       requests:
         cpu: "15m"
-        memory: "100Mi"
+        memory: "150Mi"
     persistentVolume:
-      size: 1Mi
+      size: "300Mi"
       storageClass: netapp-block-standard
     replicaCount: 3
     env:
