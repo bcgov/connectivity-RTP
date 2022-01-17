@@ -10,8 +10,8 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];
   const router = useRouter();
   const onFirstPage = prevPageUrl === -1;
-  const continueButtonText = LAST_PAGE === formIndex + 1 ? "Continue" : "Apply"
-  console.log(continueButtonText);
+  const currentPage = formIndex + 1;
+  const continueButtonText = LAST_PAGE !== currentPage ? "Continue" : "Apply";
 
   const rerouteHandler = (nextPage, _isValid, lastPage) => {
     router.push(lastPage ? "/end" : nextPage);
