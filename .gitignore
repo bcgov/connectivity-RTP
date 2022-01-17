@@ -46,4 +46,4 @@ app/.env
 app/.vercel
 
 # Helm
-/helm/charts
+helm/charts
