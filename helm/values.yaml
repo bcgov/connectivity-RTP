@@ -5,8 +5,7 @@ image:
   app:
     repository: ghcr.io/bcgov/connectivity-intake
     pullPolicy: IfNotPresent
-    # The tag value must be passed in via the deploy script
-    tag: latest
+    tag: latest # The tag value must be passed in via the deploy script
 port: "3000"
 route:
   host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
@@ -32,8 +31,8 @@ cas-postgres:
   patroni:
     resources:
       limits:
-        cpu: "15m"
-        memory: "150Mi"
+        cpu: "30m"
+        memory: "300Mi"
       requests:
         cpu: "15m"
         memory: "150Mi"
