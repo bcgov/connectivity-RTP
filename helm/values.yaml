@@ -31,7 +31,7 @@ cas-postgres:
   patroni:
     resources:
       limits:
-        cpu: "30m"
+        cpu: "15m"
         memory: "150Mi"
       requests:
         cpu: "15m"
