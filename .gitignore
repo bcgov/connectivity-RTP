@@ -40,6 +40,10 @@ app/.env.local
 app/.env.development.local
 app/.env.test.local
 app/.env.production.local
+app/.env
 
 # vercel
 app/.vercel
+
+# Helm
+helm/charts

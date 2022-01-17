@@ -5,8 +5,7 @@ image:
   app:
     repository: ghcr.io/bcgov/connectivity-intake
     pullPolicy: IfNotPresent
-    # The tag value must be passed in via the deploy script
-    tag: latest
+    tag: latest # The tag value must be passed in via the deploy script
 port: "3000"
 route:
   host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
@@ -17,13 +16,40 @@ networkPolicies:
 resources:
   app:
     requests: 
-      cpu: "80m"
-      memory: "150Mi"
+      cpu: "70m"
+      memory: "256Mi"
     limits:
-      cpu: "160m"
-      memory: "300Mi"
+      cpu: "210m"
+      memory: "512Mi"
 
 deployer:
   namespace: bc5936-dev
   serviceAccount:
     enabled: true
+
+cas-postgres:
+  patroni:
+    resources:
+      limits:
+        cpu: "210m"
+        memory: "512Mi"
+      requests:
+        cpu: "70m"
+        memory: "256Mi"
+    persistentVolume:
+      size: "300Mi"
+      storageClass: netapp-block-standard
+    replicaCount: 3
+    env:
+      ALLOW_NOSSL: true
+      USE_WALG_BACKUP: "true"
+      USE_WALG_RESTORE: "true"
+    walE:
+      enable: false # to be changed when we do backups
+      gcsBucket: ~
+      # kubernetesSecret should be gcp-{{ namespace }}-{{ gcs.bucketSuffix }}-service-account-key
+      kubernetesSecret: ~
+    # options below are required if walE.enable is true
+  namespace: ~
+  gcs:
+    bucketSuffix: ~
