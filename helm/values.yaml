@@ -31,11 +31,11 @@ cas-postgres:
   patroni:
     resources:
       limits:
-        cpu: "15m"
-        memory: "150Mi"
+        cpu: "20m"
+        memory: "256Mi"
       requests:
-        cpu: "15m"
-        memory: "150Mi"
+        cpu: "10m"
+        memory: "128Mi"
     persistentVolume:
       size: "300Mi"
       storageClass: netapp-block-standard
