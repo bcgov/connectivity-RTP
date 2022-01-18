@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const connectPgPool = require('./setup-pg');
 const pgQuery = require('./queries');
 const { countApplication } = require('./queries/application');
+const { postgraphile } = require('postgraphile');
 
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
 const isProd = process.env.NODE_ENV === 'production';
@@ -18,6 +19,8 @@ const HALF_DAY = 12 * (60 * 60 * 1000);
 const ONE_DAY = 2 * HALF_DAY;
 const TWO_WEEKS = 14 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
+
+const pgConfig = process.env.DATABASE_URL || "postgres://postgres@localhost:5432/connectivity-intake";
 
 const initExpresss = async (options = {}) => {
   const { pgPool, store } = connectPgPool();
@@ -30,6 +33,15 @@ const initExpresss = async (options = {}) => {
     req.pgQuery = new pgQuery(pgPool, req);
     next();
   });
+
+  expressServer.use(
+    postgraphile(pgConfig, "public", {
+      watchPg: true,
+      graphiql: true,
+      enhanceGraphiql: true,
+      exportGqlSchemaPath: "schema.graphql",
+    })
+  );
 
   expressServer.use(logger(isProd ? formatLogs : 'dev'));
   expressServer.use(bodyParser.json());
