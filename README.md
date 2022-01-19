@@ -20,7 +20,7 @@ createdb connectivity_intake
 cd db
 sqitch deploy
 
-# Build on run application
+# Build and run application
 cd ../app
 yarn
 yarn dev
