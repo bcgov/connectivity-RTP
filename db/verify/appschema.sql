@@ -1,7 +1,7 @@
 -- Verify connectivity-intake:appschema on pg
 
-BEGIN;
+begin;
 
-SELECT pg_catalog.has_schema_privilege('connectivity_intake', 'usage');
+select pg_catalog.has_schema_privilege('connectivity_intake', 'usage');
 
-ROLLBACK;
+rollback;

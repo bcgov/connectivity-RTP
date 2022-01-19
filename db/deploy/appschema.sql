@@ -1,7 +1,7 @@
 -- Deploy connectivity-intake:appschema to pg
 
-BEGIN;
+begin;
 
 create schema connectivity_intake;
 
-COMMIT;
+commit;

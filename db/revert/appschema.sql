@@ -1,7 +1,7 @@
 -- Revert connectivity-intake:appschema from pg
 
-BEGIN;
+begin;
 
 drop schema connectivity_intake;
 
-COMMIT;
+commit;
