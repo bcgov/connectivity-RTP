@@ -20,7 +20,7 @@ const ONE_DAY = 2 * HALF_DAY;
 const TWO_WEEKS = 14 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
 
-const pgConfig = process.env.DATABASE_URL || "postgres://postgres@localhost:5432/connectivity-intake";
+const pgConfig = process.env.DATABASE_URL || "postgres://postgres@localhost:5432/connectivity_intake";
 
 const initExpresss = async (options = {}) => {
   const { pgPool, store } = connectPgPool();
@@ -35,11 +35,10 @@ const initExpresss = async (options = {}) => {
   });
 
   expressServer.use(
-    postgraphile(pgConfig, "public", {
+    postgraphile(pgConfig, "connectivity_intake", {
       watchPg: true,
       graphiql: true,
-      enhanceGraphiql: true,
-      exportGqlSchemaPath: "schema.graphql",
+      enhanceGraphiql: true
     })
   );
 

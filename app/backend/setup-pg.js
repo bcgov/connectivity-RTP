@@ -2,7 +2,7 @@ const pg = require('pg');
 const session = require('express-session');
 const PgSession = require('connect-pg-simple')(session);
 
-const PGUSER = process.env.PGUSER || 'rootadmin';
+const PGUSER = process.env.PGUSER || 'bryankrauss';
 
 let databaseURL = 'postgres://';
 
@@ -19,14 +19,15 @@ if (process.env.PGPORT) {
 }
 
 databaseURL += '/';
-databaseURL += process.env.PGDATABASE || 'connectivity-intake';
+databaseURL += process.env.PGDATABASE || 'connectivity_intake';
 
 const connectPgPool = () => {
   const pgPool = new pg.Pool({ connectionString: databaseURL });
 
   const store = new PgSession({
     pool: pgPool,
-    // tableName: 'connect_session',
+    schemaName: 'connectivity_intake',
+    tableName: 'connect_session',
   });
 
   return { pgPool, store };
