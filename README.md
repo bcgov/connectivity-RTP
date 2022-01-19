@@ -13,6 +13,9 @@ asdf install
 # Start Postgres database
 pg_ctl start
 
+# Create Database
+createdb connectivity_intake
+
 # Set up database
 cd db
 sqitch deploy
