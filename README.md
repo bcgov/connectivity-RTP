@@ -7,9 +7,20 @@ Intake for application process for BC Connectivity funding program
 ## Usage
 Clone the repo and run the following commands:
 ```bash
-cd app
-yarn # to install dependencies
-yarn dev # run the application
+# Install tools required for the project
+asdf install
+
+# Start Postgres database
+pg_ctl start
+
+# Set up database
+cd db
+sqitch deploy
+
+# Build on run application
+cd ../app
+yarn
+yarn dev
 ```
 ## Docker
 To run application using Docker, run the following commands from the root folder:
