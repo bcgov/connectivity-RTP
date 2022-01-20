@@ -1,4 +1,7 @@
 import axios from 'axios';
+import getConfig from 'next/config';
+
+const CONFIG = getConfig().publicRuntimeConfig;
 
 const postData = async (formData) => {
   const applicationMutation = `mutation CreateApplication($formData: JSON = "formData") {
@@ -10,7 +13,7 @@ const postData = async (formData) => {
   try {
     await axios({
       method: "POST",
-      url: 'http://localhost:3000/graphql',
+      url: `${CONFIG.ORIGIN}/graphql`,
       headers: {
         "Content-Type": "application/json",
       },

@@ -1,4 +1,6 @@
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const dotenv = require('dotenv').config();
+
 
 module.exports = {
   webpack: (config, { isServer }) => {
@@ -8,4 +10,7 @@ module.exports = {
     config.plugins = [...config.plugins, new CaseSensitivePathsPlugin()];
     return config;
   },
+  publicRuntimeConfig: {
+    ORIGIN: process.env.ORIGIN
+  }
 };
