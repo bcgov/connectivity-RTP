@@ -9,6 +9,7 @@ Clone the repo and run the following commands:
 ```bash
 # Install tools required for the project
 asdf install
+asdf reshim
 
 # Start Postgres database
 pg_ctl start
@@ -22,6 +23,7 @@ sqitch deploy
 
 # Build and run application
 cd ../app
+cp .env.example .env # Copy .env.example file
 yarn
 yarn dev
 ```
