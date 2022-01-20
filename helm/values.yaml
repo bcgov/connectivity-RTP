@@ -6,6 +6,10 @@ image:
     repository: ghcr.io/bcgov/connectivity-intake
     pullPolicy: IfNotPresent
     tag: latest # The tag value must be passed in via the deploy script
+  schema:
+    repository: gcr.io/ggl-cas-storage/cas-ciip-portal-schema
+    tag: b530194a9df22e64b1a701defd3b65f41b01676b # pragma: allowlist secret
+    pullPolicy: IfNotPresent
 port: "3000"
 route:
   host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
