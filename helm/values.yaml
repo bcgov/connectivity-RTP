@@ -1,4 +1,4 @@
-name: connectivity-intake
+fullnameOverride: connectivity-intake
 replicaCount: 3
 
 image:

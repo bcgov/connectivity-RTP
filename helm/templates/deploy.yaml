@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
+  name: {{ template "connectivity-intake.fullname" . }}
   labels:
 {{ include "connectivity-intake.labels" . | indent 4}}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{ template "connectivity-intake.fullname" . }}
   replicas: {{ .Values.replicaCount }}
   strategy:
     type: RollingUpdate
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.name }}
+        app: {{ template "connectivity-intake.fullname" . }}
     spec:
       initContainers:
       - env:
@@ -27,27 +27,27 @@ spec:
           valueFrom: 
             secretKeyRef:
               key: database-user
-              name: {{ .Values.name }}
+              name: {{ template "connectivity-intake.fullname" . }}
         - name: PGPASSWORD
           valueFrom: 
             secretKeyRef:
               key: database-password
-              name: {{ .Values.name }}
+              name: {{ template "connectivity-intake.fullname" . }}
         - name: PGDATABASE
           valueFrom: 
             secretKeyRef:
               key: database-name
-              name: {{ .Values.name }}
+              name: {{ template "connectivity-intake.fullname" . }}
         - name: PGPORT
           value: "5432"
         - name: PGHOST
-          value: {{ .Values.name }}-patroni
+          value: {{ template "connectivity-intake.fullname" . }}-patroni
         - name: NAMESPACE
           valueFrom:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        name: {{ .Values.name }}-wait-for-migrations
+        name: {{ template "connectivity-intake.fullname" . }}-wait-for-migrations
         image: {{ .Values.image.schema.repository }}:{{ .Values.image.schema.tag }}
         resources:
           limits:
@@ -68,7 +68,7 @@ spec:
               sleep 10;
             done;
       containers:
-        - name: {{ .Values.name }}
+        - name: {{ template "connectivity-intake.fullname" . }}
           image: {{ .Values.image.app.repository }}:sha-{{ .Values.image.app.tag }}
           imagePullPolicy: {{ .Values.image.app.pullPolicy }}
           resources:
