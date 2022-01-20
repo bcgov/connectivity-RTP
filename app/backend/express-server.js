@@ -11,6 +11,7 @@ const connectPgPool = require('./setup-pg');
 const pgQuery = require('./queries');
 const { countApplication } = require('./queries/application');
 const { postgraphile } = require('postgraphile');
+const { formatLogs } = require('../utils/logging');
 
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
 const isProd = process.env.NODE_ENV === 'production';
@@ -19,8 +20,6 @@ const HALF_DAY = 12 * (60 * 60 * 1000);
 const ONE_DAY = 2 * HALF_DAY;
 const TWO_WEEKS = 14 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
-
-const pgConfig = process.env.DATABASE_URL || "postgres://postgres@localhost:5432/connectivity_intake";
 
 const initExpresss = async (options = {}) => {
   const { pgPool, store } = connectPgPool();
@@ -35,10 +34,11 @@ const initExpresss = async (options = {}) => {
   });
 
   expressServer.use(
-    postgraphile(pgConfig, "connectivity_intake", {
-      watchPg: true,
+    postgraphile(pgPool, "connectivity_intake_public", {
+      watchPg: !isProd,
       graphiql: true,
-      enhanceGraphiql: true
+      enhanceGraphiql: true,
+      pgDefaultRole: 'connectivity_intake_guest'
     })
   );
 

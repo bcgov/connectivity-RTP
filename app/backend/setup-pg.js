@@ -26,7 +26,7 @@ const connectPgPool = () => {
 
   const store = new PgSession({
     pool: pgPool,
-    schemaName: 'connectivity_intake',
+    schemaName: 'connectivity_intake_private',
     tableName: 'connect_session',
   });
 

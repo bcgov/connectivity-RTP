@@ -1,0 +1,67 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "connectivity-intake.fullname" . }}-db-revert
+  labels:
+    release: {{ .Release.Name }}
+{{ include "connectivity-intake.labels" . | indent 4}}
+spec:
+  suspend: true # This cron job is intended to be triggered manually
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 600
+      template:
+        metadata:
+          labels:
+            name: {{ template "connectivity-intake.fullname" . }}-db-revert
+            release: {{ .Release.Name }}
+{{ include "connectivity-intake.labels" . | indent 12 }}
+        spec:
+          restartPolicy: Never
+          containers:
+            - env:
+              - name: SQITCH_TARGET
+                value: "db:pg:"
+              - name: PGUSER
+                valueFrom: 
+                  secretKeyRef:
+                    key: database-owner-user
+                    name: {{ template "connectivity-intake.fullname" . }}
+              - name: PGPASSWORD
+                valueFrom: 
+                  secretKeyRef:
+                    key: database-owner-password
+                    name: {{ template "connectivity-intake.fullname" . }}
+              - name: PGDATABASE
+                valueFrom: 
+                  secretKeyRef:
+                    key: database-name
+                    name: {{ template "connectivity-intake.fullname" . }}
+              - name: PGPORT
+                value: "5432"
+              - name: PGHOST
+                value: {{ template "connectivity-intake.fullname" . }}-patroni
+              - name: NAMESPACE
+                valueFrom:
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+              name: {{ template "connectivity-intake.fullname" . }}-db-revert
+              image: {{ .Values.image.db.repository }}:{{ .Values.image.db.tag }}
+              imagePullPolicy: {{ .Values.image.db.pullPolicy }}
+              resources:
+                limits:
+                  cpu: 50m
+                  memory: 64Mi
+                requests:
+                  cpu: 10m
+                  memory: 32Mi
+              command:
+                - /usr/bin/env
+                - bash
+                - -c
+                - |
+                  set -euox pipefail;
+                  sqitch revert -y @HEAD^;

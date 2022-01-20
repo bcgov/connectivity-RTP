@@ -1,15 +1,20 @@
 fullnameOverride: connectivity-intake
 replicaCount: 3
+defaultImagePullPolicy: IfNotPresent
+defaultImageTag: latest
 
 image:
   app:
-    repository: ghcr.io/bcgov/connectivity-intake
+    repository: ghcr.io/bcgov/connectivity-intake/connectivity-intake-app
     pullPolicy: IfNotPresent
     tag: latest # The tag value must be passed in via the deploy script
-  schema:
-    repository: gcr.io/ggl-cas-storage/cas-ciip-portal-schema
-    tag: b530194a9df22e64b1a701defd3b65f41b01676b # pragma: allowlist secret
+  psql:
+    repository: gcr.io/ggl-cas-storage/cas-postgres
+    tag: "0.3.0"
+  db:
+    repository: ghcr.io/bcgov/connectivity-intake/connectivity-intake-db
     pullPolicy: IfNotPresent
+    tag: latest # The tag value must be passed in via the deploy script 
 port: "3000"
 route:
   host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
@@ -57,3 +62,9 @@ cas-postgres:
   namespace: ~
   gcs:
     bucketSuffix: ~
+
+db:
+  name: connectivity_intake
+  appUser: connectivity_intake_app
+  ownerUser: connectivity_intake
+  preInitCommand: ""

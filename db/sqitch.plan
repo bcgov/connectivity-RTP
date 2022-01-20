@@ -2,6 +2,8 @@
 %project=connectivity-intake
 %uri=https://github.com/bcgov/connectivity-intake
 
-appschema 2022-01-18T17:42:29Z Bryan Krauss <bryan@button.is> # Add schema for all connectivity intake objects
-connect_session [appschema] 2022-01-18T18:32:43Z Bryan Krauss <bryan@button.is> # Creates session table for connect-pg-simple
-applications [appschema] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.
+create_roles 2022-01-24T19:06:19Z Bryan Krauss <bryan@button.is> # create_roles to pg
+schemas/private [create_roles] 2022-01-24T23:46:51Z Bryan Krauss <bryan@button.is> # Private schema inaccessible to the API.
+schemas/public 2022-01-18T17:42:29Z Bryan Krauss <bryan@button.is> # Add schema for all connectivity intake objects
+tables/connect_session [schemas/private] 2022-01-18T18:32:43Z Bryan Krauss <bryan@button.is> # Creates session table for connect-pg-simple
+tables/applications [schemas/public] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.

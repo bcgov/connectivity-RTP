@@ -20,6 +20,6 @@ If release name contains chart name it will be used as a full name.
 Common Labels
 */}}
 {{- define "connectivity-intake.labels" -}}
-app.kubernetes.io/name: {{ .Values.name }}
+app.kubernetes.io/name: {{ .Values.fullnameOverride }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
