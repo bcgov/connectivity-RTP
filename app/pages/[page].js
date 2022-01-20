@@ -4,11 +4,14 @@ import { useRouter } from "next/router";
 import { Forms, getHandler } from "../form-schema";
 import SButton from '../components/SButton';
 import StyledDiv from "../components/StyledDiv";
+import { LAST_PAGE } from "../services/application";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];
   const router = useRouter();
   const onFirstPage = prevPageUrl === -1;
+  const currentPage = formIndex + 1;
+  const continueButtonText = LAST_PAGE !== currentPage ? "Continue" : "Apply";
 
   const rerouteHandler = (nextPage, _isValid, lastPage) => {
     router.push(lastPage ? "/end" : nextPage);
@@ -29,7 +32,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
                 Back
               </SButton>
             )}
-            <SButton variant="primary">Continue</SButton>
+            <SButton variant="primary">{continueButtonText}</SButton>
           </Form>
         )}
         <SButton variant="secondary" onClick={() => router.push("/")}>Cancel</SButton>

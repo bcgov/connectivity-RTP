@@ -1,12 +1,16 @@
 import { govBuilder } from '@button-inc/form-schema';
 import schema from './schemas/schema';
 import uiSchema from './schemas/uiSchema';
+import postData from './utils/post-data'
 
 const options = {
   getRoute: '/',
   postRoute: '/api',
   useSession: true,
-  onFormEnd: (errors, formData) => console.log(`save ${JSON.stringify(formData)} to db here`),
+  onFormEnd: (errors, formData) => {
+    if (errors) throw new Error("There was an error saving your information: ", errors);
+    postData(formData);
+  },
 }
 
 export const { postMiddleware, getHandler, Forms } = govBuilder(schema, uiSchema, options);
