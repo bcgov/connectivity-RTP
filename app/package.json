@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "nodemon --watch backend server NODE_OPTIONS='--inspect'",
     "build": "next build",
-    "start": "next start",
+    "start": "node server",
     "cypress:open": "yarn dev & wait-on http:localhost:3000 & cypress open"
   },
   "dependencies": {
