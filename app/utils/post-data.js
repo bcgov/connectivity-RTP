@@ -23,7 +23,7 @@ const postData = async (formData) => {
       }
     });
   } catch (e) {
-    console.log("Form data failed to post to database: ", e);
+    throw new Error("There was an error saving your information: ", e);
   }
 }
 

@@ -8,7 +8,7 @@ const options = {
   postRoute: '/api',
   useSession: true,
   onFormEnd: (errors, formData) => {
-    if (errors) throw new Error("Failed to post form data", errors);
+    if (errors) throw new Error("There was an error saving your information: ", errors);
     postData(formData);
   },
 }
