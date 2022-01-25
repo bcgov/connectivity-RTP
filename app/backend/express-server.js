@@ -12,10 +12,11 @@ const pgQuery = require('./queries');
 const { countApplication } = require('./queries/application');
 const { postgraphile } = require('postgraphile');
 const { formatLogs } = require('../utils/logging');
-const Keycloak = require('keycloak-connect');
+const ssoMiddleware = require('./middleware/sso');
 
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
 const isProd = process.env.NODE_ENV === 'production';
+const port = process.env.PORT || 3000;
 
 const HALF_DAY = 12 * (60 * 60 * 1000);
 const ONE_DAY = 2 * HALF_DAY;
@@ -23,8 +24,6 @@ const TWO_WEEKS = 14 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
 
 const initExpresss = async (options = {}) => {
-  const memoryStore = new session.MemoryStore();
-  const keycloak = new Keycloak({ store: memoryStore, idpHint: 'bceid-basic' });
 
   const { pgPool, store } = connectPgPool();
 
@@ -46,8 +45,12 @@ const initExpresss = async (options = {}) => {
     })
   );
 
-  expressServer.use(keycloak.middleware());
-  expressServer.use('/', keycloak.protect())
+  const sessionMiddleware = session();
+  expressServer.use(sessionMiddleware);
+
+  expressServer.use(await ssoMiddleware());
+
+  expressServer.get("/auth-callback");
 
   expressServer.use(logger(isProd ? formatLogs : 'dev'));
   expressServer.use(bodyParser.json());
@@ -77,7 +80,7 @@ const initExpresss = async (options = {}) => {
         // in HTTPS mode.
         secure: isProd,
       },
-      store: memoryStore
+      store
     })
   );
 

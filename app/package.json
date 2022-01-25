@@ -7,6 +7,7 @@
     "cypress:open": "yarn dev & wait-on http:localhost:3000 & cypress open"
   },
   "dependencies": {
+    "@bcgov-cas/sso-express": "^2.0.2",
     "@button-inc/bcgov-theme": "^1.0.1",
     "@button-inc/form-schema": "^1.0.0-alpha.5",
     "@rjsf/core": "^3.2.1",
@@ -21,12 +22,12 @@
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "helmet": "^5.0.1",
-    "keycloak-connect": "^16.1.1",
     "lodash": "^4.17.21",
     "lusca": "^1.7.0",
     "morgan": "^1.10.0",
     "next": "latest",
     "next-session": "^3.4.0",
+    "openid-client": "^5.1.2",
     "pg": "^8.7.1",
     "postgraphile": "^4.12.8",
     "react": "^17.0.2",
