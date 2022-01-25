@@ -41,13 +41,13 @@ const initExpresss = async (options = {}) => {
       watchPg: !isProd,
       graphiql: true,
       enhanceGraphiql: true,
-      pgDefaultRole: 'connectivity_intake_guest'
+      // pgDefaultRole: 'connectivity_intake_guest',
+      pgSettings: (req) => {
+        if (!req.claims) return {};
+        return { session_sub: req.claims.sub }
+      }
     })
   );
-
-  expressServer.use(await ssoMiddleware());
-
-  expressServer.get("/auth-callback");
 
   expressServer.use(logger(isProd ? formatLogs : 'dev'));
   expressServer.use(bodyParser.json());
@@ -80,6 +80,10 @@ const initExpresss = async (options = {}) => {
       store
     })
   );
+
+  expressServer.use(await ssoMiddleware());
+
+  expressServer.get("/auth-callback");
 
   // helmet
   expressServer.use(helmet.frameguard());

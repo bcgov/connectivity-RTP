@@ -20,6 +20,9 @@ export default function Home() {
             <SButton>Begin New Application</SButton>
           </Link>
         </Card>
+        <form action="/login" method="post">
+          <SButton type="submit">Login</SButton>
+        </form>
       </StyledDiv>
     </>
   )

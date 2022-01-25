@@ -1,4 +1,4 @@
-const ssoExpress = require("@bcgov-cas/sso-express");
+const ssoExpress = require("@bcgov-cas/sso-express").default;
 
 let ssoServerHost;
 if (!process.env.NAMESPACE || process.env.NAMESPACE.endsWith("-dev"))
@@ -15,8 +15,8 @@ async function middleware() {
     },
     oidcConfig: {
       baseUrl:
-        process.env.HOST || `http://localhost:${process.env.PORT || 3004}`,
-      clientId: "connectivity-intake",
+        process.env.HOST || `http://localhost:${process.env.PORT || 3000}`,
+      clientId: "connectivity-intake-2014",
       oidcIssuer: `https://${ssoServerHost}/auth/realms/onestopauth-basic`,
     },
   });
