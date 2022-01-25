@@ -1,17 +1,17 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ .Values.name }}
+  name: {{ template "connectivity-intake.fullname" . }}
   labels:
 {{ include "connectivity-intake.labels" . | indent 4}}
 spec:
   host: {{ .Values.route.host }}
   port:
-    targetPort: {{ .Values.name }}
+    targetPort: {{ template "connectivity-intake.fullname" . }}
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
   to:
     kind: Service
-    name: {{ .Values.name }}
+    name: {{ template "connectivity-intake.fullname" . }}
     weight: 100
