@@ -45,9 +45,6 @@ const initExpresss = async (options = {}) => {
     })
   );
 
-  const sessionMiddleware = session();
-  expressServer.use(sessionMiddleware);
-
   expressServer.use(await ssoMiddleware());
 
   expressServer.get("/auth-callback");
