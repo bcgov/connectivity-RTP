@@ -1,0 +1,10 @@
+{
+  "confidential-port": 0,
+  "auth-server-url": "https://dev.oidc.gov.bc.ca/auth",
+  "realm": "onestopauth-basic",
+  "ssl-required": "external",
+  "resource": "connectivity-intake-2014",
+  "credentials": {
+    "secret": ""
+  }
+}
