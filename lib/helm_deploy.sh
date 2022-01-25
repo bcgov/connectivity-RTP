@@ -10,4 +10,4 @@ cd helm
 helm dep up
 helm upgrade --install --atomic \
   -f ./values.yaml --set image.app.tag=$TAG --set image.db.tag=$TAG \
-  -n $NAMESPACE connectivity-intake . --debug --timeout=2m0s
+  -n $NAMESPACE connectivity-intake . --debug --timeout=5m0s
