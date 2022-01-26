@@ -11,13 +11,13 @@ async function middleware() {
   return ssoExpress({
     applicationDomain: ".gov.bc.ca",
     getLandingRoute: (req) => {
-      return getLanding(req.claims);
+      if (req.query.redirectTo) return req.query.redirectTo;
     },
     oidcConfig: {
       baseUrl:
         process.env.HOST || `http://localhost:${process.env.PORT || 3000}`,
       clientId: "connectivity-intake-2014",
-      oidcIssuer: `https://${ssoServerHost}/auth/realms/onestopauth-basic`,
+      oidcIssuer: `https://${ssoServerHost}/auth/realms/onestopauth-basic`
     },
   });
 }
