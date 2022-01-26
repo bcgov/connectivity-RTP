@@ -12,6 +12,7 @@ async function middleware() {
     applicationDomain: ".gov.bc.ca",
     getLandingRoute: (req) => {
       if (req.query.redirectTo) return req.query.redirectTo;
+      return getLanding(req.claims);
     },
     oidcConfig: {
       baseUrl:

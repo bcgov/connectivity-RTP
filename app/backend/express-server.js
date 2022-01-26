@@ -36,23 +36,32 @@ const initExpresss = async (options = {}) => {
     next();
   });
 
-  expressServer.use(
-    postgraphile(pgPool, "connectivity_intake_public", {
-      watchPg: !isProd,
-      graphiql: true,
-      enhanceGraphiql: true,
-      // pgDefaultRole: 'connectivity_intake_guest',
-      pgSettings: (req) => {
-        if (!req.claims) return {};
-        return { session_sub: req.claims.sub }
-      }
-    })
-  );
-
   expressServer.use(logger(isProd ? formatLogs : 'dev'));
   expressServer.use(bodyParser.json());
   expressServer.use(bodyParser.urlencoded({ extended: false }));
   expressServer.use(cookieParser());
+
+  // helmet
+  expressServer.use(helmet.frameguard());
+  expressServer.use(helmet.xssFilter());
+  expressServer.use(helmet.noSniff());
+  expressServer.use(helmet.ieNoOpen());
+  expressServer.use(
+    helmet.hsts({
+      maxAge: TWO_WEEKS,
+      includeSubDomains: true,
+      force: true,
+    })
+  );
+
+  // lusca
+  expressServer.use(lusca.p3p('ABCDEF'));
+  expressServer.use(lusca.referrerPolicy('same-origin'));
+
+  // At a minimum, disable X-Powered-By header
+  expressServer.disable('x-powered-by');
+
+  expressServer.set('trust proxy', 1); // trust first proxy
 
   expressServer.use(
     compress({
@@ -83,29 +92,25 @@ const initExpresss = async (options = {}) => {
 
   expressServer.use(await ssoMiddleware());
 
-  expressServer.get("/auth-callback");
+  expressServer.use((req, res, next) => {
+    if (req.path !== '/') {
+      if (req.claims) next(); else res.status(403).end();
+    }
+    next();
+  });
 
-  // helmet
-  expressServer.use(helmet.frameguard());
-  expressServer.use(helmet.xssFilter());
-  expressServer.use(helmet.noSniff());
-  expressServer.use(helmet.ieNoOpen());
   expressServer.use(
-    helmet.hsts({
-      maxAge: TWO_WEEKS,
-      includeSubDomains: true,
-      force: true,
+    postgraphile(pgPool, "connectivity_intake_public", {
+      watchPg: !isProd,
+      graphiql: true,
+      enhanceGraphiql: true,
+      // pgDefaultRole: 'connectivity_intake_guest',
+      pgSettings: (req) => {
+        if (!req.claims) return {};
+        return { session_sub: req.claims.sub }
+      }
     })
   );
-
-  // lusca
-  expressServer.use(lusca.p3p('ABCDEF'));
-  expressServer.use(lusca.referrerPolicy('same-origin'));
-
-  // At a minimum, disable X-Powered-By header
-  expressServer.disable('x-powered-by');
-
-  expressServer.set('trust proxy', 1); // trust first proxy
 
   return expressServer;
 };
