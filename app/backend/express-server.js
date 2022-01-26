@@ -13,6 +13,7 @@ const { countApplication } = require('./queries/application');
 const { postgraphile } = require('postgraphile');
 const { formatLogs } = require('../utils/logging');
 const ssoMiddleware = require('./middleware/sso');
+const { startsWith } = require('lodash');
 
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
 const isProd = process.env.NODE_ENV === 'production';
@@ -30,11 +31,6 @@ const initExpresss = async (options = {}) => {
   const expressServer = express();
   expressServer.pgPool = pgPool;
 
-  expressServer.use((req, res, next) => {
-    req.pgPool = pgPool;
-    req.pgQuery = new pgQuery(pgPool, req);
-    next();
-  });
 
   expressServer.use(logger(isProd ? formatLogs : 'dev'));
   expressServer.use(bodyParser.json());
@@ -94,8 +90,15 @@ const initExpresss = async (options = {}) => {
 
   expressServer.use((req, res, next) => {
     if (req.path !== '/') {
-      if (req.claims) next(); else res.status(403).end();
+      if (req.claims || req.path === '/' || req.path.startsWith('/_next/')) next(); else res.status(403).redirect('/');
+      return;
     }
+    next();
+  });
+
+  expressServer.use((req, res, next) => {
+    req.pgPool = pgPool;
+    req.pgQuery = new pgQuery(pgPool, req);
     next();
   });
 

@@ -10,9 +10,8 @@ else ssoServerHost = "oidc.gov.bc.ca";
 async function middleware() {
   return ssoExpress({
     applicationDomain: ".gov.bc.ca",
-    getLandingRoute: (req) => {
-      if (req.query.redirectTo) return req.query.redirectTo;
-      return getLanding(req.claims);
+    getLandingRoute: () => {
+      return '/home';
     },
     oidcConfig: {
       baseUrl:
