@@ -35,16 +35,24 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
             <SButton variant="primary">{continueButtonText}</SButton>
           </Form>
         )}
-        <SButton variant="secondary" onClick={() => router.push("/")}>Cancel</SButton>
+        <SButton variant="secondary" onClick={() => router.push("/home")}>Cancel</SButton>
       </StyledDiv>
     </>
   );
 }
 
-export async function getServerSideProps({ req, res }) {
-  await applySession(req, res);
-  const { formIndex, formData, validPage, prevPageUrl } = getHandler(req);
+export const getServerSideProps = async (context) => {
+  if (!context.req.claims) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+  await applySession(context.req, context.res);
+  const { formIndex, formData, validPage, prevPageUrl = null } = getHandler(context.req);
   return {
     props: { formIndex, formData, validPage, prevPageUrl },
-  };
-}
+  }
+};
