@@ -1,0 +1,17 @@
+{
+  "unauthenticated": {
+    "pgRole": "unauthenticated",
+    "priority": 100,
+    "path": "/"
+  },
+  "connectivity_intake_admin": {
+    "pgRole": "connectivity_intake_admin",
+    "priority": 0,
+    "path": "/home"
+  },
+  "connectivity_intake_internal": {
+    "pgRole": "connectivity_intake_internal",
+    "priority": 0,
+    "path": "/home"
+  }
+}
