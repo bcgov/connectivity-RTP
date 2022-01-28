@@ -8,7 +8,7 @@ else if (process.env.NAMESPACE.endsWith("-test"))
 else ssoServerHost = "oidc.gov.bc.ca";
 
 export default async function middleware() {
-  return ssoExpress.default({
+  return ssoExpress({
     applicationDomain: ".gov.bc.ca",
     getLandingRoute: () => {
       return '/home';

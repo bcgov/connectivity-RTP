@@ -1,6 +1,6 @@
 import next from 'next';
-import initExpresss from './backend/express-server.js';
-import createServer from './backend/create-server.js';
+import initExpresss from './backend/express-server';
+import createServer from './backend/create-server';
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });

@@ -6,9 +6,9 @@ import lusca from 'lusca';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import formatLogs from '../utils/logging.js';
-import session from './middleware/session.js';
-import graphQlMiddleware from './middleware/graphql/index.js';
-import ssoMiddleware from './middleware/sso.js';
+import session from './middleware/session';
+import graphQlMiddleware from './middleware/graphql';
+import ssoMiddleware from './middleware/sso';
 
 const isProd = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ const THIRTY_DAYS = 30 * ONE_DAY;
 const { json, urlencoded } = bodyParser;
 const { p3p, referrerPolicy } = lusca;
 
-const initExpresss = async (options = {}) => {
+const initExpresss = async () => {
   const expressServer = express();
 
   expressServer.use(logger(isProd ? formatLogs : 'dev'));
@@ -37,8 +37,7 @@ const initExpresss = async (options = {}) => {
   expressServer.use(
     hsts({
       maxAge: TWO_WEEKS,
-      includeSubDomains: true,
-      force: true,
+      includeSubDomains: true
     })
   );
 
@@ -53,8 +52,9 @@ const initExpresss = async (options = {}) => {
 
   expressServer.use(
     compress({
-      filter: (req, res) => /json|text|javascript|css|font|svg/.test(res.getHeader('Content-Type')),
-      level: 9,
+      filter: (req, res) =>
+        /json|text|javascript|css|font|svg/.test(res.getHeader('Content-Type')),
+      level: 9
     })
   );
 

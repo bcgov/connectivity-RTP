@@ -1,10 +1,11 @@
-import crypto from "crypto";
-import expressSession from "express-session";
-import connectPgSimple from "connect-pg-simple";
-import { pgPool } from "../db/setup-pg.js";
+import crypto from 'crypto';
+import expressSession from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
+import { pgPool } from '../db/setup-pg';
 
 const PgSession = connectPgSimple(expressSession);
-const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
+const sessionSecret =
+  process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
 const isProd = process.env.NODE_ENV === 'production';
 
 const HALF_DAY = 12 * (60 * 60 * 1000);
@@ -16,7 +17,7 @@ const session = () => {
   const store = new PgSession({
     pool: pgPool,
     schemaName: 'connectivity_intake_private',
-    tableName: 'connect_session',
+    tableName: 'connect_session'
   });
 
   const middleware = expressSession({
@@ -38,6 +39,6 @@ const session = () => {
   });
 
   return { middleware, store };
-}
+};
 
 export default session;
