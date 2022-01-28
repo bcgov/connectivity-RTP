@@ -19,6 +19,9 @@ app/.pnp.js
 # testing
 app/coverage
 
+# typescript
+app/dist/
+
 # next.js
 app/.next/
 app/out/
