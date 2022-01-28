@@ -2,8 +2,10 @@
   "private": true,
   "scripts": {
     "dev": "nodemon --watch backend server NODE_OPTIONS='--inspect'",
-    "build": "next build",
-    "start": "node server",
+    "build": "yarn run build:server && yarn build:next",
+    "build:next": "next build",
+    "build:server": "tsc --project tsconfig.server.json",
+    "start": "node --unhandled-rejections=strict dist/server.js",
     "cypress:open": "yarn dev & wait-on http:localhost:3000 & cypress open"
   },
   "dependencies": {
@@ -16,6 +18,7 @@
     "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
     "@rjsf/core": "^3.2.1",
     "@rjsf/semantic-ui": "^3.2.1",
+    "@types/express": "4.17.2",
     "axios": "^0.25.0",
     "body-parser": "^1.19.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",

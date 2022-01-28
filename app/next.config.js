@@ -1,14 +1,16 @@
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import dotenv from "dotenv";
-dotenv.config();
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const dotenv = require('dotenv').config();
 
-export function webpack(config, { isServer }) {
-  if (!isServer) {
-    config.resolve.fallback.fs = false;
+
+module.exports = {
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false;
+    }
+    config.plugins = [...config.plugins, new CaseSensitivePathsPlugin()];
+    return config;
+  },
+  publicRuntimeConfig: {
+    ORIGIN: process.env.ORIGIN
   }
-  config.plugins = [...config.plugins, new CaseSensitivePathsPlugin()];
-  return config;
-}
-export const publicRuntimeConfig = {
-  ORIGIN: process.env.ORIGIN
 };

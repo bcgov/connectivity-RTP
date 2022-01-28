@@ -22,18 +22,20 @@ let postgraphileOptions = {
   extendedErrors: ['hint', 'detail', 'errcode'],
   showErrorStack: true, // setting this to "json" results in a typescript error
   graphiql: true,
-  enhanceGraphiql: true
+  enhanceGraphiql: true,
+  retryOnInitFail: false,
+  allowExplain: false
 };
 
 if (process.env.NODE_ENV === 'production') {
   postgraphileOptions = {
-    ...postgraphileOptions
-    // retryOnInitFail: true,
+    ...postgraphileOptions,
+    retryOnInitFail: true
   };
 } else {
   postgraphileOptions = {
-    ...postgraphileOptions
-    // allowExplain: true,
+    ...postgraphileOptions,
+    allowExplain: true
   };
 }
 
