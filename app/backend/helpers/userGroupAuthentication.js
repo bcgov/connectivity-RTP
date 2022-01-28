@@ -1,7 +1,7 @@
 // import from dist/helpers to prevent bundling all the @bcgov-cas/sso-express dependencies
-import { isAuthenticated } from "@bcgov-cas/sso-express/dist/helpers";
-import * as groupConstants from "../../data/group-constants";
-import { compactGroups } from "../../lib/userGroups";
+import { isAuthenticated } from "@bcgov-cas/sso-express";
+import * as groupConstants from "../../data/group-constants.js";
+import { compactGroups } from "../../lib/userGroups.js";
 import { ENABLE_MOCK_AUTH, MOCK_AUTH_COOKIE } from "../args";
 
 const removeLeadingSlash = (str) =>

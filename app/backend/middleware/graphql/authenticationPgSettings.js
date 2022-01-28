@@ -1,15 +1,8 @@
 import { isAuthenticated } from "@bcgov-cas/sso-express";
-import groupData from "../../../data/groups.json";
-import { getUserGroups } from "../../helpers/userGroupAuthentication";
-import { getPriorityGroup } from "../../../../lib/userGroups";
 
 const authenticationPgSettings = (req) => {
-  const groups = getUserGroups(req);
-  const priorityGroup = getPriorityGroup(groups);
 
-  const claimsSettings = {
-    role: groupData[priorityGroup].pgRole,
-  };
+  const claimsSettings = {};
   if (!isAuthenticated(req))
     return {
       ...claimSettings,

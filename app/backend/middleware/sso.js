@@ -1,4 +1,4 @@
-const ssoExpress = require("@bcgov-cas/sso-express").default;
+import ssoExpress from "@bcgov-cas/sso-express";
 
 let ssoServerHost;
 if (!process.env.NAMESPACE || process.env.NAMESPACE.endsWith("-dev"))
@@ -7,8 +7,8 @@ else if (process.env.NAMESPACE.endsWith("-test"))
   ssoServerHost = "test.oidc.gov.bc.ca";
 else ssoServerHost = "oidc.gov.bc.ca";
 
-async function middleware() {
-  return ssoExpress({
+export default async function middleware() {
+  return ssoExpress.default({
     applicationDomain: ".gov.bc.ca",
     getLandingRoute: () => {
       return '/home';
@@ -20,6 +20,4 @@ async function middleware() {
       oidcIssuer: `https://${ssoServerHost}/auth/realms/onestopauth-basic`
     },
   });
-}
-
-module.exports = middleware;
+};

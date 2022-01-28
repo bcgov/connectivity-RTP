@@ -1,7 +1,6 @@
-const next = require('next');
-
-const initExpresss = require('./backend/express-server');
-const createServer = require('./backend/create-server');
+import next from 'next';
+import initExpresss from './backend/express-server.js';
+import createServer from './backend/create-server.js';
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
