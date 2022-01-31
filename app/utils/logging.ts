@@ -16,4 +16,4 @@ function formatLogs(tokens, req, res) {
   ].join(' ');
 }
 
-module.exports = { formatLogs, DB_ERROR_MSG, INVALID_APPLICATION_MSG, SUCCESSFUL_APPLICATION_MSG, SAVING_ERROR_MSG };
+export default { formatLogs, DB_ERROR_MSG, INVALID_APPLICATION_MSG, SUCCESSFUL_APPLICATION_MSG, SAVING_ERROR_MSG };

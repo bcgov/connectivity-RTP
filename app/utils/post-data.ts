@@ -12,22 +12,22 @@ const postData = async (formData) => {
 
   try {
     await axios({
-      method: "POST",
+      method: 'POST',
       url: `${CONFIG.ORIGIN}/graphql`,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
       data: {
         query: applicationMutation,
         variables: {
           formData: JSON.stringify(formData)
         },
-        operationName: "CreateApplication",
+        operationName: 'CreateApplication'
       }
     });
   } catch (e) {
-    throw new Error("There was an error saving your information: ", e);
+    throw new Error('There was an error saving your information');
   }
-}
+};
 
 export default postData;

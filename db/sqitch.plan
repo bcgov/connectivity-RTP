@@ -7,3 +7,5 @@ schemas/private [create_roles] 2022-01-24T23:46:51Z Bryan Krauss <bryan@button.i
 schemas/public 2022-01-18T17:42:29Z Bryan Krauss <bryan@button.is> # Add schema for all connectivity intake objects
 tables/connect_session [schemas/private] 2022-01-18T18:32:43Z Bryan Krauss <bryan@button.is> # Creates session table for connect-pg-simple
 tables/applications [schemas/public] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.
+types/keycloak_jwt [schemas/public] 2022-01-28T23:14:34Z Bryan Krauss <bryan@button.is> # Keycloak JWT type for accessing the DB.
+functions/session [schemas/public types/keycloak_jwt] 2022-01-28T23:16:53Z Bryan Krauss <bryan@button.is> # A session function to access current_settings in the DB

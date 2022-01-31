@@ -1,15 +1,17 @@
-const debug = require('debug')('seq:server');
-const http = require('http');
+import Debug from "debug";
+import { createServer as _createServer } from 'http';
+import dotenv from "dotenv";
 
-require('dotenv').config({ path: __dirname + '/../.env' });
+dotenv.config({ path: __dirname + '/../.env' });
 
+const debug = Debug("seq:server");
 const hostname = process.env.HOST || '0.0.0.0';
 const port = normalizePort(process.env.PORT || 3000);
 
 const createServer = expressServer => {
   expressServer.set('port', port);
 
-  const server = http.createServer(expressServer);
+  const server = _createServer(expressServer);
 
   server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
@@ -63,4 +65,4 @@ function normalizePort(val) {
   return false;
 }
 
-module.exports = createServer;
+export default createServer;

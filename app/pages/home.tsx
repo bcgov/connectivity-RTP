@@ -20,7 +20,25 @@ export default function Home() {
             <SButton>Begin New Application</SButton>
           </Link>
         </Card>
+        <br />
+        <form action="/logout" method="post">
+          <SButton type="submit">Logout</SButton>
+        </form>
       </StyledDiv>
     </>
   )
+};
+
+export const getServerSideProps = async (context) => {
+  if (!context.req.claims) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+  return {
+    props: {}
+  }
 };
