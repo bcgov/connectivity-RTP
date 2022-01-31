@@ -4,7 +4,7 @@
 begin;
 
 create schema connectivity_intake_public;
-grant usage on schema connectivity_intake_public to connectivity_intake_guest;
+grant usage on schema connectivity_intake_public to connectivity_intake_auth_user, connectivity_intake_guest;
 comment on schema connectivity_intake_public is 'The public API schema for the connectivity intake.';
 
 commit;

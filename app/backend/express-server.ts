@@ -5,7 +5,7 @@ import { frameguard, xssFilter, noSniff, ieNoOpen, hsts } from 'helmet';
 import lusca from 'lusca';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import formatLogs from '../utils/logging.js';
+import formatLogs from '../utils/logging';
 import session from './middleware/session';
 import graphQlMiddleware from './middleware/graphql';
 import ssoMiddleware from './middleware/sso';

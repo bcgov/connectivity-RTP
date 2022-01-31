@@ -46,7 +46,6 @@ const postgraphileMiddleware = () => {
     {
       ...postgraphileOptions,
       pgSettings: (req: Request) => {
-        console.log('PGSETTINGS: ', req.claims);
         const opts = {
           ...authenticationPgSettings(req)
         };
