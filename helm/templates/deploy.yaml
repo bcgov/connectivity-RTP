@@ -162,14 +162,28 @@ spec:
               memory: {{ .Values.resources.app.limits.memory }}
               cpu: {{ .Values.resources.app.limits.cpu }}
           ports:
-            - containerPort: {{ .Values.port }}
+            - containerPort: {{ .Values.app.port }}
               protocol: TCP
-          readinessProbe: 
+          readinessProbe:
             httpGet:
-              path: /
-              port: {{ .Values.port }}
+              path: /ready
+              port: {{ .Values.app.probesPort }}
+            # we want the readiness threshold to fail fast,
+            # to prevent any request from going to a pod that is not ready
             failureThreshold: 1
             successThreshold: 1
             periodSeconds: 5
             timeoutSeconds: 5
-            initialDelaySeconds: 5  
+            initialDelaySeconds: 5
+        livenessProbe:
+          # the liveness probe is here to ensure that a pod does not get
+          # stuck in a shutdown state. It needs to allow enough time for
+          # the registered shutdown handler to run to completion.
+          httpGet:
+            path: /live
+            port: {{ .Values.app.probesPort }}
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 5
