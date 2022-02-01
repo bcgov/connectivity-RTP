@@ -8,12 +8,13 @@ const debug = Debug("seq:server");
 const hostname = process.env.HOST || '0.0.0.0';
 const port = normalizePort(process.env.PORT || 3000);
 
-const createServer = expressServer => {
+const createServer = (expressServer, lightship) => {
   expressServer.set('port', port);
 
   const server = _createServer(expressServer);
 
   server.listen(port, hostname, () => {
+    lightship.signalReady();
     console.log(`Server running at http://${hostname}:${port}/`);
   });
 
@@ -22,6 +23,7 @@ const createServer = expressServer => {
 
   function onError(error) {
     if (error.syscall !== 'listen') {
+      lightship.shutdown();
       throw error;
     }
 

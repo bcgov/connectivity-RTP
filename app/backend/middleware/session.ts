@@ -22,6 +22,7 @@ const session = () => {
 
   const middleware = expressSession({
     secret: sessionSecret,
+    store,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -34,7 +35,6 @@ const session = () => {
       // layer of security so that the cookie is set only when working
       // in HTTPS mode.
       secure: isProd,
-      store
     }
   });
 

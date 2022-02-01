@@ -1,7 +1,7 @@
 import pg from 'pg';
 
 const getDatabaseUrl = () => {
-  const PGUSER = process.env.PGUSER || 'postgres';
+  const PGUSER = process.env.PGUSER || 'connectivity_intake_app';
 
   let databaseURL = 'postgres://';
 
