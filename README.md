@@ -54,3 +54,4 @@ yarn run cypress:open
 | `ORIGIN`         | The root URL of the web app.                                                                      |
 | `SESSION_SECRET` | The session secret passed to middleware, defaults to random string                                |
 | `PORT`           | The port where the app will be served                                                             |
+| `HOST`           | The addess of the host where the app is located                                                   |
