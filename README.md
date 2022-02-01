@@ -41,3 +41,16 @@ cd app
 yarn
 yarn run cypress:open
 ```
+## Environment Variables
+
+| Name             | Description                                                                                       |
+|------------------|---------------------------------------------------------------------------------------------------|
+| `NODE_ENV`       | The back-end run-time's environment. Possible values include either "development" or "production".|
+| `PGUSER`         | The PostgreSQL user to connect to locally.                                                        |
+| `PGPASSWORD`     | The PostgreSQL password to connect to locally.                                                    |
+| `PGDATABASE`     | The PostgreSQL database name to connect to locally.                                               |
+| `PGHOST`         | The PostgreSQL port to connect to locally.                                                        |
+| `PGPORT`         | The PostgreSQL host to connect to locally.                                                        |
+| `ORIGIN`         | The root URL of the web app.                                                                      |
+| `SESSION_SECRET` | The session secret passed to middleware, defaults to random string                                |
+| `PORT`           | The port where the app will be served                                                             |
