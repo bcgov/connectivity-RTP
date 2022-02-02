@@ -1,5 +1,5 @@
-import axios from 'axios';
-import getConfig from 'next/config';
+import axios from "axios";
+import getConfig from "next/config";
 
 const CONFIG = getConfig().publicRuntimeConfig;
 
@@ -9,24 +9,25 @@ const postData = async (formData) => {
     clientMutationId
   }
 }`;
-
+  console.log("POSTING!!", CONFIG.ORIGIN, CONFIG.PORT);
   try {
     await axios({
-      method: 'POST',
-      url: `${CONFIG.ORIGIN}/graphql`,
+      method: "POST",
+      url: `http://${CONFIG.ORIGIN}:${CONFIG.PORT}/graphql`,
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
+      withCredentials: true,
       data: {
         query: applicationMutation,
         variables: {
           formData: JSON.stringify(formData)
         },
-        operationName: 'CreateApplication'
+        operationName: "CreateApplication"
       }
     });
   } catch (e) {
-    throw new Error('There was an error saving your information');
+    throw new Error("There was an error saving your information");
   }
 };
 

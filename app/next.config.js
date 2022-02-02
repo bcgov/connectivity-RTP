@@ -11,6 +11,7 @@ module.exports = {
     return config;
   },
   publicRuntimeConfig: {
-    ORIGIN: process.env.ORIGIN
+    ORIGIN: process.env.ORIGIN,
+    PORT: process.env.PORT
   }
 };

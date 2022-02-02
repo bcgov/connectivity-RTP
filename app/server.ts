@@ -6,7 +6,6 @@ import { frameguard, xssFilter, noSniff, ieNoOpen, hsts } from 'helmet';
 import lusca from 'lusca';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import formatLogs from './utils/logging';
 import { createLightship } from 'lightship';
 import session from './backend/middleware/session';
 import graphQlMiddleware from './backend/middleware/graphql';
@@ -39,7 +38,7 @@ app.prepare().then(async () => {
     await pgPool.end();
   })
 
-  server.use(logger(!dev ? formatLogs : 'dev'));
+  server.use(logger(!dev ? 'combined' : 'dev'));
   server.use(json());
   server.use(urlencoded({ extended: false }));
   server.use(cookieParser());
