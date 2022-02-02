@@ -9,3 +9,6 @@ tables/connect_session [schemas/private] 2022-01-18T18:32:43Z Bryan Krauss <brya
 tables/applications [schemas/public] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.
 types/keycloak_jwt [schemas/public] 2022-01-28T23:14:34Z Bryan Krauss <bryan@button.is> # Keycloak JWT type for accessing the DB.
 functions/session [schemas/public types/keycloak_jwt] 2022-01-28T23:16:53Z Bryan Krauss <bryan@button.is> # A session function to access current_settings in the DB
+util_functions/upsert_policy [create_roles] 2022-02-02T22:28:36Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.upsert_policy function
+util_functions/grant_permissions [create_roles] 2022-02-02T22:34:29Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.grant_permissions function
+util_functions/upsert_timestamp_columns [create_roles] 2022-02-02T22:36:08Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.upsert_timestamp_columns function
