@@ -6,12 +6,12 @@ create_roles 2022-01-24T19:06:19Z Bryan Krauss <bryan@button.is> # create_roles 
 schemas/private [create_roles] 2022-01-24T23:46:51Z Bryan Krauss <bryan@button.is> # Private schema inaccessible to the API.
 schemas/public 2022-01-18T17:42:29Z Bryan Krauss <bryan@button.is> # Add schema for all connectivity intake objects
 tables/connect_session [schemas/private] 2022-01-18T18:32:43Z Bryan Krauss <bryan@button.is> # Creates session table for connect-pg-simple
-tables/applications [schemas/public] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.
 types/keycloak_jwt [schemas/public] 2022-01-28T23:14:34Z Bryan Krauss <bryan@button.is> # Keycloak JWT type for accessing the DB.
 functions/session [schemas/public types/keycloak_jwt] 2022-01-28T23:16:53Z Bryan Krauss <bryan@button.is> # A session function to access current_settings in the DB
 util_functions/upsert_policy [create_roles] 2022-02-02T22:28:36Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.upsert_policy function
 util_functions/grant_permissions [create_roles] 2022-02-02T22:34:29Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.grant_permissions function
 util_functions/upsert_timestamp_columns [create_roles] 2022-02-02T22:36:08Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.upsert_timestamp_columns function
-trigger_functions/set_owner [functions/session tables/applications] 2022-02-03T17:16:55Z Bryan Krauss <bryan@button.is> # Sets the current seesion sub to owner
 trigger_functions/archived_records_are_immutable 2022-02-03T23:39:45Z Bryan Krauss <bryan@button.is> # A trigger to ensure that no changes to a deleted record can be saved
 trigger_functions/update_timestamps [schemas/private] 2022-02-03T23:42:27Z Bryan Krauss <bryan@button.is> # A trigger function to update timestamps
+trigger_functions/set_owner 2022-02-03T17:16:55Z Bryan Krauss <bryan@button.is> # Sets the current seesion sub to owner
+tables/applications [schemas/public] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.

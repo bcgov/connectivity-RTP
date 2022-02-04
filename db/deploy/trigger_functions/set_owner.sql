@@ -1,6 +1,5 @@
 -- Deploy connectivity-intake:trigger_functions/set_owner to pg
 -- requires: functions/session
--- requires: tables/applications
 
 begin;
 
