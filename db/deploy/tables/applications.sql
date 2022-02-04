@@ -7,14 +7,22 @@ create table if not exists connectivity_intake_public.applications (
   id serial not null,
   owner uuid not null,
   form_data jsonb,
-  created_at timestamp with time zone default current_timestamp,
-  updated_at timestamp with time zone default current_timestamp,
   primary key(id)
 );
 
 select connectivity_intake_public.upsert_timestamp_column('connectivity_intake_public', 'applications');
 
 create index connectivity_intake_owner_uuid on connectivity_intake_public.applications(uuid);
+
+create trigger _insert_owner
+  before insert on connectivity_intake_public.applications
+  for each row
+  execute procedure connectivity_intake_public.set_owner();
+
+create trigger _update_owner
+  before update on connectivity_intake_public.applications
+  for each row
+  execute procedure connectivity_intake_public.set_owner();
 
 do
 $grant$
@@ -24,7 +32,7 @@ begin
 perform connectivity_intake_public.grant_permissions('select', 'applications', 'connectivity_intake_auth_user');
 perform connectivity_intake_public.grant_permissions('insert', 'applications', 'connectivity_intake_auth_user');
 perform connectivity_intake_public.grant_permissions('update', 'applications', 'connectivity_intake_auth_user'
-  ARRAY['first_name', 'last_name', 'email_address', 'created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by']);
+  ARRAY['id', 'owner', 'form_data', 'created_by', 'created_at', 'updated_by', 'updated_at', 'archived_by', 'archived_at']);
 
 -- Grant connectivity_intake_guest permissions
 perform connectivity_intake_public.grant_permissions('select', 'applications', 'connectivity_intake_guest');
@@ -38,10 +46,10 @@ alter table connectivity_intake_public.applications enable row level security;
 do
 $policy$
 begin
--- connectivity_intake_auth_user RLS: can see all users, but can only modify its own record
-perform connectivity_intake_public.upsert_policy('internal_select_connectivity_intake_auth_user', 'applications', 'select', 'connectivity_intake_auth_user', 'true');
-perform connectivity_intake_public.upsert_policy('internal_insert_connectivity_intake_auth_user', 'applications', 'insert', 'connectivity_intake_auth_user', 'uuid=(select sub from connectivity_intake_private.session())');
-perform connectivity_intake_public.upsert_policy('internal_update_connectivity_intake_auth_user', 'applications', 'update', 'connectivity_intake_auth_user', 'uuid=(select sub from connectivity_intake_private.session())');
+-- connectivity_intake_auth_user RLS: can only see and modify its own record
+perform connectivity_intake_public.upsert_policy('internal_select_connectivity_intake_auth_user', 'applications', 'select', 'connectivity_intake_auth_user', 'owner=(select sub from connectivity_intake_private.session())');
+perform connectivity_intake_public.upsert_policy('internal_insert_connectivity_intake_auth_user', 'applications', 'insert', 'connectivity_intake_auth_user', 'owner=(select sub from connectivity_intake_private.session())');
+perform connectivity_intake_public.upsert_policy('internal_update_connectivity_intake_auth_user', 'applications', 'update', 'connectivity_intake_auth_user', 'owner=(select sub from connectivity_intake_private.session())');
 
 -- connnectivity_intake_guest RLS: can only see its own (empty) record
 perform connectivity_intake_public.upsert_policy('guest_select_connectivity_intake_auth_user', 'applications', 'select', 'connectivity_intake_guest', 'uuid=(select sub from connectivity_intake_private.session())');
