@@ -7,17 +7,18 @@ else if (process.env.NAMESPACE.endsWith("-test"))
   ssoServerHost = "test.oidc.gov.bc.ca";
 else ssoServerHost = "oidc.gov.bc.ca";
 
+const baseUrl = process.env.NODE_ENV === 'production' ? `https://${process.env.HOST}` : `http://localhost:${process.env.PORT || 3000}`
+
 export default async function middleware() {
   return ssoExpress({
     applicationDomain: ".gov.bc.ca",
     getLandingRoute: () => {
-      return '/home';
+      return "/home";
     },
     oidcConfig: {
-      baseUrl:
-        process.env.HOST || `http://localhost:${process.env.PORT || 3000}`,
+      baseUrl: baseUrl,
       clientId: "connectivity-intake-2014",
       oidcIssuer: `https://${ssoServerHost}/auth/realms/onestopauth-basic`
-    },
+    }
   });
 };

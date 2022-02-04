@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config({ path: __dirname + '/../.env' });
 
 const debug = Debug("seq:server");
-const hostname = process.env.HOST || '0.0.0.0';
+const hostname = process.env.ORIGIN || '0.0.0.0';
 const port = normalizePort(process.env.PORT || 3000);
 
 const createServer = (expressServer, lightship) => {

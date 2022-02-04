@@ -18,6 +18,7 @@ image:
 app:
   port: "3000"
   probesPort: "9000"
+  namespace: bc5936-dev
 route:
   host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
 

@@ -154,6 +154,10 @@ spec:
               secretKeyRef:
                 key: session-secret
                 name: {{ template "connectivity-intake.fullname" . }}
+          - name: HOST
+            value: {{ .Values.route.host }}
+          - name: NAMESPACE
+            value: {{ .Values.app.namespace }}
           resources:
             requests:
               memory: {{ .Values.resources.app.requests.memory }}
@@ -175,15 +179,15 @@ spec:
             periodSeconds: 5
             timeoutSeconds: 5
             initialDelaySeconds: 5
-        livenessProbe:
+          livenessProbe:
           # the liveness probe is here to ensure that a pod does not get
           # stuck in a shutdown state. It needs to allow enough time for
           # the registered shutdown handler to run to completion.
-          httpGet:
-            path: /live
-            port: {{ .Values.app.probesPort }}
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          failureThreshold: 3
-          successThreshold: 1
-          timeoutSeconds: 5
+            httpGet:
+              path: /live
+              port: {{ .Values.app.probesPort }}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
