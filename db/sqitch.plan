@@ -12,3 +12,6 @@ functions/session [schemas/public types/keycloak_jwt] 2022-01-28T23:16:53Z Bryan
 util_functions/upsert_policy [create_roles] 2022-02-02T22:28:36Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.upsert_policy function
 util_functions/grant_permissions [create_roles] 2022-02-02T22:34:29Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.grant_permissions function
 util_functions/upsert_timestamp_columns [create_roles] 2022-02-02T22:36:08Z Bryan Krauss <bryan@button.is> # Create the connectivity_intake_private.upsert_timestamp_columns function
+trigger_functions/set_owner [functions/session tables/applications] 2022-02-03T17:16:55Z Bryan Krauss <bryan@button.is> # Sets the current seesion sub to owner
+trigger_functions/archived_records_are_immutable 2022-02-03T23:39:45Z Bryan Krauss <bryan@button.is> # A trigger to ensure that no changes to a deleted record can be saved
+trigger_functions/update_timestamps [schemas/private] 2022-02-03T23:42:27Z Bryan Krauss <bryan@button.is> # A trigger function to update timestamps
