@@ -5,7 +5,7 @@ begin;
 
 create table if not exists connectivity_intake_public.applications (
   id serial not null,
-  owner uuid not null,
+  owner uuid,
   form_data jsonb,
   primary key(id)
 );
@@ -57,11 +57,15 @@ perform connectivity_intake_public.upsert_policy('guest_select_connectivity_inta
 end
 $policy$;
 
-comment on table connectivity_intake_public.applications is 'Table containing application form data';
-comment on column connectivity_intake_public.applications.id is 'Serialized integer unique to the form application';
-comment on column connectivity_intake_public.applications.owner is 'The owner of the form data';
-comment on column connectivity_intake_public.applications.form_data is 'The form data the project is collecting';
-comment on column connectivity_intake_public.applications.created_at is 'When the form was created';
-comment on column connectivity_intake_public.applications.updated_at is 'When the form was last updated';
+comment on table connectivity_intake_public.applications is 'Table containing application form data.';
+comment on column connectivity_intake_public.applications.id is 'Serialized integer unique to the form application.';
+comment on column connectivity_intake_public.applications.owner is 'The owner of the form data.';
+comment on column connectivity_intake_public.applications.form_data is 'The form data the project is collecting.';
+comment on column connectivity_intake_public.applications.created_at is 'When the form was created.';
+comment on column connectivity_intake_public.applications.created_by is 'Owner uuid the form was created by.';
+comment on column connectivity_intake_public.applications.updated_at is 'When the form was last updated.';
+comment on column connectivity_intake_public.applications.updated_by is 'Owner uuid the form was updated by.';
+comment on column connectivity_intake_public.applications.archived_at is 'When the row was archived.';
+comment on column connectivity_intake_public.applications.archived_by is 'Owner uuid the row was archived by.';
 
 commit;

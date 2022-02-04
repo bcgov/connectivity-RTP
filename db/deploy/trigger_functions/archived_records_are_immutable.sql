@@ -6,7 +6,7 @@ create or replace function connectivity_intake_public.archived_records_are_immut
   returns trigger as $$
     begin
       if old.archived_at is not null then
-        raise exception 'Deleted records cannot be modified.';
+        raise exception 'Archived records cannot be modified.';
       end if;
       return new;
     end;

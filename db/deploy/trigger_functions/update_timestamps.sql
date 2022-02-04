@@ -7,29 +7,27 @@ create or replace function connectivity_intake_public.update_timestamps()
   returns trigger as $$
     declare
       user_sub uuid;
-      owner_id uuid;
     begin
-      user_sub := (select sub from connectivity_intake_private.session());
-      owner_id := (select owner from connectivity_intake_public.applications where connectivity_intake_public.applications.owner = user_sub);
+      user_sub := (select sub from connectivity_intake_public.session());
       if tg_op = 'INSERT' then
         if to_jsonb(new) ? 'created_at' then
           new.created_at = now();
-          new.created_by = owner_id;
+          new.created_by = user_sub;
         end if;
         if to_jsonb(new) ? 'updated_at' then
           new.updated_at = now();
-          new.updated_by = owner_id;
+          new.updated_by = user_sub;
         end if;
       elsif tg_op = 'UPDATE' then
         if to_jsonb(new) ? 'deleted_at' then
           if old.deleted_at is distinct from new.deleted_at and new.deleted_at is not null then
             new.deleted_at = now();
-            new.deleted_by = owner_id;
+            new.deleted_by = user_sub;
           end if;
         end if;
         if to_jsonb(new) ? 'updated_at' then
           new.updated_at = greatest(now(), old.updated_at + interval '1 millisecond');
-          new.updated_by = owner_id;
+          new.updated_by = user_sub;
         end if;
       end if;
       return new;
