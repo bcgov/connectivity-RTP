@@ -16,7 +16,7 @@ export default function Home() {
           eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
           sunt in culpa qui officia deserunt mollit anim id est laborum.
           <br />
-          <Link href="/1">
+          <Link href="/form/1">
             <SButton>Begin New Application</SButton>
           </Link>
         </Card>

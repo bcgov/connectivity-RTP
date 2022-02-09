@@ -13,6 +13,7 @@ import ssoMiddleware from './backend/middleware/sso';
 import createServer from './backend/create-server';
 import delay from "delay";
 import { pgPool } from "./backend/db/setup-pg";
+import { postMiddleware } from "./form-schema";
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -78,6 +79,8 @@ app.prepare().then(async () => {
   server.use(await ssoMiddleware());
 
   server.use(graphQlMiddleware());
+
+  server.post("/api/:submit", postMiddleware);
 
   // catch all other routes and return the index file
   server.all('*', async (req, res) => handle(req, res));

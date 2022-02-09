@@ -4,7 +4,7 @@ import uiSchema from './schemas/uiSchema';
 import postData from './utils/post-data'
 
 const options = {
-  getRoute: '/',
+  getRoute: '/form',
   postRoute: '/api',
   useSession: true,
   onFormEnd: (errors, formData) => {
