@@ -3,13 +3,14 @@ name: Create and publish a Docker image to ghrc.io and deploy to openshift
 on:
   push:
     branches:
-    - main
+    # - main
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   OPENSHIFT_NAMESPACE: bc5936-dev
   TAG: sha-${{ github.sha }}
+  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
 
 jobs:
   build-and-push-image:
@@ -95,5 +96,5 @@ jobs:
           insecure_skip_tls_verify: true
       - run: |
           chmod +x ./lib/helm_deploy.sh
-          ./lib/helm_deploy.sh ${{ env.OPENSHIFT_NAMESPACE }} ${{ env.TAG }}
+          ./lib/helm_deploy.sh ${{ env.OPENSHIFT_NAMESPACE }} ${{ env.TAG }} ${{ env.CLIENT_SECRET }}
         shell: bash

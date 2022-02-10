@@ -18,7 +18,8 @@ export default async function middleware() {
     oidcConfig: {
       baseUrl: baseUrl,
       clientId: "connectivity-intake-2014",
-      oidcIssuer: `https://${ssoServerHost}/auth/realms/onestopauth-basic`
-    }
+      oidcIssuer: `https://${ssoServerHost}/auth/realms/onestopauth-basic`,
+      clientSecret: `${process.env.CLIENTSECRET}`,
+    },
   });
 };

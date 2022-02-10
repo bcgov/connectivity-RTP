@@ -8,6 +8,7 @@ image:
     repository: ghcr.io/bcgov/connectivity-intake/connectivity-intake-app
     pullPolicy: IfNotPresent
     tag: latest # The tag value must be passed in via the deploy script
+    clientSecret: "" # clientSecret must be passed in via deploy script
   psql:
     repository: gcr.io/ggl-cas-storage/cas-postgres
     tag: "0.3.0"
