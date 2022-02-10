@@ -158,7 +158,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: client-secret
-                name: {{ template "connectivity-intake.fullname" . }}-client-secret
+                name: {{ template "connectivity-intake.fullname" . }}-sso-express
           - name: HOST
             value: {{ .Values.route.host }}
           - name: NAMESPACE
