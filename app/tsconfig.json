@@ -22,6 +22,7 @@
     "paths": {
       "*": ["*", "../*", "__generated__/*"]
     },
+    "sourceMap": true,
   },
   "include": [
     "next-env.d.ts",
