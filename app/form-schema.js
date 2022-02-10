@@ -11,6 +11,9 @@ const options = {
     if (errors) throw new Error("There was an error saving your information: ", errors);
     postData(formData);
   },
+  validateEachPage: true,
+  validatedUrl: '/end',
+  invalidUrl: '/error',
 }
 
 export const { postMiddleware, getHandler, Forms } = govBuilder(schema, uiSchema, options);

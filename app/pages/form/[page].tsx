@@ -3,7 +3,7 @@ import { applySession } from "next-session";
 import { useRouter } from "next/router";
 import { Forms, getHandler } from "../../form-schema";
 import SButton from '../../components/SButton';
-import StyledDiv from "../../components/StyledDiv";
+import StyledDiv from "../../components/MainStyledDiv";
 import { LAST_PAGE } from "../../services/application";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
@@ -14,12 +14,12 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const continueButtonText = LAST_PAGE !== currentPage ? "Continue" : "Apply";
 
   const rerouteHandler = (nextPage, _isValid, lastPage) => {
-    router.push(lastPage ? "/form/end" : nextPage);
+    router.push(nextPage);
   };
 
   const handleBackClick = () => {
     if (onFirstPage) return;
-    router.push(prevPageUrl);
+    router.push(`/form/${prevPageUrl}`);
   };
 
   return (
@@ -28,14 +28,20 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
         {validPage && (
           <Form formData={formData} rerouteHandler={rerouteHandler}>
             {!onFirstPage && (
-              <SButton type="button" variant="secondary" onClick={handleBackClick}>
+              <SButton
+                type="button"
+                variant="secondary"
+                onClick={handleBackClick}
+              >
                 Back
               </SButton>
             )}
             <SButton variant="primary">{continueButtonText}</SButton>
           </Form>
         )}
-        <SButton variant="secondary" onClick={() => router.push("/home")}>Cancel</SButton>
+        <SButton variant="secondary" onClick={() => router.push("/home")}>
+          Cancel
+        </SButton>
       </StyledDiv>
     </>
   );
