@@ -1,7 +1,7 @@
 import axios from "axios";
-import getConfig from "next/config";
+import dotenv from "dotenv";
 
-const CONFIG = getConfig().publicRuntimeConfig;
+dotenv.config();
 
 const postData = async (formData) => {
   const applicationMutation = `mutation CreateApplication($formData: JSON = "formData") {
@@ -9,22 +9,21 @@ const postData = async (formData) => {
     clientMutationId
   }
 }`;
-  console.log("POSTING!!", CONFIG.ORIGIN, CONFIG.PORT);
   try {
     await axios({
       method: "POST",
-      url: `http://${CONFIG.ORIGIN}:${CONFIG.PORT}/graphql`,
+      url: `http://${process.env.ORIGIN}:${process.env.PORT}/graphql`,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       withCredentials: true,
       data: {
         query: applicationMutation,
         variables: {
-          formData: JSON.stringify(formData)
+          formData: JSON.stringify(formData),
         },
-        operationName: "CreateApplication"
-      }
+        operationName: "CreateApplication",
+      },
     });
   } catch (e) {
     throw new Error("There was an error saving your information");
