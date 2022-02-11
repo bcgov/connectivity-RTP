@@ -3,7 +3,7 @@
 
 begin;
 
-create or replace function connectivity_intake_public.upsert_timestamp_columns(
+create or replace function connectivity_intake_private.upsert_timestamp_columns(
   table_schema_name text,
   table_name text,
   add_create boolean default true,
@@ -26,7 +26,7 @@ begin
       column_string := concat(
         'alter table ',
         table_schema_name, '.', table_name,
-        ' add column if not exists created_by uuid not null ',
+        ' add column if not exists created_by uuid ',
         ', add column if not exists created_at timestamptz not null default now()'
       );
       execute(column_string);
@@ -111,7 +111,7 @@ begin
 end;
 $$ language plpgsql;
 
-comment on function connectivity_intake_public.upsert_timestamp_columns(text, text, boolean, boolean, boolean, text, text)
+comment on function connectivity_intake_private.upsert_timestamp_columns(text, text, boolean, boolean, boolean, text, text)
   is $$
   an internal function that adds the created/updated/archived at/by columns, indices on fkeys,
   applies the _100_timestamps trigger,
@@ -122,7 +122,7 @@ comment on function connectivity_intake_public.upsert_timestamp_columns(text, te
   create table some_schema.some_table (
     ...
   );
-  select connectivity_intake_public.upsert_timestamp_columns(
+  select connectivity_intake_private.upsert_timestamp_columns(
   table_schema_name := 'some_schema',
   table_name := 'some_table',
   add_create := true,

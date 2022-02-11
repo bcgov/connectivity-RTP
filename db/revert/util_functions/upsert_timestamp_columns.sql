@@ -2,6 +2,6 @@
 
 begin;
 
-drop function connectivity_intake_public.upsert_timestamp_columns(text, text, boolean, boolean, boolean, text, text);
+drop function connectivity_intake_private.upsert_timestamp_columns(text, text, boolean, boolean, boolean, text, text);
 
 commit;

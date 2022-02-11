@@ -4,13 +4,12 @@
 begin;
 
 create table if not exists connectivity_intake_public.applications (
-  id serial not null,
+  id integer primary key generated always as identity,
   owner uuid,
-  form_data jsonb,
-  primary key(id)
+  form_data jsonb
 );
 
-select connectivity_intake_public.upsert_timestamp_columns('connectivity_intake_public', 'applications');
+select connectivity_intake_private.upsert_timestamp_columns('connectivity_intake_public', 'applications');
 
 create index connectivity_intake_owner on connectivity_intake_public.applications(owner);
 

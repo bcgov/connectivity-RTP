@@ -2,6 +2,6 @@
 
 begin;
 
-select pg_get_functiondef('connectivity_intake_public.upsert_timestamp_columns(text,text,boolean,boolean,boolean,text,text)'::regprocedure);
+select pg_get_functiondef('connectivity_intake_private.upsert_timestamp_columns(text,text,boolean,boolean,boolean,text,text)'::regprocedure);
 
 rollback;

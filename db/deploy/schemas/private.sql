@@ -4,7 +4,7 @@
 begin;
 
 create schema connectivity_intake_private;
-grant usage on schema connectivity_intake_private to connectivity_intake_guest;
+grant usage on schema connectivity_intake_private to connectivity_intake_guest, connectivity_intake_auth_user;
 comment on schema connectivity_intake_private is 'The private schema for the connectivity intake.';
 
 commit;

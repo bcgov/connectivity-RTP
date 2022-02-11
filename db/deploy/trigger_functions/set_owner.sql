@@ -8,7 +8,7 @@ create or replace function connectivity_intake_public.set_owner()
     declare
       user_sub uuid;
     begin
-      user_sub := (select sub from connectivity_intake_private.session());
+      user_sub := (select sub from connectivity_intake_public.session());
       if user_sub is null then
         raise exception 'User is not authenticated.';
       end if;
