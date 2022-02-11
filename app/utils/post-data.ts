@@ -3,12 +3,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const postData = async (formData) => {
+export default async function postData(formData, req) {
   const applicationMutation = `mutation CreateApplication($formData: JSON = "formData") {
   createApplication(input: {application: {formData: $formData}}) {
     clientMutationId
   }
 }`;
+  console.log(req);
   try {
     await axios({
       method: "POST",
@@ -29,5 +30,3 @@ const postData = async (formData) => {
     throw new Error("There was an error saving your information");
   }
 };
-
-export default postData;
