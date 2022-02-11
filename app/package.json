@@ -11,7 +11,7 @@
   "dependencies": {
     "@babel/core": "^7.16.12",
     "@babel/preset-typescript": "^7.16.7",
-    "@bcgov-cas/sso-express": "^2.0.2",
+    "@bcgov-cas/sso-express": "^2.1.0",
     "@button-inc/bcgov-theme": "^1.0.1",
     "@button-inc/form-schema": "^1.0.0-alpha.5",
     "@graphile-contrib/pg-many-to-many": "^1.0.1",
