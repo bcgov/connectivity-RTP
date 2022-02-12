@@ -3,17 +3,22 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? `https://${process.env.HOST}`
+    : `http://localhost:${process.env.PORT || 3000}`;
+
 export default async function postData(formData, req) {
   const applicationMutation = `mutation CreateApplication($formData: JSON = "formData") {
   createApplication(input: {application: {formData: $formData}}) {
     clientMutationId
   }
 }`;
-  console.log(req);
+  console.log("postData Cookies:", req.cookies);
   try {
     await axios({
       method: "POST",
-      url: `http://${process.env.ORIGIN}:${process.env.PORT}/graphql`,
+      url: `${baseUrl}/graphql`,
       headers: {
         "Content-Type": "application/json",
       },

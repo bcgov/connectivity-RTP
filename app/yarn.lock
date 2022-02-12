@@ -438,22 +438,7 @@
   resolved "https://registry.yarnpkg.com/@bcgov/bc-sans/-/bc-sans-1.0.1.tgz#8b622032465463934319771ea92fa3df74e6c9d3"
   integrity sha512-4suRUBFeHcuFkwXXJu9pKJNB5Z2G3bpuLEHIq203KVCKC8KrsnqvsyUOf645TypgLwqOTOYCETiXYzfxF4gLAw==
 
-"@button-inc/bcgov-theme@1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@button-inc/bcgov-theme/-/bcgov-theme-1.0.0-alpha.1.tgz#520d0d29c5fdc1e473fa26a7537763cd13fe113f"
-  integrity sha512-WqJX3Bw0Bd3Ljl2P6En6N0PABTSRKua7QHiSIoha68NhNYMC1qTXFssPnZg1AYeNKiplJHZAWhxghMe4JpYKew==
-  dependencies:
-    "@babel/runtime" "^7.4.2"
-    "@bcgov/bc-sans" "^1.0.1"
-    "@button-inc/component-library" "1.0.0-alpha.8"
-    "@types/lodash" "^4.14.168"
-    "@types/styled-components" "^5.1.4"
-    lodash "^4.17.21"
-    react-typography "^0.16.19"
-    styled-components "^5.2.1"
-    typography "^0.16.19"
-
-"@button-inc/bcgov-theme@^1.0.1":
+"@button-inc/bcgov-theme@1.0.1", "@button-inc/bcgov-theme@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@button-inc/bcgov-theme/-/bcgov-theme-1.0.1.tgz#756f494c73f32ce3a2a65125fa27f96964166dac"
   integrity sha512-MAu3EtxdAdc3rNe11pYK8V7iJf1LEZpO4R2nCitgV1h+XdIVUQOGUCrWRj3leU9Q8xwfFNZFjH0r83L4Ly381A==
@@ -470,31 +455,21 @@
     styled-components "^5.2.1"
     typography "^0.16.19"
 
-"@button-inc/button-theme@1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@button-inc/button-theme/-/button-theme-1.0.0-alpha.1.tgz#09de5718f36c02126ae3431787c62d0959a822e4"
-  integrity sha512-OMD2Oz71XAs2u22gARA2c5kTT7Ct6L1EW4EJ7hgSjnSvx3nQAdZfivbPPiPYUxZ8avhgHsAtIns5+1m9E7lDDw==
+"@button-inc/button-theme@1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@button-inc/button-theme/-/button-theme-1.0.0-alpha.3.tgz#cfd5b9f4c4173d04023452e1bd907302fa5fc9da"
+  integrity sha512-mFW8Rvj0pF7BVk7mF0kR9JbMKjSNzhxaa5yDAyiP+o0OczrLkAT5cegXqjgRcfhM7tsoViLyfps6xaLw+eZ/eA==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    "@button-inc/component-library" "1.0.0-alpha.8"
+    "@button-inc/component-library" "1.0.0-alpha.11"
     "@types/styled-components" "^5.1.4"
     react-typography "^0.16.19"
     styled-components "^5.2.1"
 
-"@button-inc/component-library@1.0.0-alpha.8":
-  version "1.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/@button-inc/component-library/-/component-library-1.0.0-alpha.8.tgz#84b48dd8a0a7fa1e51bf4f5773a87c37346e8059"
-  integrity sha512-fDQAMNXNpCvqjFx4jp4KrZVhc1B4BcetUht+IkL7L9LQKxTZlKPc8HnvHnB+N8MdhpCqBhPVz3O1YeDo/vXbVA==
-  dependencies:
-    "@babel/runtime" "^7.4.2"
-    "@types/styled-components" "^5.1.4"
-    clsx "^1.1.1"
-    styled-components "^5.2.1"
-
-"@button-inc/component-library@1.0.0-alpha.9":
-  version "1.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/@button-inc/component-library/-/component-library-1.0.0-alpha.9.tgz#d4b2429b0a2cbe606313b8207adc8ac785acacfb"
-  integrity sha512-fUF0VBlGjNPvwUgWw7DvzfDDCAbJRetpUVkTMo33G9MVt+ytlxnDyrToKcbbpDU1ilqdimO5G0QdbT5AT+fgJA==
+"@button-inc/component-library@1.0.0-alpha.11":
+  version "1.0.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/@button-inc/component-library/-/component-library-1.0.0-alpha.11.tgz#f635c604707c20671504d268c881f42ff7832202"
+  integrity sha512-XNCfKl1uMHp4LUNsOmJHzrKXZjr5lZMBsQWPniJA0V8SRUAme3mU2goQu7OIXGO9WruYwRARQukFuqq1/iMrXg==
   dependencies:
     "@babel/runtime" "^7.4.2"
     "@types/styled-components" "^5.1.4"
@@ -511,15 +486,15 @@
     clsx "^1.1.1"
     styled-components "^5.2.1"
 
-"@button-inc/form-schema@^1.0.0-alpha.5":
-  version "1.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/@button-inc/form-schema/-/form-schema-1.0.0-alpha.5.tgz#31589058f61f6ea29c66c84cff270c28c011ae6d"
-  integrity sha512-aD4YpvhZo/kyGXXm3pDx+x0glZdQ6y+vpVp1ahX0WmzSrtrgT8U28/Apx2kQq2guAHD2MvZhi2UTIS9TovRgSg==
+"@button-inc/form-schema@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@button-inc/form-schema/-/form-schema-1.0.0-alpha.7.tgz#f924878e10b002e25ba28acd35dcf089904a2e53"
+  integrity sha512-Vdym/gEYT7kR5rkt204dgLqpvmsnGXlgrniLZ/M21yfjyrIQNRx0HFH4unuxPSRGuW1CNyLm50/zq6ac2zYwSg==
   dependencies:
     "@babel/runtime" "^7.4.2"
-    "@button-inc/bcgov-theme" "1.0.0-alpha.1"
-    "@button-inc/button-theme" "1.0.0-alpha.1"
-    "@button-inc/component-library" "1.0.0-alpha.9"
+    "@button-inc/bcgov-theme" "1.0.1"
+    "@button-inc/button-theme" "1.0.0-alpha.3"
+    "@button-inc/component-library" "1.0.1"
     axios "^0.21.1"
     busboy "^0.3.1"
     react-jsonschema-form "^1.8.1"
