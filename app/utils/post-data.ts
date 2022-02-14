@@ -3,19 +3,28 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const postData = async (formData) => {
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? `https://${process.env.HOST}`
+    : `http://localhost:${process.env.PORT || 3000}`;
+
+export default async function postData(formData, req) {
   const applicationMutation = `mutation CreateApplication($formData: JSON = "formData") {
   createApplication(input: {application: {formData: $formData}}) {
     clientMutationId
   }
 }`;
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
+  if (cookie) headers["Cookie"] = cookie;
+
   try {
     await axios({
       method: "POST",
-      url: `http://${process.env.ORIGIN}:${process.env.PORT}/graphql`,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      url: `${baseUrl}/graphql`,
+      headers,
       withCredentials: true,
       data: {
         query: applicationMutation,
@@ -29,5 +38,3 @@ const postData = async (formData) => {
     throw new Error("There was an error saving your information");
   }
 };
-
-export default postData;

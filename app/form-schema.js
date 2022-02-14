@@ -7,9 +7,9 @@ const options = {
   getRoute: '/form',
   postRoute: '/api',
   useSession: true,
-  onFormEnd: (errors, formData) => {
+  onFormEnd: (errors, formData, req) => {
     if (errors) throw new Error("There was an error saving your information: ", errors);
-    postData(formData);
+    postData(formData, req);
   },
   validateEachPage: true,
   validatedUrl: '/end',
