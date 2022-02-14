@@ -14,14 +14,17 @@ export default async function postData(formData, req) {
     clientMutationId
   }
 }`;
-  console.log("postData Cookies:", req.cookies);
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
+  if (cookie) headers["Cookie"] = cookie;
+
   try {
     await axios({
       method: "POST",
       url: `${baseUrl}/graphql`,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       withCredentials: true,
       data: {
         query: applicationMutation,
