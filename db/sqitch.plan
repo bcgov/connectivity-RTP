@@ -14,5 +14,5 @@ util_functions/upsert_timestamp_columns [create_roles] 2022-02-02T22:36:08Z Brya
 trigger_functions/archived_records_are_immutable 2022-02-03T23:39:45Z Bryan Krauss <bryan@button.is> # A trigger to ensure that no changes to a deleted record can be saved
 trigger_functions/update_timestamps [schemas/private] 2022-02-03T23:42:27Z Bryan Krauss <bryan@button.is> # A trigger function to update timestamps
 trigger_functions/set_owner 2022-02-03T17:16:55Z Bryan Krauss <bryan@button.is> # Sets the current seesion sub to owner
-trigger_functions/set_random_id [schemas/public] 2022-02-14T17:53:48Z Bryan Krauss <bryan@button.is> # A function to generate a random confirmation id
+trigger_functions/set_random_reference_number [schemas/public] 2022-02-14T17:53:48Z Bryan Krauss <bryan@button.is> # A function to generate a random confirmation id
 tables/applications [schemas/public] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.

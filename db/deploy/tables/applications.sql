@@ -4,7 +4,8 @@
 begin;
 
 create table if not exists connectivity_intake_public.applications (
-  id varchar(1000) primary key,
+  id integer primary key generated always as identity,
+  reference_number varchar(1000),
   owner uuid,
   form_data jsonb not null default '{}'::jsonb,
   status varchar(1000) default 'draft',
@@ -15,10 +16,10 @@ select connectivity_intake_private.upsert_timestamp_columns('connectivity_intake
 
 create index connectivity_intake_owner on connectivity_intake_public.applications(owner);
 
-create trigger _random_id
+create trigger _random_reference_number
   before insert on connectivity_intake_public.applications
   for each row
-  execute procedure connectivity_intake_public.set_random_id();
+  execute procedure connectivity_intake_public.set_random_reference_number();
 
 create trigger _insert_owner
   before insert on connectivity_intake_public.applications
