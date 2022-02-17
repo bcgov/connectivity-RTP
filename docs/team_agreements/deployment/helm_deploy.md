@@ -9,12 +9,17 @@ To deploy the application for the first time you must deploy logged in as a loca
 # Login to OpenShift using oc login
 $ oc login --token=<token> --server=https://api.silver.devops.gov.bc.ca:6443
 # Run deploy script
-$ bash ./lib/helm_deploy.sh <namespace> <tag>
+$ bash  ./lib/helm_deploy.sh -n <namespace> \
+          --set app.namespace=<namespace> \
+          --set image.app.tag=<tag(see below)> \
+          --set image.db.tag=<tag(see below)> \
+          --set image.app.clientSecret=<keycloak client secret> \
+          --set route.host=<app url>
 ```
 
 To find the `<tag>` visit [our GitHub packages page](https://github.com/bcgov/connectivity-intake/pkgs/container/connectivity-intake) and use the latest docker image sha. 
 
-eg. `b0086114dfdd9ddcf1f8bb0ad3980dd261a987d6d42f85595da7b24d2f0c3230`
+eg. `sha-b0086114dfdd9ddcf1f8bb0ad3980dd261a987d6d42f85595da7b24d2f0c3230`
 
 ---
 
@@ -27,5 +32,3 @@ eg. `b0086114dfdd9ddcf1f8bb0ad3980dd261a987d6d42f85595da7b24d2f0c3230`
 - In the `Secrets` section click the name with the type `kubernetes.io/service-account-token`
 - In the `Data` section copy to clipboard the entry labelled `token`
 - Paste the `token` value into the repositories [GitHub secrets](https://github.com/bcgov/connectivity-intake/settings/secrets/actions) in `OPENSHIFT_TOKEN`
-
-Any changes pushed to the main branch will trigger an image build and deployment to the cluster.

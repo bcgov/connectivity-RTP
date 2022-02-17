@@ -19,9 +19,9 @@ image:
 app:
   port: "3000"
   probesPort: "9000"
-  namespace: bc5936-dev
+  namespace: ""
 route:
-  host: connectivity-intake-dev.apps.silver.devops.gov.bc.ca
+  host: ""  # The host value must be passed in via the deploy script
 
 networkPolicies:
   enabled: true
