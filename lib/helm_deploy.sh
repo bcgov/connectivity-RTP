@@ -2,14 +2,9 @@
 
 set -euxo pipefail
 
-NAMESPACE=$1
-TAG=$2
-SECRET=$3
-echo "Creating Helm installation in $NAMESPACE namespace"
+echo "Creating Helm installation $*"
 
 cd helm
 helm dep up
-helm upgrade --install --atomic \
-  -f ./values.yaml --set image.app.tag=$TAG --set image.db.tag=$TAG \
-  --set image.app.clientSecret=$SECRET -n $NAMESPACE connectivity-intake . \
+helm upgrade --install --atomic -f ./values.yaml "$@" connectivity-intake . \
   --debug --timeout=8m0s
