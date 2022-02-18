@@ -1,10 +1,38 @@
-import styled from 'styled-components';
-import Link from 'next/link';
+import { useRouter } from "next/router";
 import Card from '@button-inc/bcgov-theme/Card';
 import SButton from '../components/SButton';
 import MainStyledDiv from "../components/MainStyledDiv";
 
+const baseUrl = process.env.NODE_ENV === 'production' ? `https://${process.env.HOST}` : `http://localhost:${process.env.PORT || 3000}`
+
 export default function Home() {
+  const router = useRouter();
+
+  const provisionApplicationForm = async () => {
+  const createApplication = JSON.stringify({
+    query: `mutation MyMutation {
+          createApplication(input: { application: { } }) {
+              application {
+                id
+              }
+            }
+          }`
+  });
+  await fetch(`${baseUrl}/graphql`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: createApplication
+  }).then(async (res) => {
+    const response = await res.json();
+    const applicationId = response.data.createApplication.application.id;
+    router.push(`/form/${applicationId}/1`);
+  }).catch(e => {
+    console.error(e);
+  }) 
+}
   return (
     <>
       <MainStyledDiv>
@@ -17,9 +45,7 @@ export default function Home() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
           <br />
-          <Link href="/form/1">
-            <SButton>Begin New Application</SButton>
-          </Link>
+            <SButton onClick={provisionApplicationForm}>Begin New Application</SButton>
         </Card>
         <br />
         <form action="/logout" method="post">

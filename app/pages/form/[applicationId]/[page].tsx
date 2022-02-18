@@ -1,10 +1,10 @@
 import React from "react";
 import { applySession } from "next-session";
 import { useRouter } from "next/router";
-import { Forms, getHandler } from "../../form-schema";
-import SButton from '../../components/SButton';
-import StyledDiv from "../../components/MainStyledDiv";
-import { LAST_PAGE } from "../../services/application";
+import { Forms, getHandler } from "../../../form-schema";
+import SButton from '../../../components/SButton';
+import StyledDiv from "../../../components/MainStyledDiv";
+import { LAST_PAGE } from "../../../services/application";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];
