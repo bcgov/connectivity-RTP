@@ -5,9 +5,10 @@ begin;
 
 create table if not exists connectivity_intake_public.applications (
   id integer primary key generated always as identity,
-  owner uuid unique,
+  owner uuid,
   form_data jsonb,
-  status varchar(1000) default draft,
+  status varchar(1000) default 'draft',
+  unique(owner)
 );
 
 select connectivity_intake_private.upsert_timestamp_columns('connectivity_intake_public', 'applications');
