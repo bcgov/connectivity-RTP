@@ -9,6 +9,8 @@ const baseUrl =
     : `http://localhost:${process.env.PORT || 3000}`;
 
 export default async function postData(formData, req) {
+  // const applicationId = session.get("applicationId");
+  // Change to update application
   const applicationMutation = `mutation CreateApplication($formData: JSON = "formData") {
   createApplication(input: {application: {formData: $formData}}) {
     clientMutationId

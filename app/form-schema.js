@@ -4,14 +4,17 @@ import uiSchema from './schemas/uiSchema';
 import postData from './utils/post-data'
 
 const options = {
-  getRoute: '/form',
+  getRoute: (req) => {
+    console.log(req);
+  },
   postRoute: '/api',
-  useSession: false,
+  useSession: true,
   onFormEnd: (errors, formData, req) => {
     if (errors) throw new Error("There was an error saving your information: ", errors);
     postData(formData, req);
   },
-  onPost: (_postData, schemaIndex, cleanSchemaData) => {
+  onPost: (formData, schemaIndex, cleanSchemaData) => {
+    // const applicationId = session.get("applicationId");
     const newData = cleanSchemaData(formData);
     formData[schemaIndex] = { ...formData[schemaIndex], ...newData };
     return formData[schemaIndex];
