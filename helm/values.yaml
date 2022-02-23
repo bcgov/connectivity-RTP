@@ -15,13 +15,13 @@ image:
   db:
     repository: ghcr.io/bcgov/connectivity-intake/connectivity-intake-db
     pullPolicy: IfNotPresent
-    tag: latest # The tag value must be passed in via the deploy script 
+    tag: latest # The tag value must be passed in via the deploy script
 app:
   port: "3000"
   probesPort: "9000"
   namespace: ""
 route:
-  host: ""  # The host value must be passed in via the deploy script
+  host: ""  # The host value must be passed in via the deploy script: connectivity-rtp-dev.apps.silver.devops.gov.bc.ca
 
 networkPolicies:
   enabled: true
