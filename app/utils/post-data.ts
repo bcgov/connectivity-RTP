@@ -1,4 +1,3 @@
-import axios from "axios";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -8,14 +7,13 @@ const baseUrl =
     ? `https://${process.env.HOST}`
     : `http://localhost:${process.env.PORT || 3000}`;
 
-export default async function postData(formData, req) {
+export default async function postData(formData, applicationId, req) {
   // const applicationId = session.get("applicationId");
   // Change to update application
-  const applicationMutation = `mutation CreateApplication($formData: JSON = "formData") {
-  createApplication(input: {application: {formData: $formData}}) {
-    clientMutationId
-  }
-}`;
+  const applicationMutation = `mutation ApplicationPatch($applicationId: ID = "", $formData: JSON = "") {
+  updateApplication(
+    input: {id: $applicationId, applicationPatch: { formData: $formData }}
+  ) { query { allApplications ( first: 1 ){ nodes { id formData status }}}}}`;
   const headers = {
     "Content-Type": "application/json",
   };
@@ -23,20 +21,21 @@ export default async function postData(formData, req) {
   if (cookie) headers["Cookie"] = cookie;
 
   try {
-    await axios({
+    const res = await fetch(`${baseUrl}/graphql`, {
       method: "POST",
-      url: `${baseUrl}/graphql`,
       headers,
-      withCredentials: true,
-      data: {
+      body: JSON.stringify({
         query: applicationMutation,
         variables: {
-          formData: JSON.stringify(formData),
+          formData,
+          applicationId,
         },
-        operationName: "CreateApplication",
-      },
+      }),
     });
+    const response = await res.json();
+    return response.data.updateApplication.query;
   } catch (e) {
-    throw new Error("There was an error saving your information");
+    console.error(e.response.data);
+    throw new Error("There was an error saving your information in post-data");
   }
-};
+}
