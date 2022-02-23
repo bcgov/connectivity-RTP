@@ -13,9 +13,10 @@ import ssoMiddleware from './backend/middleware/sso';
 import createServer from './backend/create-server';
 import delay from "delay";
 import { pgPool } from "./backend/db/setup-pg";
-import { postMiddleware } from "./form-schema";
+import { postMiddleware, getHandler } from "./form-schema";
+import queryData from "./utils/query-data";
 
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -37,9 +38,9 @@ app.prepare().then(async () => {
     await delay(10000);
     await app.close();
     await pgPool.end();
-  })
+  });
 
-  server.use(logger(!dev ? 'combined' : 'dev'));
+  server.use(logger(!dev ? "combined" : "dev"));
   server.use(json());
   server.use(urlencoded({ extended: false }));
   server.use(cookieParser());
@@ -52,24 +53,24 @@ app.prepare().then(async () => {
   server.use(
     hsts({
       maxAge: TWO_WEEKS,
-      includeSubDomains: true
+      includeSubDomains: true,
     })
   );
 
-  // lusca 
-  server.use(p3p('ABCDEF'));
-  server.use(referrerPolicy('same-origin'));
+  // lusca
+  server.use(p3p("ABCDEF"));
+  server.use(referrerPolicy("same-origin"));
 
   // At a minimum, disable X-Powered-By header
-  server.disable('x-powered-by');
+  server.disable("x-powered-by");
 
-  server.set('trust proxy', 1); // trust first proxy
+  server.set("trust proxy", 1); // trust first proxy
 
   server.use(
     compress({
       filter: (req, res) =>
-        /json|text|javascript|css|font|svg/.test(res.getHeader('Content-Type')),
-      level: 9
+        /json|text|javascript|css|font|svg/.test(res.getHeader("Content-Type")),
+      level: 9,
     })
   );
 
@@ -82,8 +83,14 @@ app.prepare().then(async () => {
 
   server.post("/api/:submit", postMiddleware);
 
+  server.get("/form/:page", (req, res) => {
+    const { formIndex, validPage } = getHandler(req);
+    const formData = queryData(formIndex);
+    res.json({ formIndex, formData, validPage });
+  });
+
   // catch all other routes and return the index file
-  server.all('*', async (req, res) => handle(req, res));
+  server.all("*", async (req, res) => handle(req, res));
 
   createServer(server, lightship);
 });
