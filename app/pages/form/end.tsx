@@ -1,5 +1,5 @@
-import MainStyledDiv from "components/MainStyledDiv";
-import ConfirmDiv from "components/ConfirmDiv";
+import MainStyledDiv from "../../components/MainStyledDiv";
+import ConfirmDiv from "../../components/ConfirmDiv";
 
 const styles = {
   cardText: {
