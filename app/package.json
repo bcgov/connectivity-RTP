@@ -13,7 +13,7 @@
     "@babel/preset-typescript": "^7.16.7",
     "@bcgov-cas/sso-express": "^2.1.0",
     "@button-inc/bcgov-theme": "^1.0.1",
-    "@button-inc/form-schema": "^1.0.0-alpha.7",
+    "@button-inc/form-schema": "file:../../service-development-toolkit/packages/form-schema/lib",
     "@graphile-contrib/pg-many-to-many": "^1.0.1",
     "@graphile-contrib/pg-omit-archived": "^2.1.0",
     "@graphile-contrib/pg-order-by-related": "^1.0.0-beta.6",
