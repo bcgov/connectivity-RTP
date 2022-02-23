@@ -83,12 +83,6 @@ app.prepare().then(async () => {
 
   server.post("/api/:submit", postMiddleware);
 
-  server.get("/form/:page", (req, res) => {
-    const { formIndex, validPage } = getHandler(req);
-    const formData = queryData(formIndex);
-    res.json({ formIndex, formData, validPage });
-  });
-
   // catch all other routes and return the index file
   server.all("*", async (req, res) => handle(req, res));
 

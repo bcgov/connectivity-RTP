@@ -12,20 +12,17 @@ const options = {
   getRoute: "/form",
   postRoute: '/api',
   useSession: false,
-  onFormEnd: async (errors, formData, req) => {
-    console.log("onFormEnd Errors", errors);
-    if (errors) throw new Error("There was an error saving your information in onFormEnd: ", typeof errors, errors);
-    const applicationId = await queryData(req);
-    postData(formData, applicationId, req);
+  onFormEnd: (errors, formData, req) => {
+    // postData({ formData, applicationId, status: "complete" }, req);
   },
-  onPost: async (formData, schemaIndex, cleanSchemaData, req) => {
-    const { oldFormData, applicationId } = await queryData(req);
-
-    const mergedData = { ...oldFormData, ...formData }
-
-    const savedMergedData = await postData(mergedData, applicationId, req);
-    const newFormData = cleanSchemaData(savedMergedData.allApplications.nodes[0]);
-    return newFormData;
+  onPost: (formData, schemaIndex, cleanSchemaData, req) => {
+    queryData(req).then(({ oldFormData, applicationId }) => {
+      const mergedData = { ...oldFormData, ...formData }
+      postData({ formData: mergedData, applicationId }, req).then((savedMergedData) => {
+        const newFormData = cleanSchemaData(savedMergedData.allApplications.nodes[0].formData);
+      })
+    });
+    return formData;
   },
   validateEachPage: true,
   validatedUrl: '/end',

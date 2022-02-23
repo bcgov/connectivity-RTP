@@ -5,6 +5,7 @@ import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
 import StyledDiv from "../../components/MainStyledDiv";
 import { LAST_PAGE } from "../../services/application";
+import queryData from "utils/query-data";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];
@@ -57,12 +58,8 @@ export const getServerSideProps = async (context) => {
     };
   }
   await applySession(context.req, context.res);
-  const {
-    formIndex,
-    formData,
-    validPage,
-    prevPageUrl = null,
-  } = getHandler(context.req);
+  const { formIndex, validPage, prevPageUrl = null } = getHandler(context.req);
+  const { oldFormData: formData } = await queryData(context.req);
   return {
     props: { formIndex, formData, validPage, prevPageUrl },
   };

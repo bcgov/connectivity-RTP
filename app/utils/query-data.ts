@@ -8,6 +8,14 @@ const baseUrl =
     : `http://localhost:${process.env.PORT || 3000}`;
 
 export default async function queryData(req) {
+  if (!req) {
+    throw new Error(`req is missing in queryData ${JSON.stringify(req)}`);
+  }
+  if (!req.rawHeaders) {
+    throw new Error(
+      `req.rawHeaders are missing in queryData ${JSON.stringify(req)}`
+    );
+  }
   const oldFormDataQuery = JSON.stringify({
     query: `query OldFormDataQuery {allApplications(first: 1) {nodes {
         id 

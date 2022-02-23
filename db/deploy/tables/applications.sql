@@ -6,7 +6,7 @@ begin;
 create table if not exists connectivity_intake_public.applications (
   id integer primary key generated always as identity,
   owner uuid,
-  form_data jsonb,
+  form_data jsonb not null default '{}'::jsonb,
   status varchar(1000) default 'draft',
   unique(owner)
 );
@@ -33,7 +33,7 @@ begin
 perform connectivity_intake_public.grant_permissions('select', 'applications', 'connectivity_intake_auth_user');
 perform connectivity_intake_public.grant_permissions('insert', 'applications', 'connectivity_intake_auth_user');
 perform connectivity_intake_public.grant_permissions('update', 'applications', 'connectivity_intake_auth_user',
-  ARRAY['id', 'owner', 'form_data', 'created_by', 'created_at', 'updated_by', 'updated_at', 'archived_by', 'archived_at']);
+  ARRAY['id', 'owner', 'form_data', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at', 'archived_by', 'archived_at']);
 
 -- Grant connectivity_intake_guest permissions
 perform connectivity_intake_public.grant_permissions('select', 'applications', 'connectivity_intake_guest');
