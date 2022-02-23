@@ -2,22 +2,30 @@ import { govBuilder } from '@button-inc/form-schema';
 import schema from './schemas/schema';
 import uiSchema from './schemas/uiSchema';
 import postData from './utils/post-data'
+import queryData from './utils/query-data';
+
+const baseUrl = process.env.NODE_ENV === 'production'
+  ? `https://${process.env.HOST}`
+  : `http://localhost:${process.env.PORT || 3000}`;
 
 const options = {
-  getRoute: (req) => {
-    console.log(req);
-  },
+  getRoute: "/form",
   postRoute: '/api',
-  useSession: true,
-  onFormEnd: (errors, formData, req) => {
-    if (errors) throw new Error("There was an error saving your information: ", errors);
-    postData(formData, req);
+  useSession: false,
+  onFormEnd: async (errors, formData, req) => {
+    console.log("onFormEnd Errors", errors);
+    if (errors) throw new Error("There was an error saving your information in onFormEnd: ", typeof errors, errors);
+    const applicationId = await queryData(req);
+    postData(formData, applicationId, req);
   },
-  onPost: (formData, schemaIndex, cleanSchemaData) => {
-    // const applicationId = session.get("applicationId");
-    const newData = cleanSchemaData(formData);
-    formData[schemaIndex] = { ...formData[schemaIndex], ...newData };
-    return formData[schemaIndex];
+  onPost: async (formData, schemaIndex, cleanSchemaData, req) => {
+    const { oldFormData, applicationId } = await queryData(req);
+
+    const mergedData = { ...oldFormData, ...formData }
+
+    const savedMergedData = await postData(mergedData, applicationId, req);
+    const newFormData = cleanSchemaData(savedMergedData.allApplications.nodes[0]);
+    return newFormData;
   },
   validateEachPage: true,
   validatedUrl: '/end',
