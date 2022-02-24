@@ -1,12 +1,42 @@
 const uiSchema = {
-  "nonISPCollaborationPlan": {
-    "ui:widget": "textarea"
+  "proposedZoneFeedback": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100
+    }
   },
-  "ISPNetworkExperience": {
-    "ui:widget": "textarea"
+  "New Tech Details": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100
+    }
   },
-  "ISPTechnologyExperience": {
-    "ui:widget": "textarea"
+  "Additional New Tech Details": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100
+    }
+  },
+  "Anticipated Projects": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100
+    }
+  },
+  "Underserved Areas": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100
+    }
+  },
+  "Satellite Proposal": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100
+    }
+  },
+  "New Backbone Technology": {
+    "ui:widget": "checkboxes"
   },
   "transport": {
     "ui:widget": "checkboxes"
@@ -16,7 +46,13 @@ const uiSchema = {
   },
   "highway": {
     "ui:widget": "checkboxes"
-  }
+  },
+  "Last Mile Support": {
+    "ui:widget": "radio",
+    "ui:options": {
+      "label": "false"
+    }
+  },
 };
 
 export default uiSchema;
