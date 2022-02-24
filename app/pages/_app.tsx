@@ -1,8 +1,8 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { Footer, Navigation } from '@button-inc/bcgov-theme';
-import styled from 'styled-components';
-import Menu from '../components/Menu';
-import BCGovTypography from '../components/BCGovTypography';
+import { Button, Footer, Navigation } from "@button-inc/bcgov-theme";
+import styled from "styled-components";
+import Menu from "../components/Menu";
+import BCGovTypography from "../components/BCGovTypography";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -14,14 +14,19 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: '#0070f3',
+    primary: "#0070f3",
   },
 };
 
-const SFooter = styled(Footer)`
+const StyledFooter = styled(Footer)`
   position: fixed;
   bottom: 0;
   width: 100%;
+`;
+
+const LogoutButton = styled(Button)`
+  margin: 0 5px 0 auto;
+  background-color: #fff;
 `;
 
 export default function App({ Component, pageProps }) {
@@ -30,17 +35,14 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <BCGovTypography />
-        <Navigation
-          header="main"
-          title="Connectivity Intake"
-        >
-          <Menu />
+        <Navigation header="main" title="Request to Participate">
+          <LogoutButton variant="secondary">Logout</LogoutButton>
         </Navigation>
         <Component {...pageProps} />
-        <SFooter>
+        <StyledFooter>
           <Menu />
-        </SFooter>
+        </StyledFooter>
       </ThemeProvider>
     </>
-  )
+  );
 };

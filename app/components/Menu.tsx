@@ -5,21 +5,26 @@ export default function Menu() {
     <>
       <ul>
         <li>
-          <Link href="/home">
-            <a>Lorem</a>
+          <Link href="https://www2.gov.bc.ca/gov/content/home/disclaimer">
+            <a>Disclaimer</a>
           </Link>
         </li>
         <li>
-          <Link href="/home">
-            <a>Ipsum</a>
+          <Link href="https://www2.gov.bc.ca/gov/content/home/privacy">
+            <a>Privacy</a>
           </Link>
         </li>
         <li>
-          <Link href="/home">
-            <a>Dolor</a>
+          <Link href="https://www2.gov.bc.ca/gov/content/home/accessible-government">
+            <a>Accessibility</a>
           </Link>
         </li>
-      </ul >
+        <li>
+          <Link href="https://www2.gov.bc.ca/gov/content/home/copyright">
+            <a>Copyright</a>
+          </Link>
+        </li>
+      </ul>
     </>
-  )
+  );
 }
