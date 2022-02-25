@@ -1,57 +1,65 @@
 const uiSchema = {
-  "proposedZoneFeedback": {
+  "zoneFeedback": {
     "ui:widget": "textarea",
     "ui:options": {
-      "cols": 100
+      "cols": 100,
+      "rows": 50
     }
   },
-  "New Tech Details": {
+  "backboneGaps": {
     "ui:widget": "textarea",
     "ui:options": {
-      "cols": 100
+      "cols": 100,
+      "rows": 50
     }
   },
-  "Additional New Tech Details": {
+  "multipleBackboneDetails": {
     "ui:widget": "textarea",
     "ui:options": {
-      "cols": 100
+      "cols": 100,
+      "rows": 50
     }
   },
-  "Anticipated Projects": {
+  "anticipatedProjects": {
     "ui:widget": "textarea",
     "ui:options": {
-      "cols": 100
+      "cols": 100,
+      "rows": 50
     }
   },
-  "Underserved Areas": {
+  "underservedAreas": {
     "ui:widget": "textarea",
     "ui:options": {
-      "cols": 100
+      "cols": 100,
+      "rows": 50
     }
   },
-  "Satellite Proposal": {
+  "satelliteProposal": {
     "ui:widget": "textarea",
     "ui:options": {
-      "cols": 100
+      "cols": 100,
+      "rows": 50
     }
   },
-  "New Backbone Technology": {
+  "capitalCostFunding": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
+  "capitalCostExplanation": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
+  "newBackboneTechnology": {
     "ui:widget": "checkboxes"
   },
-  "transport": {
-    "ui:widget": "checkboxes"
-  },
-  "lastMile": {
-    "ui:widget": "checkboxes"
-  },
-  "highway": {
-    "ui:widget": "checkboxes"
-  },
-  "Last Mile Support": {
+  "lastMileSupport": {
     "ui:widget": "radio",
-    "ui:options": {
-      "label": "false"
-    }
   },
 };
 
