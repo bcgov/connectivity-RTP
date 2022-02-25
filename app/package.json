@@ -5,6 +5,7 @@
     "build": "yarn run build:server && yarn build:next",
     "build:next": "next build",
     "build:server": "tsc --project tsconfig.server.json",
+    "build:schema": "postgraphile -X -c postgres://localhost/connectivity_intake -s connectivity_intake_public --export-schema-graphql dbSchema/schema.graphql --export-schema-json dbSchema/schema.json --classic-ids --sort-export && echo >> dbSchema/schema.json",
     "start": "node --unhandled-rejections=strict dist/server.js",
     "cypress:open": "yarn dev & wait-on http:localhost:3000 & cypress open"
   },
