@@ -6,7 +6,7 @@ const baseUrl =
     ? `https://${runtimeConfig.HOST}`
     : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
-export default async function queryData(req) {
+export async function queryData(req) {
   if (!req) {
     throw new Error(`req is missing in queryData ${JSON.stringify(req)}`);
   }
@@ -40,4 +40,20 @@ export default async function queryData(req) {
   const applicationId = response.data.allApplications.nodes[0].id;
 
   return { oldFormData, applicationId };
+}
+
+export async function queryUser() {
+  const userQuery = JSON.stringify({
+    query: `query MyQuery { session { sub } allApplications { nodes { id formData } } }`,
+  });
+  const res = await fetch(`${baseUrl}/graphql`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: userQuery,
+  });
+  const response = await res.json();
+  return response;
 }

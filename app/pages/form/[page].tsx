@@ -5,7 +5,7 @@ import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
 import StyledDiv from "../../components/MainStyledDiv";
 import { LAST_PAGE } from "../../services/application";
-import queryData from "utils/query-data";
+import { queryData } from "utils/query-data";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];

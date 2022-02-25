@@ -14,7 +14,6 @@ import createServer from './backend/create-server';
 import delay from "delay";
 import { pgPool } from "./backend/db/setup-pg";
 import { postMiddleware, getHandler } from "./form-schema";
-import queryData from "./utils/query-data";
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
