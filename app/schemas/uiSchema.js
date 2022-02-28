@@ -1,22 +1,66 @@
 const uiSchema = {
-  "nonISPCollaborationPlan": {
-    "ui:widget": "textarea"
+  "zoneFeedback": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
   },
-  "ISPNetworkExperience": {
-    "ui:widget": "textarea"
+  "backboneGaps": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
   },
-  "ISPTechnologyExperience": {
-    "ui:widget": "textarea"
+  "multipleBackboneDetails": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
   },
-  "transport": {
+  "anticipatedProjects": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
+  "underservedAreas": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
+  "satelliteProposal": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
+  "capitalCostFunding": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
+  "capitalCostExplanation": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
+  "newBackboneTechnology": {
     "ui:widget": "checkboxes"
   },
-  "lastMile": {
-    "ui:widget": "checkboxes"
+  "lastMileSupport": {
+    "ui:widget": "radio",
   },
-  "highway": {
-    "ui:widget": "checkboxes"
-  }
 };
 
 export default uiSchema;

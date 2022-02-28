@@ -40,9 +40,6 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
             <SButton variant="primary">{continueButtonText}</SButton>
           </Form>
         )}
-        <SButton variant="secondary" onClick={() => router.push("/home")}>
-          Cancel
-        </SButton>
       </StyledDiv>
     </>
   );
