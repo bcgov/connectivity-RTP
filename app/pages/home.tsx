@@ -4,6 +4,7 @@ import Card from '@button-inc/bcgov-theme/Card';
 import SButton from '../components/SButton';
 import MainStyledDiv from "../components/MainStyledDiv";
 import getConfig from "next/config";
+import BCGovTitle from "../components/BCGovTitle";
 
 const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 
@@ -66,9 +67,9 @@ export default function Home() {
       const isExistingApplication = response.data.allApplications.nodes[0] ? true : false
       if (isExistingApplication) {
         applicationId = response.data.allApplications.nodes[0].id;
-        setButtonText("Resume Application");
+        setButtonText("Resume");
       } else {
-        setButtonText("Begin Application");
+        setButtonText("Begin");
       };
     }).catch(e => {
       console.error(e);
@@ -82,17 +83,20 @@ export default function Home() {
   return (
     <>
       <MainStyledDiv>
-        <Card title="Online Application">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-          <br />
+        <BCGovTitle>About this Form</BCGovTitle>
+        <p>
+          This form will autosave. After you begin the form, you may log out and return
+          at a later time to complete the form. Please have required information that
+          was outlined in the instructions ready.
+          <br /><br/>
+          Please complete this form before it closes on April 13, 2022, 2:00 PM Pacific Time.
+        </p>
+        <BCGovTitle>Materials</BCGovTitle>
+        <p>
+          For RTP information and Form Instructions, please refer to the Request to
+          Participate materials on BC Bid.
+        </p>
           <SButton onClick={pageRouter}>{buttonText}</SButton>
-        </Card>
       </MainStyledDiv>
     </>
   );
