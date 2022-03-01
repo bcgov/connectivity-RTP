@@ -1,11 +1,10 @@
-import dotenv from "dotenv";
+import getConfig from "next/config";
 
-dotenv.config();
-
+const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? `https://${process.env.HOST}`
-    : `http://localhost:${process.env.PORT || 3000}`;
+  runtimeConfig.NODE_ENV === "production"
+    ? `https://${runtimeConfig.HOST}`
+    : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
 export default async function queryData(req) {
   if (!req) {
@@ -30,10 +29,11 @@ export default async function queryData(req) {
   };
   const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
   if (cookie) headers["Cookie"] = cookie;
+  console.log("\n\nRequest\n\n", req.rawHeaders, "\n\n");
+  console.log("\n\nCookie\n\n", cookie, "\n\n");
 
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
-    credentials: "include",
     headers,
     body: oldFormDataQuery,
   });

@@ -24,10 +24,13 @@ const StyledFooter = styled(Footer)`
   width: 100%;
 `;
 
-const LogoutButton = styled(Button)`
+const LogoutForm = styled.div`
   margin: 0 5px 0 auto;
-  background-color: #fff;
 `;
+
+const formStyle = {
+  marginBottom: "0",
+};
 
 export default function App({ Component, pageProps }) {
   return (
@@ -36,7 +39,11 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <BCGovTypography />
         <Navigation header="main" title="Request to Participate">
-          <LogoutButton variant="secondary">Logout</LogoutButton>
+          <LogoutForm>
+            <form action="/logout" method="POST" style={formStyle}>
+              <Button variant="secondary">Logout</Button>
+            </form>
+          </LogoutForm>
         </Navigation>
         <Component {...pageProps} />
         <StyledFooter>
