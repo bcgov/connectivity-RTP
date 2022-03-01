@@ -1,11 +1,10 @@
-import dotenv from "dotenv";
+import getConfig from "next/config";
 
-dotenv.config();
-
+const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? `https://${process.env.HOST}`
-    : `http://localhost:${process.env.PORT || 3000}`;
+  runtimeConfig.NODE_ENV === "production"
+    ? `https://${runtimeConfig.HOST}`
+    : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
 export default async function queryData(req) {
   if (!req) {
@@ -33,7 +32,6 @@ export default async function queryData(req) {
 
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
-    credentials: "include",
     headers,
     body: oldFormDataQuery,
   });

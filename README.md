@@ -39,7 +39,7 @@ Go to: `http://localhost:3000`
 ```bash
 cd app
 yarn
-yarn run cypress:open
+yarn run cypress:open 
 ```
 ## Environment Variables
 

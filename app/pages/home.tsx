@@ -3,10 +3,14 @@ import { useEffect, useState } from "react";
 import Card from '@button-inc/bcgov-theme/Card';
 import SButton from '../components/SButton';
 import MainStyledDiv from "../components/MainStyledDiv";
+import getConfig from "next/config";
 
-const baseUrl = process.env.NODE_ENV === 'production'
-  ? `https://${process.env.HOST}`
-  : `http://localhost:${process.env.PORT || 3000}`
+const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
+
+const baseUrl =
+  runtimeConfig.NODE_ENV === "production"
+    ? `https://${runtimeConfig.HOST}`
+    : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
 let applicationId;
 
@@ -89,10 +93,6 @@ export default function Home() {
           <br />
           <SButton onClick={pageRouter}>{buttonText}</SButton>
         </Card>
-        <br />
-        <form action="/logout" method="post">
-          <SButton type="submit">Logout</SButton>
-        </form>
       </MainStyledDiv>
     </>
   );
