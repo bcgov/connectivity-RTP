@@ -57,7 +57,6 @@ export const getServerSideProps = async (context) => {
   await applySession(context.req, context.res);
   const { formIndex, validPage, prevPageUrl = null } = getHandler(context.req);
   const props = { formIndex, validPage, prevPageUrl };
-  console.log("\n\nContext.req", context.req.rawHeaders)
   const res = await queryData(context.req);
   if (res) {
     props["formData"] = res.oldFormData;

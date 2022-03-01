@@ -29,8 +29,6 @@ export default async function queryData(req) {
   };
   const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
   if (cookie) headers["Cookie"] = cookie;
-  console.log("\n\nRequest\n\n", req.rawHeaders, "\n\n");
-  console.log("\n\nCookie\n\n", cookie, "\n\n");
 
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
