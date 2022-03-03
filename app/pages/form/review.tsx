@@ -41,10 +41,7 @@ export default function review() {
   const router = useRouter();
 
   const completeForm = () => {
-    // fetch post request to /graphql
-    // change status from "draft" to "complete"
-    // router push to confimation of received form
-    router.push("form/end");
+    router.push("/form/end");
   };
 
   useEffect(() => {
@@ -208,7 +205,9 @@ export default function review() {
           <SButton variant="secondary" onClick={() => router.push("/form/8")}>
             Back
           </SButton>
-          <SButton variant="primary">Complete & Send</SButton>
+          <SButton variant="primary" onClick={completeForm}>
+            Complete & Send
+          </SButton>
         </div>
       </MainStyledDiv>
     </div>
