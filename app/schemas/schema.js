@@ -96,7 +96,7 @@ const schema = {
       "properties": {
         "zoneFeedback": {
           "type": "string",
-          "title": "Please refer to the Zone Map in the Request to Participate - Appendix A to respond to the following question.",
+          "title": "Please refer to the Zone Map in the Request to Participate - Appendix A to respond to the following question. What feedback do you have on the proposed zone boundaries? If you were to apply to a funding program by zone, are there alterations to the zone boundaries that would make that easier?(3500 characters)",
           "description": "What feedback do you have on the proposed zone boundaries? If you were to apply to a funding program by zone, are there alterations to the zone boundaries that would make that easier?(3500 characters)",
           "maxLength": 10000
         }
@@ -109,12 +109,12 @@ const schema = {
       "properties": {
         "wiredBroadband": {
           "type": "number",
-          "title": "Wired Broadband (Fibre or Coaxial)",
+          "title": "Wired Broadband (Fibre or Coaxial) - Approximately how many underserved households in the province could be reached by wired broadband?",
           "description": "Approximately how many underserved households in the province could be reached by wired broadband?",
         },
         "fixedWireless": {
           "type": "number",
-          "title": "Fixed Wireless",
+          "title": "Fixed Wireless - Approximately how many underserved households could be reached by fixed wireless?",
           "description": "Approximately how many underserved households could be reached by fixed wireless?"
         }
       }
@@ -125,7 +125,7 @@ const schema = {
       "properties": {
         "lastMileSupport": {
           "type": "boolean",
-          "title": "Would it be possible to leverage existing backbone to implement the last mile technologies you indicated in the previous question? ",
+          "title": "Would it be possible to leverage existing backbone to implement the last mile technologies you indicated in the previous question? Existing backbone is defined by connecting to a point of presence (PoP) in the community. New backbone is defined by requiring fibre or microwave transport to access a PoP in another community or use of satellite backbone to support your last mile project.",
           "description": "Existing backbone is defined by connecting to a point of presence (PoP) in the community. New backbone is defined by requiring fibre or microwave transport to access a PoP in another community or use of satellite backbone to support your last mile project.",
           "enum": [
             true,
@@ -146,7 +146,7 @@ const schema = {
           "uniqueItems": true,
         },
         "backboneGaps": {
-          "title": "Please add any important details for addressing gaps in backbone needed to reach underserved households.",
+          "title": "Please add any important details for addressing gaps in backbone needed to reach underserved households. For example, technology considerations, impactive geography, or connections to existing PoP. (3500 characters)",
           "description": "For example, technology considerations, impactive geography, or connections to existing PoP. (3500 characters)",
           "type": "string",
           "maxLength": 10000
@@ -163,19 +163,19 @@ const schema = {
       "type": "object",
       "properties": {
         "anticipatedProjects": {
-          "title": "Are there any specific planned or anticipated projects you want to tell us about?",
+          "title": "Are there any specific planned or anticipated projects you want to tell us about? For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include? (3500 characters)",
           "description": "For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include? (3500 characters)",
           "type": "string",
           "maxLength": 10000
         },
         "underservedAreas": {
-          "title": "For underserved areas where your Geomark does not indicate a wired or wireless technology viability or to serve those households, how could internet service providers be incentivized to serve those areas?",
+          "title": "For underserved areas where your Geomark does not indicate a wired or wireless technology viability or to serve those households, how could internet service providers be incentivized to serve those areas? Please note, Geomark files are uploaded on the final page of this form. (3500 characters)",
           "description": "Please note, Geomark files are uploaded on the final page of this form. (3500 characters)",
           "type": "string",
           "maxLength": 10000
         },
         "satelliteProposal": {
-          "title": "In the information linked in Appendix C of the RTP, some areas were proposed to be best served by satellite. How do these proposed areas align with the expectations of your organization? Please provide feedback on the modelling assumptions.",
+          "title": "In the information linked in Appendix C of the RTP, some areas were proposed to be best served by satellite. How do these proposed areas align with the expectations of your organization? Please provide feedback on the modelling assumptions. (3500 characters)",
           "description": "(3500 characters)",
           "type": "string",
           "maxLength": 10000
@@ -188,13 +188,13 @@ const schema = {
       "type": "object",
       "properties": {
         "capitalCostFunding": {
-          "title": "If funding was available for capital costs, which sections of highway could be completed? Please consider traffic and consumption factors. Please list the sections of highway.",
+          "title": "If funding was available for capital costs, which sections of highway could be completed? Please consider traffic and consumption factors. Please list the sections of highway. (3500 characters)",
           "description": "(3500 characters)",
           "type": "string",
           "maxLength": 10000
         },
         "capitalCostExplanation": {
-          "title": "Please explain why you chose those sections.",
+          "title": "Please explain why you chose those sections. (3500 characters)",
           "description": "(3500 characters)",
           "type": "string",
           "maxLength": 10000
