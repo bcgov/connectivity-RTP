@@ -10,6 +10,18 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+  .pg-textarea-input {
+    width: 80%;
+    height: 8rem;
+    margin-bottom: 1em;
+  }
+  label {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .pg-input-input {
+    margin-bottom: 1em;
+  }
 `;
 
 const theme = {
