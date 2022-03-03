@@ -5,14 +5,14 @@ import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
 import StyledDiv from "../../components/MainStyledDiv";
 import { LAST_PAGE } from "../../services/application";
-import queryData from "utils/query-data";
+import { queryData } from "../../utils/query-data";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const Form = Forms[formIndex];
   const router = useRouter();
   const onFirstPage = prevPageUrl === -1;
   const currentPage = formIndex + 1;
-  const continueButtonText = LAST_PAGE !== currentPage ? "Continue" : "Apply";
+  const continueButtonText = LAST_PAGE !== currentPage ? "Continue" : "Review";
 
   const rerouteHandler = (nextPage, _isValid, lastPage) => {
     router.push(nextPage);

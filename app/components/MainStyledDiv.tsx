@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  width: 1020px;
+  width: 90%;
   margin: auto;
-  padding: 2rem;
+  margin-bottom: 50px;
+  padding: 2.5rem;
 `;

@@ -2,7 +2,7 @@ import { govBuilder } from '@button-inc/form-schema';
 import schema from './schemas/schema';
 import uiSchema from './schemas/uiSchema';
 import postData from './utils/post-data'
-import queryData from './utils/query-data';
+import { queryData } from './utils/query-data';
 
 const baseUrl = process.env.NODE_ENV === 'production'
   ? `https://${process.env.HOST}`
@@ -25,7 +25,7 @@ const options = {
     return formData;
   },
   validateEachPage: true,
-  validatedUrl: '/end',
+  validatedUrl: '/review',
   invalidUrl: '/error',
 }
 
