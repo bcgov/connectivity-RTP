@@ -12,7 +12,7 @@ create function connectivity_intake_public.set_random_reference_number()
     begin
       loop
         -- Securely generate a psuedo-random hash and re-encode it to a hex string.
-        new_reference_number := encode(gen_random_bytes(8), 'hex');
+        new_reference_number := encode(gen_random_bytes(4), 'hex');
         if new_reference_number in (select reference_number from connectivity_intake_public.applications) then
           raise warning 'connectivity_intake_public.set_random_reference_number() experienced hash collision on %s - rerunning hash function & generating new reference_number', new_reference_number;
         else

@@ -141,20 +141,24 @@ export default function review() {
               If no, what type of new backbone technology would need to be
               built?
             </h4>
-            {reviewData.newBackboneTechnology.map((item) => (
-              <p>{item}</p>
-            ))}
+            {reviewData.newBackboneTechnology
+              ? reviewData.newBackboneTechnology.map((item) => <p>{item}</p>)
+              : "N/A"}
             <h4>
               Please add any important details for addressing gaps in backbone
               needed to reach underserved households.
             </h4>
-            <p>{reviewData.backboneGaps}</p>
+            <p>{reviewData.backboneGaps ? reviewData.backboneGaps : "N/A"}</p>
             <h4>
               If multiple backbone technologies are indicated, please describe
               at a high level where each backbone technology could be
               implemented and any transport requirements.
             </h4>
-            <p>{reviewData.multipleBackboneDetails}</p>
+            <p>
+              {reviewData.multipleBackboneDetails
+                ? reviewData.multipleBackboneDetails
+                : "N/A"}
+            </p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Additional Questions</BCGovTitle>

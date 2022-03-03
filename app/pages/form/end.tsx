@@ -1,5 +1,8 @@
 import MainStyledDiv from "../../components/MainStyledDiv";
 import ConfirmDiv from "../../components/ConfirmDiv";
+import { useState } from "react";
+import { useEffect } from "react";
+import { queryUser } from "../../utils/query-data";
 
 const styles = {
   cardText: {
@@ -14,12 +17,23 @@ const styles = {
 };
 
 export default function end() {
+  const [referenceNumber, setReferenceNumber] = useState("");
+  useEffect(() => {
+    async function fetchData() {
+      const response = await queryUser();
+      setReferenceNumber(
+        response.data.allApplications.nodes[0].referenceNumber
+      );
+    }
+    fetchData();
+  }, [MainStyledDiv]);
+
   return (
     <MainStyledDiv>
       <ConfirmDiv>
         <h1 style={styles.cardTitle}>Request Complete</h1>
         <h4 style={styles.cardText}>Your reference number</h4>
-        <h2 style={styles.cardTitle}>KH963IJ</h2>
+        <h2 style={styles.cardTitle}>{referenceNumber}</h2>
       </ConfirmDiv>
       <h2>What happpens next</h2>
       <p>Your data will be sent to Network BC.</p>
