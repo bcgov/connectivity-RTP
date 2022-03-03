@@ -42,10 +42,9 @@ export default function Home() {
   }
 
   const pageRouter = async () => {
-    if (buttonText === "Begin Application") {
+    if (buttonText === "Begin") {
       provisionApplicationForm();
-    }
-    else {
+    } else {
       // session.set("applicationId", applicationId);
       router.push(`/form/1`);
     } 

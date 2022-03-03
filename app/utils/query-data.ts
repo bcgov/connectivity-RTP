@@ -20,6 +20,7 @@ export async function queryData(req) {
         id 
         formData 
         status
+        referenceNumber
       }
     }
   }`,
@@ -44,7 +45,7 @@ export async function queryData(req) {
 
 export async function queryUser() {
   const userQuery = JSON.stringify({
-    query: `query MyQuery { session { sub } allApplications { nodes { id formData } } }`,
+    query: `query MyQuery { session { sub } allApplications { nodes { id formData referenceNumber } } }`,
   });
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
