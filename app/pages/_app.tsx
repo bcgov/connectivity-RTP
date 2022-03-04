@@ -22,10 +22,6 @@ const GlobalStyle = createGlobalStyle`
   .pg-input-input {
     margin-bottom: 1em;
   }
-  .pg-radio {
-    margin: 1em;
-  }
-  
   .form-group .field:first-of-type {
     padding-top: 1em;
   }
