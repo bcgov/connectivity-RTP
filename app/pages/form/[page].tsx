@@ -47,7 +47,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
         Well-Known Text Geometry (WKT). A geomark can also be created in Google Earth or from
           other Geomarks. All instructions for creating a Geomark can be found at <a href="https://www2.gov.bc.ca/gov/content/data/geographic-data-services/location-services/geomark-webservice" target="_blank">
             https://www2.gov.bc.ca/gov/content/data/geographic-data-services/location-services/geomark-webservice</a></strong></p>
-        <p><strong>Geomarks can be created at: <a href="https://apps.gov.bc.ca/pub/geomark/geomarks" target="_blank">
+        <p><strong>Geomarks can be created at <a href="https://apps.gov.bc.ca/pub/geomark/geomarks" target="_blank">
           https://apps.gov.bc.ca/pub/geomark/geomarks</a></strong></p>
         <p><strong>Contact for help with Geomarks can be found at <a href="https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6" target="_blank">
             https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6</a></strong></p>
