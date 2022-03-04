@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
   .pg-radio {
     margin: 1em;
   }
+  
+  .form-group .field:first-of-type {
+    padding-top: 1em;
+  }
 `;
 
 const theme = {
