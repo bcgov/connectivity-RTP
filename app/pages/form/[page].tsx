@@ -5,8 +5,10 @@ import { useRouter } from "next/router";
 import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
 import StyledDiv from "../../components/MainStyledDiv";
+import BCGovTitle from "../../components/BCGovTitle";
 import { LAST_PAGE } from "../../services/application";
 import { queryData, queryUser } from "../../utils/query-data";
+import schema from "../../schemas/schema";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const [status, setStatus] = useState("");
@@ -29,6 +31,13 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
     if (status === "complete") return true;
   };
 
+  const pageTitle = (schema, formIndex) => {
+    const titles = Object.values(schema.properties).reduce((prev: Array<String>, {title}) => {
+      return [...prev, title];
+    }, []);
+    return titles[formIndex]
+  }
+
   useEffect(() => {
     async function fetchData() {
       const response = await queryUser();
@@ -40,6 +49,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   return (
     <>
       <StyledDiv>
+        <BCGovTitle>{pageTitle(schema, formIndex)}</BCGovTitle>
         {validPage && (
           <Form formData={formData} rerouteHandler={rerouteHandler}>
             {!onFirstPage && (
