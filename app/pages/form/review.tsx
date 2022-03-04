@@ -163,9 +163,9 @@ export default function review() {
               If no, what type of new backbone technology would need to be
               built?
             </h4>
-            {reviewData.newBackboneTechnology
+            <p>{reviewData.newBackboneTechnology
               ? reviewData.newBackboneTechnology.map((item) => <p>{item}</p>)
-              : "N/A"}
+              : "N/A"}</p>
             <h4>
               Please add any important details for addressing gaps in backbone
               needed to reach underserved households.
@@ -188,21 +188,21 @@ export default function review() {
               Are there any specific planned or anticipated projects you want to
               tell us about?
             </h4>
-            <p>{reviewData.anticipatedProjects}</p>
+            <p>{reviewData.anticipatedProjects ? reviewData.anticipatedProjects : "N/A"}</p>
             <h4>
               For underserved areas where your Geomark does not indicate a wired
               or wireless technology viability or to serve those households, how
               could internet service providers be incentivized to serve those
               areas?
             </h4>
-            <p>{reviewData.underservedAreas}</p>
+            <p>{reviewData.underservedAreas ? reviewData.underservedAreas : "N/A"}</p>
             <h4>
               In the information linked in Appendix C of the RTP, some areas
               were proposed to be best served by satellite. How do these
               proposed areas align with the expectations of your organization?
               Please provide feedback on the modelling assumptions.
             </h4>
-            <p>{reviewData.satelliteProposal}</p>
+            <p>{reviewData.satelliteProposal ? reviewData.satelliteProposal : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Highway Cellular</BCGovTitle>
@@ -211,20 +211,20 @@ export default function review() {
               highway could be completed? Please consider traffic and
               consumption factors. Please list the sections of highway.
             </h4>
-            <p>{reviewData.capitalCostFunding}</p>
+            <p>{reviewData.capitalCostFunding ? reviewData.capitalCostFunding : "N/A"}</p>
             <h4>Please explain why you chose those sections.</h4>
-            <p>{reviewData.capitalCostExplanation}</p>
+            <p>{reviewData.capitalCostExplanation ? reviewData.capitalCostExplanation : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Geomarks</BCGovTitle>
             <h4>Wired broadband last mile </h4>
-            <p>{reviewData.lastMileBroadbandGeomark}</p>
+            <p>{reviewData.lastMileBroadbandGeomark ? reviewData.lastMileBroadbandGeomark : "N/A"}</p>
             <h4>Fixed wireless last mile </h4>
-            <p>{reviewData.lastMileFixedWirelessGeomark}</p>
+            <p>{reviewData.lastMileFixedWirelessGeomark ? reviewData.lastMileFixedWirelessGeomark : "N/A"}</p>
             <h4>New backbone technology possibly needed for last mile</h4>
-            <p>{reviewData.lastMileNewBackboneGeomark}</p>
+            <p>{reviewData.lastMileNewBackboneGeomark ? reviewData.lastMileNewBackboneGeomark : "N/A"}</p>
             <h4>Cellular along powered highways</h4>
-            <p>{reviewData.highwayCellularGeomark}</p>
+            <p>{reviewData.highwayCellularGeomark ? reviewData.highwayCellularGeomark : "N/A"}</p>
           </ReviewDiv>
         </div>
         <div>

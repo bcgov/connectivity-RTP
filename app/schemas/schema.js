@@ -14,11 +14,6 @@ const schema = {
     "wiredBroadband",
     "fixedWireless",
     "lastMileSupport",
-    "anticipatedProjects",
-    "underservedAreas",
-    "satelliteProposal",
-    "capitalCostFunding",
-    "capitalCostExplanation"
   ],
   "properties": {
     "organizationProfile": {
@@ -91,8 +86,8 @@ const schema = {
       "properties": {
         "zoneFeedback": {
           "type": "string",
-          "title": "Please refer to the Zone Map in the Request to Participate - Appendix A to respond to the following question. What feedback do you have on the proposed zone boundaries? If you were to apply to a funding program by zone, are there alterations to the zone boundaries that would make that easier? (Max. 3500 characters)",
-          "description": "What feedback do you have on the proposed zone boundaries? If you were to apply to a funding program by zone, are there alterations to the zone boundaries that would make that easier?(Max. 3500 characters)",
+          "title": "Please refer to the Zone Map in the Request to Participate - Appendix A to respond to the following question. What feedback do you have on the proposed zone boundaries? If you were to apply to a funding program by zone, are there alterations to the zone boundaries that would make that easier? Max. 3500 characters",
+          "description": "What feedback do you have on the proposed zone boundaries? If you were to apply to a funding program by zone, are there alterations to the zone boundaries that would make that easier?Max. 3500 characters",
           "maxLength": 10000
         }
       }
@@ -140,13 +135,13 @@ const schema = {
           "uniqueItems": true,
         },
         "backboneGaps": {
-          "title": "Please add any important details for addressing gaps in backbone needed to reach underserved households. For example, technology considerations, impactive geography, or connections to existing PoP. (Max. 3500 characters)",
-          "description": "For example, technology considerations, impactive geography, or connections to existing PoP. (Max. 3500 characters)",
+          "title": "Please add any important details for addressing gaps in backbone needed to reach underserved households. For example, technology considerations, impactive geography, or connections to existing PoP. Max. 3500 characters",
+          "description": "For example, technology considerations, impactive geography, or connections to existing PoP. Max. 3500 characters",
           "type": "string",
           "maxLength": 10000
         },
         "multipleBackboneDetails": {
-          "title": "If multiple backbone technologies are indicated, please describe at a high level where each backbone technology could be implemented and any transport requirements. (Max. 3500 characters)",
+          "title": "If multiple backbone technologies are indicated, please describe at a high level where each backbone technology could be implemented and any transport requirements. Max. 3500 characters",
           "type": "string",
           "maxLength": 10000
         },
@@ -157,20 +152,20 @@ const schema = {
       "type": "object",
       "properties": {
         "anticipatedProjects": {
-          "title": "Are there any specific planned or anticipated projects you want to tell us about? For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include? (Max. 3500 characters)",
-          "description": "For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include? (Max. 3500 characters)",
+          "title": "Are there any specific planned or anticipated projects you want to tell us about? For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include? (if applicable) Max. 3500 characters",
+          "description": "For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include? Max. 3500 characters",
           "type": "string",
           "maxLength": 10000
         },
         "underservedAreas": {
-          "title": "For underserved areas where your Geomark does not indicate a wired or wireless technology viability to serve those households, how could internet service providers be incentivized to serve those areas? Please note, Geomark files are uploaded on the final page of this form. (Max. 3500 characters)",
-          "description": "Please note, Geomark files are uploaded on the final page of this form. (Max. 3500 characters)",
+          "title": "For underserved areas where your Geomark does not indicate a wired or wireless technology viability to serve those households, how could internet service providers be incentivized to serve those areas? Please note, Geomark files are uploaded on the final page of this form. (if applicable) Max. 3500 characters",
+          "description": "Please note, Geomark files are uploaded on the final page of this form. Max. 3500 characters",
           "type": "string",
           "maxLength": 10000
         },
         "satelliteProposal": {
-          "title": "In the information linked in Appendix C of the Request to Participate, some areas were proposed to be best served by satellite. How do these proposed areas align with the expectations of your organization? Please provide feedback on the modelling assumptions. (Max. 3500 characters)",
-          "description": "(Max. 3500 characters)",
+          "title": "In the information linked in Appendix C of the Request to Participate, some areas were proposed to be best served by satellite. How do these proposed areas align with the expectations of your organization? Please provide feedback on the modelling assumptions. (if applicable) Max. 3500 characters",
+          "description": "Max. 3500 characters",
           "type": "string",
           "maxLength": 10000
         }
@@ -181,14 +176,14 @@ const schema = {
       "type": "object",
       "properties": {
         "capitalCostFunding": {
-          "title": "If funding was available for capital costs, which sections of highway could be completed? Please consider traffic and consumption factors. Please list the sections of highway. (Max. 3500 characters)",
-          "description": "(Max. 3500 characters)",
+          "title": "If funding was available for capital costs, which sections of highway could be completed? Please consider traffic and consumption factors. Please list the sections of highway. (if applicable) Max. 3500 characters",
+          "description": "Max. 3500 characters",
           "type": "string",
           "maxLength": 10000
         },
         "capitalCostExplanation": {
-          "title": "Please explain why you chose those sections. (Max. 3500 characters)",
-          "description": "(Max. 3500 characters)",
+          "title": "Please explain why you chose those sections. (if applicable) Max. 3500 characters",
+          "description": "Max. 3500 characters",
           "type": "string",
           "maxLength": 10000
         }
@@ -199,19 +194,19 @@ const schema = {
       "type": "object",
       "properties": {
         "lastMileBroadbandGeomark": {
-          "title": "Wired broadband last mile (paste link to the Geomark below)",
+          "title": "Wired broadband last mile (paste link to the Geomark below) (if applicable)",
           "type": "string"
         },
         "lastMileFixedWirelessGeomark": {
-          "title": "Fixed wireless last mile (paste link to the Geomark below)",
+          "title": "Fixed wireless last mile (paste link to the Geomark below) (if applicable)",
           "type": "string"
         },
         "lastMileNewBackboneGeomark": {
-          "title": "New backbone technology possibly needed for last mile (paste link to the Geomark below)",
+          "title": "New backbone technology possibly needed for last mile (paste link to the Geomark below) (if applicable)",
           "type": "string"
         },
         "highwayCellularGeomark": {
-          "title": "Cellular along powered highways (paste link to the Geomark below)",
+          "title": "Cellular along powered highways (paste link to the Geomark below) (if applicable)",
           "type": "string"
         }
       }
