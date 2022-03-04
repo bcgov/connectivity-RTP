@@ -41,19 +41,46 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
   const renderGeomarkDesc = (formIndex) => {
     return formIndex === 7 &&  (
       <div>
-        The Geomark Web Service allows you to create and share geographic areas in a variety of
+        <p><strong>The Geomark Web Service allows you to create and share geographic areas in a variety of
         formats and coordinate systems. A geomark can be created from common files such as Google
         Earth’s KML or KMZ, ESRI shapefile, GeoJSON, Geography Markup Language (GML), or
         Well-Known Text Geometry (WKT). A geomark can also be created in Google Earth or from
-        other Geomarks. All instructions for creating a Geomark can be found at
-        https://www2.gov.bc.ca/gov/content/data/geographic-data-services/location-services/geomark-webservice
-        Geomarks can be created at: https://apps.gov.bc.ca/pub/geomark/geomarks Contact for help
-        with Geomarks can be found at https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6
-        Assuming that whole or part of capital costs of building connectivity infrastructure is covered by a
+          other Geomarks. All instructions for creating a Geomark can be found at <a href="https://www2.gov.bc.ca/gov/content/data/geographic-data-services/location-services/geomark-webservice">
+            https://www2.gov.bc.ca/gov/content/data/geographic-data-services/location-services/geomark-webservice</a></strong></p>
+        <p><strong>Geomarks can be created at: <a href="https://apps.gov.bc.ca/pub/geomark/geomarks">
+          https://apps.gov.bc.ca/pub/geomark/geomarks</a></strong></p>
+        <p><strong>Contact for help with Geomarks can be found at <a href="https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6">
+            https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6</a></strong></p>
+        <p><strong>Assuming that whole or part of capital costs of building connectivity infrastructure is covered by a
         funding program, please paste a Geomark URL for underserved areas where the following technology
-        is most viable and suitable:
+        is most viable and suitable:</strong></p>
       </div>
     )
+  }
+
+  const renderDesc = (formIndex) => {
+    if (formIndex === 3) {
+      return (
+        <div>
+          <p><strong>
+            We're looking to identify where there could be viable business cases
+            and technical suitability for fibre to the home, coaxial to the home or
+            wireless last mile solutions, and cellular availability along highways.
+          </strong></p>
+        </div>
+      )
+    }
+    if (formIndex === 6) {
+      return (
+        <div>
+          <p><strong>
+            The Province has identified gaps in cellular service along powered highways
+            in BC for respondents’ reference. This information is contained in the KMZ
+            file linked in Appendix C of the Request to Participate.
+          </strong></p>
+        </div>
+      )
+    }
   }
 
   useEffect(() => {
@@ -69,6 +96,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       <StyledDiv>
         <BCGovTitle>{pageTitle(schema, formIndex)}</BCGovTitle>
         {renderGeomarkDesc(formIndex)}
+        {renderDesc(formIndex)}
         {validPage && (
           <Form formData={formData} rerouteHandler={rerouteHandler}>
             {!onFirstPage && (

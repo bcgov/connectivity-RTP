@@ -22,7 +22,7 @@ const schema = {
   ],
   "properties": {
     "organizationProfile": {
-      "title": "Organization Profile",
+      "title": "Organization profile",
       "type": "object",
       "properties": {
         "organizationName": {
@@ -60,7 +60,7 @@ const schema = {
       },
     },
     "contactInformation": {
-      "title": "Contact Information",
+      "title": "Contact information",
       "type": "object",
       "properties": {
         "primaryContact": {
@@ -69,7 +69,7 @@ const schema = {
         },
         "postion": {
           "type": "string",
-          "title": "Position/Title"
+          "title": "Position/title"
         },
         "contactEmail": {
           "type": "string",
@@ -86,7 +86,7 @@ const schema = {
       },
     },
     "proposedZoneFeedback": {
-      "title": "Proposed Zone Feedback",
+      "title": "Proposed zone feedback",
       "type": "object",
       "properties": {
         "zoneFeedback": {
@@ -98,24 +98,23 @@ const schema = {
       }
     },
     "technologyViability": {
-      "title": "Technology Viability",
-      "description": "We're looking to identify where there could be viable business cases and technical suitability for fibre to the home, coaxial to the home or wireless last mile solutions, and cellular availability along highways.",
+      "title": "Technology viability",
       "type": "object",
       "properties": {
         "wiredBroadband": {
           "type": "number",
-          "title": "Wired Broadband (Fibre or Coaxial) - Approximately how many underserved households in the province could be reached by wired broadband?",
+          "title": "Wired broadband (fibre or coaxial) - Approximately how many underserved households in the province could be reached by wired broadband?",
           "description": "Approximately how many underserved households in the province could be reached by wired broadband?",
         },
         "fixedWireless": {
           "type": "number",
-          "title": "Fixed Wireless - Approximately how many underserved households could be reached by fixed wireless?",
+          "title": "Fixed wireless - Approximately how many underserved households could be reached by fixed wireless?",
           "description": "Approximately how many underserved households could be reached by fixed wireless?"
         }
       }
     },
     "backboneSupportLastMile": {
-      "title": "Backbone to Support Last Mile",
+      "title": "Backbone to support last mile",
       "type": "object",
       "properties": {
         "lastMileSupport": {
@@ -154,7 +153,7 @@ const schema = {
       },
     },
     "additionalQuestions": {
-      "title": "Additional Questions",
+      "title": "Additional questions",
       "type": "object",
       "properties": {
         "anticipatedProjects": {
@@ -178,8 +177,7 @@ const schema = {
       }
     },
     "highwayCellular": {
-      "title": "Highway Cellular",
-      "description": "The Province has identified gaps in cellular service along powered highways in BC for respondents’ reference. This information is contained in the KMZ file linked in Appendix C of the Request to Participate.",
+      "title": "Highway cellular",
       "type": "object",
       "properties": {
         "capitalCostFunding": {
