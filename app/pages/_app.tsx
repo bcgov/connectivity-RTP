@@ -22,6 +22,9 @@ const GlobalStyle = createGlobalStyle`
   .pg-input-input {
     margin-bottom: 1em;
   }
+  .pg-radio {
+    margin: 1em;
+  }
 `;
 
 const theme = {
@@ -40,6 +43,10 @@ const LogoutForm = styled.div`
   margin: 0 5px 0 auto;
 `;
 
+const StyledButton = styled(Button)`
+  background-color: #fff;
+`;
+
 const formStyle = {
   marginBottom: "0",
 };
@@ -53,7 +60,7 @@ export default function App({ Component, pageProps }) {
         <Navigation header="main" title="Request to Participate">
           <LogoutForm>
             <form action="/logout" method="POST" style={formStyle}>
-              <Button variant="secondary">Logout</Button>
+              <StyledButton variant="secondary">Logout</StyledButton>
             </form>
           </LogoutForm>
         </Navigation>

@@ -22,7 +22,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
 
   const handleBackClick = () => {
     if (onFirstPage) return;
-    router.push(`/form/${prevPageUrl}`);
+    router.push(`/form${prevPageUrl}`);
   };
 
   const buttonDisabled = () => {

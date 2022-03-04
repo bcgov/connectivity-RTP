@@ -37,14 +37,16 @@ export default function Home() {
   };
 
   const setButton = (response) => {
-    const applicationStatus = response.data.allApplications.nodes[0].status;
-    const isExistingApplication = response.data.allApplications.nodes[0]
-      ? true
-      : false;
-    if (applicationStatus === "complete") {
-      setButtonText("View Responses");
-    } else if (isExistingApplication) {
-      setButtonText("Resume");
+    if (response.data.allApplications.nodes[0]) {
+      const applicationStatus = response.data.allApplications.nodes[0].status;
+      const isExistingApplication = response.data.allApplications.nodes[0]
+        ? true
+        : false;
+      if (applicationStatus === "complete") {
+        setButtonText("View Responses");
+      } else if (isExistingApplication) {
+        setButtonText("Resume");
+      }
     } else {
       setButtonText("Begin");
     }
@@ -95,7 +97,7 @@ export default function Home() {
           information that was outlined in the instructions ready.
           <br />
           <br />
-          Please complete this form before it closes on April 13, 2022, 2:00 PM
+          Please complete this form before it closes on April 18, 2022, 2:00 PM
           Pacific Time.
         </p>
         <BCGovTitle>Materials</BCGovTitle>
