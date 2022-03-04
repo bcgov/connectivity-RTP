@@ -3,6 +3,7 @@ import BCGovTitle from "../../components/BCGovTitle";
 import SButton from "../../components/SButton";
 import ReviewDiv from "../../components/ReviewDiv";
 import { queryUser } from "../../utils/query-data";
+import postStatus from "../../utils/post-status";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -38,16 +39,29 @@ export default function review() {
     lastMileNewBackboneGeomark: "",
     lastMileFixedWirelessGeomark: "",
   });
+  const [applicationId, setApplicationId] = useState();
+  const [status, setStatus] = useState("");
   const router = useRouter();
 
-  const completeForm = () => {
+  const completeForm = async () => {
+    const status = {
+      applicationId,
+      status: "complete",
+    };
+    postStatus(status);
     router.push("/form/end");
+  };
+
+  const buttonDisabled = () => {
+    if (status === "complete") return true;
   };
 
   useEffect(() => {
     async function fetchData() {
       const response = await queryUser();
+      setStatus(response.data.allApplications.nodes[0].status);
       setReviewData(response.data.allApplications.nodes[0].formData);
+      setApplicationId(response.data.allApplications.nodes[0].id);
     }
     fetchData();
   }, [MainStyledDiv]);
@@ -67,10 +81,18 @@ export default function review() {
           </p>
         </div>
         <div>
-          <SButton variant="secondary" onClick={() => router.push("/form/8")}>
+          <SButton
+            variant="secondary"
+            onClick={() => router.push("/form/8")}
+            disabled={buttonDisabled()}
+          >
             Back
           </SButton>
-          <SButton variant="primary" onClick={completeForm}>
+          <SButton
+            variant="primary"
+            onClick={completeForm}
+            disabled={buttonDisabled()}
+          >
             Complete & Send
           </SButton>
         </div>
@@ -206,10 +228,18 @@ export default function review() {
           </ReviewDiv>
         </div>
         <div>
-          <SButton variant="secondary" onClick={() => router.push("/form/8")}>
+          <SButton
+            variant="secondary"
+            onClick={() => router.push("/form/8")}
+            disabled={buttonDisabled()}
+          >
             Back
           </SButton>
-          <SButton variant="primary" onClick={completeForm}>
+          <SButton
+            variant="primary"
+            onClick={completeForm}
+            disabled={buttonDisabled()}
+          >
             Complete & Send
           </SButton>
         </div>

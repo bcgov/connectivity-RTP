@@ -1,13 +1,15 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { applySession } from "next-session";
 import { useRouter } from "next/router";
 import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
 import StyledDiv from "../../components/MainStyledDiv";
 import { LAST_PAGE } from "../../services/application";
-import { queryData } from "../../utils/query-data";
+import { queryData, queryUser } from "../../utils/query-data";
 
 export default function home({ formIndex, formData, validPage, prevPageUrl }) {
+  const [status, setStatus] = useState("");
   const Form = Forms[formIndex];
   const router = useRouter();
   const onFirstPage = prevPageUrl === -1;
@@ -23,6 +25,18 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
     router.push(`/form/${prevPageUrl}`);
   };
 
+  const buttonDisabled = () => {
+    if (status === "complete") return true;
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await queryUser();
+      setStatus(response.data.allApplications.nodes[0].status);
+    }
+    fetchData();
+  }, [StyledDiv]);
+
   return (
     <>
       <StyledDiv>
@@ -33,11 +47,14 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
                 type="button"
                 variant="secondary"
                 onClick={handleBackClick}
+                disabled={buttonDisabled()}
               >
                 Back
               </SButton>
             )}
-            <SButton variant="primary">{continueButtonText}</SButton>
+            <SButton variant="primary" disabled={buttonDisabled()}>
+              {continueButtonText}
+            </SButton>
           </Form>
         )}
       </StyledDiv>

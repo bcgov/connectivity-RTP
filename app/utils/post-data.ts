@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import { response } from "express";
 
 dotenv.config();
 
@@ -20,8 +19,6 @@ export default async function postData(
       `req.rawHeaders are missing in postData ${JSON.stringify(req)}`
     );
   }
-  // const applicationId = session.get("applicationId");
-  // Change to update application
   const applicationMutation = `mutation ApplicationPatch($applicationId: ID = "", $formData: JSON = "", $status: String = "draft") {
   updateApplication(
     input: {id: $applicationId, applicationPatch: {formData: $formData, status: $status}}
@@ -53,6 +50,7 @@ export default async function postData(
     const res = await fetch(`${baseUrl}/graphql`, {
       method: "POST",
       headers,
+      credentials: "include",
       body: JSON.stringify({
         query: applicationMutation,
         variables,
