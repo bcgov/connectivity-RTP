@@ -53,7 +53,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
             https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6</a></strong></p>
         <p><strong>Assuming that whole or part of capital costs of building connectivity infrastructure is covered by a
         funding program, please paste a Geomark URL for underserved areas where the following technology
-        is most viable and suitable:</strong></p>
+        is most viable and suitable: </strong></p>
       </div>
     )
   }
