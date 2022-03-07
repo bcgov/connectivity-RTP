@@ -10,7 +10,7 @@ image:
     tag: latest # The tag value must be passed in via the deploy script
     clientSecret: "" # clientSecret must be passed in via deploy script
   psql:
-    repository: registry.opensource.zalan.do/acid/spilo-14
+    repository: https://bcgov.github.io/spilo-chart
     tag: "0.3.0"
   db:
     repository: ghcr.io/bcgov/connectivity-intake/connectivity-intake-db
