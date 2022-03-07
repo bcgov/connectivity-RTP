@@ -10,7 +10,7 @@ image:
     tag: latest # The tag value must be passed in via the deploy script
     clientSecret: "" # clientSecret must be passed in via deploy script
   psql:
-    repository: gcr.io/ggl-cas-storage/cas-postgres
+    repository: registry.opensource.zalan.do/acid/spilo-14
     tag: "0.3.0"
   db:
     repository: ghcr.io/bcgov/connectivity-intake/connectivity-intake-db
@@ -40,32 +40,18 @@ deployer:
   serviceAccount:
     enabled: true
 
-cas-postgres:
-  patroni:
-    resources:
-      limits:
-        cpu: "210m"
-        memory: "512Mi"
-      requests:
-        cpu: "70m"
-        memory: "256Mi"
-    persistentVolume:
-      size: "300Mi"
-      storageClass: netapp-block-standard
-    replicaCount: 3
-    env:
-      ALLOW_NOSSL: true
-      USE_WALG_BACKUP: "true"
-      USE_WALG_RESTORE: "true"
-    walE:
-      enable: false # to be changed when we do backups
-      gcsBucket: ~
-      # kubernetesSecret should be gcp-{{ namespace }}-{{ gcs.bucketSuffix }}-service-account-key
-      kubernetesSecret: ~
-    # options below are required if walE.enable is true
-  namespace: ~
-  gcs:
-    bucketSuffix: ~
+spilo:
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  env:
+    ALLOW_NOSSL: true
+    USE_WALG_BACKUP: "true"
+    USE_WALG_RESTORE: "true"
 
 db:
   name: connectivity_intake
