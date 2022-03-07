@@ -42,16 +42,13 @@ deployer:
 
 spilo:
   resources:
+  # default values spec'd from spilo-chart repo
     limits:
       cpu: 100m
       memory: 128Mi
     requests:
       cpu: 100m
       memory: 128Mi
-  env:
-    ALLOW_NOSSL: true
-    USE_WALG_BACKUP: "true"
-    USE_WALG_RESTORE: "true"
 
 db:
   name: connectivity_intake
