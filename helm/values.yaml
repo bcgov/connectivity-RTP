@@ -53,37 +53,10 @@ db:
   ownerUser: connectivity_intake
   preInitCommand: ""
 
-continuousArchive:
-  # Specifies whether continuous archiving with wal-g should be enabled
-  enabled: true
-  # Cron schedule for doing base backups
-  scheduleCronJob: 00 01 * * *
-  # Amount of base backups to retain
-  retainBackups: 15
+spilo:
+  continuousArchive:
+    pvc:
+      size: 300Mi
 
-  # The storage solution used by wal-g: pvc (default), s3, or gcs are supported by this helm chart
-  # https://github.com/wal-g/wal-g/blob/master/docs/STORAGES.md
-  storage: pvc
-  pvc:
-    storageClass: netapp-file-backup
-    size: 300Mi
-
-  s3:
-    bucket: ~
-    secretName: ~
-  gcs:
-    bucket: ~
-    # The GCS  bucket folder where the logs will be updated
-    backupLocation: wal
-    # Name of the secret that holds the credentials to the bucket
-    credentialSecretName: ~
-
-persistentVolume:
-  enabled: true
-  size: 150Mi
-  storageClass: "netapp-block-standard"
-  subPath: ""
-  mountPath: "/home/postgres/pgdata"
-  annotations: {}
-  accessModes:
-    - ReadWriteOnce
+  persistentVolume:
+    size: 150Mi
