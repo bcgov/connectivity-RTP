@@ -21,7 +21,7 @@ app:
   probesPort: "9000"
   namespace: ""
 route:
-  host: ""  # The host value must be passed in via the deploy script: connectivity-rtp-dev.apps.silver.devops.gov.bc.ca
+  host: ""  # The host value must be passed in via the deploy script: connectivity-rtp.apps.silver.devops.gov.bc.ca
 
 networkPolicies:
   enabled: true
@@ -36,10 +36,10 @@ resources:
       memory: "256Mi"
   psql:
     limits:
-      cpu: "50m"
+      cpu: "150m"
       memory: "64Mi"
     requests:
-      cpu: "10m"
+      cpu: "50m"
       memory: "32Mi"
 
 deployer:
