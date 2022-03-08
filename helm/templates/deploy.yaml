@@ -63,11 +63,11 @@ spec:
         image: {{ .Values.image.psql.repository }}:{{ .Values.image.psql.tag }}
         resources:
           limits:
-            cpu: {{ .Values.spilo.resources.limits.cpu }}
-            memory: {{ .Values.spilo.resources.limits.memory }}
+            cpu: {{ .Values.resources.psql.limits.cpu }}
+            memory: {{ .Values.resources.psql.limits.memory }}
           requests:
-            cpu: {{ .Values.spilo.resources.requests.cpu }}
-            memory: {{ .Values.spilo.resources.requests.memory }}
+            cpu: {{ .Values.resources.psql.requests.cpu }}
+            memory: {{ .Values.resources.psql.requests.memory }}
         command:
           - /usr/bin/env
           - bash
@@ -109,11 +109,11 @@ spec:
         imagePullPolicy: {{ .Values.image.db.pullPolicy }}
         resources:
           limits:
-            cpu: {{ .Values.spilo.resources.limits.cpu }}
-            memory: {{ .Values.spilo.resources.limits.memory }}
+            cpu: {{ .Values.resources.psql.limits.cpu }}
+            memory: {{ .Values.resources.psql.limits.memory }}
           requests:
-            cpu: {{ .Values.spilo.resources.requests.cpu }}
-            memory: {{ .Values.spilo.resources.requests.memory }}
+            cpu: {{ .Values.resources.psql.requests.cpu }}
+            memory: {{ .Values.resources.psql.requests.memory }}
         command:
           - /usr/bin/env
           - bash

@@ -34,6 +34,14 @@ resources:
     limits:
       cpu: "150m"
       memory: "256Mi"
+  psql:
+    resources:
+      limits:
+        cpu: "50m"
+        memory: "64Mi"
+      requests:
+        cpu: "10m"
+        memory: "32Mi"
 
 deployer:
   namespace: bc5936-dev
@@ -41,17 +49,10 @@ deployer:
     enabled: true
 
 spilo:
-  resources:
-    limits:
-      cpu: "50m"
-      memory: "64Mi"
-    requests:
-      cpu: "10m"
-      memory: "32Mi"
   persistentVolume:
-    size: "250Mi"
+    size: "256Mi"
   pvc:
-    size: "500Mi"
+    size: "512Mi"
 
 db:
   name: connectivity_intake
