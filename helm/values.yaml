@@ -10,7 +10,7 @@ image:
     tag: latest # The tag value must be passed in via the deploy script
     clientSecret: "" # clientSecret must be passed in via deploy script
   psql:
-    repository: https://bcgov.github.io/spilo-chart
+    repository: gcr.io/ggl-cas-storage/cas-postgres
     tag: "0.3.0"
   db:
     repository: ghcr.io/bcgov/connectivity-intake/connectivity-intake-db
@@ -42,13 +42,16 @@ deployer:
 
 spilo:
   resources:
-  # default values spec'd from spilo-chart repo
     limits:
-      cpu: 100m
-      memory: 128Mi
+      cpu: "50m"
+      memory: "64Mi"
     requests:
-      cpu: 100m
-      memory: 128Mi
+      cpu: "10m"
+      memory: "32Mi"
+  persistentVolume:
+    size: "250Mi"
+  pvc:
+    size: "500Mi"
 
 db:
   name: connectivity_intake
