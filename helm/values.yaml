@@ -66,7 +66,7 @@ continuousArchive:
   storage: pvc
   pvc:
     storageClass: netapp-file-backup
-    size: 500Mi
+    size: 100Mi
 
   s3:
     bucket: ~
@@ -80,7 +80,7 @@ continuousArchive:
 
 persistentVolume:
   enabled: true
-  size: 250Mi
+  size: 50Mi
   storageClass: "netapp-block-standard"
   subPath: ""
   mountPath: "/home/postgres/pgdata"
