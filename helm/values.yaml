@@ -35,13 +35,12 @@ resources:
       cpu: "150m"
       memory: "256Mi"
   psql:
-    resources:
-      limits:
-        cpu: "50m"
-        memory: "64Mi"
-      requests:
-        cpu: "10m"
-        memory: "32Mi"
+    limits:
+      cpu: "50m"
+      memory: "64Mi"
+    requests:
+      cpu: "10m"
+      memory: "32Mi"
 
 deployer:
   namespace: bc5936-dev
