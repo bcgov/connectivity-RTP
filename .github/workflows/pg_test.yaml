@@ -1,0 +1,47 @@
+name: Postgres tests with pg-tap
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  pgtap:
+    runs-on: ubuntu-latest
+    services: 
+      postgres:
+        image: postgres:14
+        env:
+          PG_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v2
+      - name: install pg_prove
+        run: sudo cpan TAP::Parser::SourceHandler::pgTAP
+        env:
+          SHELL: /bin/bash
+      - name: install postgres dev
+        run: sudo apt-get install -y --no-install-recomends postgresql-server-dev-all
+      - name: Checkout pgtap
+        uses: actions/checkout@v2
+        with:
+          repository: theory/pgtap
+          path: pgtap
+          ref: v1.2.0
+      - name: install pgtap
+        working-directory: pgtap
+        run: make && psql --host localhost --username postgres --dbname connectivity_intake --file sql/pgtap.sql
+        env:
+          PGPASSWORD: postgres
+      - name: Provision database
+        working-directory: db
+        run: sqitch deploy
+      - name: Run tests
+        run: pg_prove --host localhost --username postgres --dbname connectivity_intake app/pgTap/*_test.sql
+        env:
+          PGPASSWORD: postgres
