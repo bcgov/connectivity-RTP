@@ -20,7 +20,7 @@ const uiSchema = {
       "rows": 50
     }
   },
-  "anticipatedProjects": {
+  "pendingProjects": {
     "ui:widget": "textarea",
     "ui:options": {
       "cols": 100,
@@ -55,12 +55,25 @@ const uiSchema = {
       "rows": 50
     }
   },
+  "govtIndigenousConnFocus": {
+    "ui:widget": "textarea",
+    "ui:options": {
+      "cols": 100,
+      "rows": 50
+    }
+  },
   "newBackboneTechnology": {
     "ui:widget": "checkboxes"
   },
   "lastMileSupport": {
     "ui:widget": "radio",
   },
+  "organizationType": {
+    "ui:widget": "checkboxes",
+  },
+  "zoneInformation": {
+    "ui:widget": "checkboxes",
+  }
 };
 
 export default uiSchema;

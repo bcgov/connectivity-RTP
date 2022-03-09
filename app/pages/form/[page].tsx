@@ -4,7 +4,7 @@ import { applySession } from "next-session";
 import { useRouter } from "next/router";
 import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
-import StyledDiv from "../../components/MainStyledDiv";
+import FormStyledDiv from "../../components/FormStyledDiv";
 import BCGovTitle from "../../components/BCGovTitle";
 import { LAST_PAGE } from "../../services/application";
 import { queryData, queryUser } from "../../utils/query-data";
@@ -38,46 +38,79 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
     return titles[formIndex]
   }
 
-  const renderGeomarkDesc = (formIndex) => {
-    return formIndex === 7 &&  (
-      <div>
-        <p><strong>The Geomark Web Service allows you to create and share geographic areas in a variety of
-        formats and coordinate systems. A geomark can be created from common files such as Google
-        Earth’s KML or KMZ, ESRI shapefile, GeoJSON, Geography Markup Language (GML), or
-        Well-Known Text Geometry (WKT). A geomark can also be created in Google Earth or from
-          other Geomarks. All instructions for creating a Geomark can be found at <a href="https://www2.gov.bc.ca/gov/content/data/geographic-data-services/location-services/geomark-webservice" target="_blank">
-            https://www2.gov.bc.ca/gov/content/data/geographic-data-services/location-services/geomark-webservice</a></strong></p>
-        <p><strong>Geomarks can be created at <a href="https://apps.gov.bc.ca/pub/geomark/geomarks" target="_blank">
-          https://apps.gov.bc.ca/pub/geomark/geomarks</a></strong></p>
-        <p><strong>Contact for help with Geomarks can be found at <a href="https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6" target="_blank">
-            https://dpdd.atlassian.net/servicedesk/customer/portal/1/group/7/create/6</a></strong></p>
-        <p><strong>Assuming that whole or part of capital costs of building connectivity infrastructure is covered by a
-        funding program, please paste a Geomark URL for underserved areas where the following technology
-        is most viable and suitable: </strong></p>
-      </div>
-    )
-  }
-
   const renderDesc = (formIndex) => {
     if (formIndex === 3) {
       return (
         <div>
-          <p><strong>
-            We're looking to identify where there could be viable business cases
-            and technical suitability for fibre to the home, coaxial to the home or
-            wireless last mile solutions, and cellular availability along highways.
-          </strong></p>
+          <p>
+            This question is to indicate which zones or regions of the province
+            you are providing feedback for in the RTP.
+          </p>
+        </div>
+      )
+    }
+    if (formIndex === 4) {
+      return (
+        <div>
+          <p>
+            This section is to provide feedback on potential areas for expansion of
+            high-speed internet. We are looking for respondents to identify areas where
+            fibre, coax or fixed wireless could be expanded.
+          </p>
+        </div>
+      )
+    }
+    if (formIndex === 5) {
+      return (
+        <div>
+          <p>
+            This section focuses on existing backbone infrastructure. For the information
+            described in Q3, is there existing backbone infrastructure to deliver the last
+            mile projects as specified? Existing backbone is defined by connecting to a
+            point of presence (“PoP”) in the community. New backbone is defined by requiring
+            fibre or microwave transport to access a PoP in another community to support
+            your last mile project.
+          </p>
         </div>
       )
     }
     if (formIndex === 6) {
       return (
         <div>
-          <p><strong>
-            The Province has identified gaps in cellular service along powered highways
-            in BC for respondents’ reference. This information is contained in the KMZ
-            file linked in Appendix C of the Request to Participate.
-          </strong></p>
+          <p>
+            This section provides an opportunity to provide additional specific information
+            that will help meet the objectives outlined in the RTP.
+          </p>
+          <p>
+            This section asks respondents about any upcoming connectivity plans or projects
+            we should know about to understand the remaining gaps in the province.
+          </p>
+        </div>
+      )
+    }
+    if (formIndex === 7) {
+      return (
+        <div>
+          <p>
+            This section is to provide feedback on the gaps in highway cellular coverage
+            in the province. The Province has identified gaps in cellular service along
+            highways (with power) in B.C. The gaps are highlighted in the KMZ file for Highway
+            Cellular. Information on how to download the KMZ files is linked in Appendix D
+            of the Request to Participate.
+          </p>
+        </div>
+      )
+    }
+    if (formIndex === 9) {
+      return (
+        <div>
+          <p>
+            This section is for any project mentioned in the RTP. Assuming that whole or part
+            of capital costs of building connectivity infrastructure could be covered by a
+            funding program, please paste a Geomark URL for the projects you have referred to
+            in earlier sections of your response. Note this is for underserved areas where
+            the following technology is most viable and suitable:
+          </p>
         </div>
       )
     }
@@ -89,13 +122,12 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       setStatus(response.data.allApplications.nodes[0].status);
     }
     fetchData();
-  }, [StyledDiv]);
+  }, [FormStyledDiv]);
 
   return (
     <>
-      <StyledDiv>
+      <FormStyledDiv>
         <BCGovTitle>{pageTitle(schema, formIndex)}</BCGovTitle>
-        {renderGeomarkDesc(formIndex)}
         {renderDesc(formIndex)}
         {validPage && (
           <Form formData={formData} rerouteHandler={rerouteHandler}>
@@ -114,7 +146,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
             </SButton>
           </Form>
         )}
-      </StyledDiv>
+      </FormStyledDiv>
     </>
   );
 }
