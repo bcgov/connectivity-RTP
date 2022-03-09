@@ -7,6 +7,7 @@ on:
 jobs:
   Run-pgTAP-tests:
     runs-on: ubuntu-latest
+    container: node:16-alpine
     services: 
       postgres:
         image: postgres:14
@@ -14,8 +15,8 @@ jobs:
           PG_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
-          --health-interval 20s
-          --health-timeout 10s
+          --health-interval 10s
+          --health-timeout 5s
           --health-retries 5
         ports:
           - 5432:5432
