@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   .pg-card-header {
     font-size: 1.75em;
     font-weight: 700;
-    padding: 0.6em;
+    padding: 0.5em;
   }
 `;
 

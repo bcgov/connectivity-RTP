@@ -46,6 +46,7 @@ export default function start() {
                     <li>Gaps in highway cellular for highways that have power (hydro).</li>
                   </ul>
                 </span>
+                <br/>
                 <p>
                   If you need assistance with viewing the KMZ files, or with any aspect
                   of the RTP process, please email us at <Link href="mailto:connectingcommunitiesbc@gov.bc.ca">connectingcommunitiesbc@gov.bc.ca</Link>.
@@ -54,7 +55,7 @@ export default function start() {
               <li><p>Prepare to answer the questions</p>
                 <p>
                   Please ensure you have the following information for your organization
-                  ready to fill out the form.These questions are described in Appendix B 
+                  ready to fill out the form. These questions are described in Appendix B 
                   of the RTP document.
                 </p>
                 <p>
