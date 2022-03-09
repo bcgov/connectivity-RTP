@@ -42,7 +42,7 @@ spec:
               - name: PGPORT
                 value: "5432"
               - name: PGHOST
-                value: {{ template "connectivity-intake.fullname" . }}-patroni
+                value: {{ template "connectivity-intake.fullname" . }}-spilo
               - name: NAMESPACE
                 valueFrom:
                   fieldRef:

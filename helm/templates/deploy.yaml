@@ -29,7 +29,7 @@ spec:
           valueFrom:
             secretKeyRef:
               key: password-superuser
-              name: {{ template "connectivity-intake.fullname" . }}-patroni
+              name: {{ template "connectivity-intake.fullname" . }}-spilo
         - name: PGUSER_OWNER
           valueFrom:
             secretKeyRef:
@@ -58,16 +58,16 @@ spec:
         - name: PGPORT
           value: "5432"
         - name: PGHOST
-          value: {{ template "connectivity-intake.fullname" . }}-patroni
+          value: {{ template "connectivity-intake.fullname" . }}-spilo
         name: {{ template "connectivity-intake.fullname" . }}-provision-pg-credentials
         image: {{ .Values.image.psql.repository }}:{{ .Values.image.psql.tag }}
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
+            cpu: {{ .Values.resources.psql.limits.cpu }}
+            memory: {{ .Values.resources.psql.limits.memory }}
           requests:
-            cpu: 10m
-            memory: 32Mi
+            cpu: {{ .Values.resources.psql.requests.cpu }}
+            memory: {{ .Values.resources.psql.requests.memory }}
         command:
           - /usr/bin/env
           - bash
@@ -98,7 +98,7 @@ spec:
         - name: PGPORT
           value: "5432"
         - name: PGHOST
-          value: {{ template "connectivity-intake.fullname" . }}-patroni
+          value: {{ template "connectivity-intake.fullname" . }}-spilo
         - name: NAMESPACE
           valueFrom:
             fieldRef:
@@ -109,11 +109,11 @@ spec:
         imagePullPolicy: {{ .Values.image.db.pullPolicy }}
         resources:
           limits:
-            cpu: 50m
-            memory: 64Mi
+            cpu: {{ .Values.resources.psql.limits.cpu }}
+            memory: {{ .Values.resources.psql.limits.memory }}
           requests:
-            cpu: 10m
-            memory: 32Mi
+            cpu: {{ .Values.resources.psql.requests.cpu }}
+            memory: {{ .Values.resources.psql.requests.memory }}
         command:
           - /usr/bin/env
           - bash
@@ -148,7 +148,7 @@ spec:
           - name: PGPORT
             value: "5432"
           - name: PGHOST
-            value: {{ template "connectivity-intake.fullname" . }}-patroni
+            value: {{ template "connectivity-intake.fullname" . }}-spilo
           - name: SESSION_SECRET
             valueFrom: 
               secretKeyRef:

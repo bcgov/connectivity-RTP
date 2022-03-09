@@ -21,7 +21,7 @@ app:
   probesPort: "9000"
   namespace: ""
 route:
-  host: ""  # The host value must be passed in via the deploy script: connectivity-rtp-dev.apps.silver.devops.gov.bc.ca
+  host: ""  # The host value must be passed in via the deploy script: connectivity-rtp.apps.silver.devops.gov.bc.ca
 
 networkPolicies:
   enabled: true
@@ -34,41 +34,29 @@ resources:
     limits:
       cpu: "150m"
       memory: "256Mi"
+  psql:
+    limits:
+      cpu: "150m"
+      memory: "64Mi"
+    requests:
+      cpu: "50m"
+      memory: "32Mi"
 
 deployer:
   namespace: bc5936-dev
   serviceAccount:
     enabled: true
 
-cas-postgres:
-  patroni:
-    resources:
-      limits:
-        cpu: "210m"
-        memory: "512Mi"
-      requests:
-        cpu: "70m"
-        memory: "256Mi"
-    persistentVolume:
-      size: "300Mi"
-      storageClass: netapp-block-standard
-    replicaCount: 3
-    env:
-      ALLOW_NOSSL: true
-      USE_WALG_BACKUP: "true"
-      USE_WALG_RESTORE: "true"
-    walE:
-      enable: false # to be changed when we do backups
-      gcsBucket: ~
-      # kubernetesSecret should be gcp-{{ namespace }}-{{ gcs.bucketSuffix }}-service-account-key
-      kubernetesSecret: ~
-    # options below are required if walE.enable is true
-  namespace: ~
-  gcs:
-    bucketSuffix: ~
-
 db:
   name: connectivity_intake
   appUser: connectivity_intake_app
   ownerUser: connectivity_intake
   preInitCommand: ""
+
+spilo:
+  continuousArchive:
+    pvc:
+      size: "300Mi"
+
+  persistentVolume:
+    size: "150Mi"
