@@ -28,7 +28,7 @@ export default function start() {
             the zone map (Appendix A) and supporting data (Appendix C).
           </p>
           <p>In addition, please access the information below:</p>
-          <p>
+          <span>
             <ol>
               <li><p>Download and view the supporting files</p>
                 <p>
@@ -37,7 +37,7 @@ export default function start() {
                   download the files from the BC Data Catalogue to your computer and open
                   as a project in Google Earth.
                 </p>
-                <p>
+                <span>
                   The KMZ information includes:
                   <ul>
                     <li>Provincial connectivity data divided into regions or zones.</li>
@@ -45,7 +45,7 @@ export default function start() {
                     <li>Information on household density data.</li>
                     <li>Gaps in highway cellular for highways that have power (hydro).</li>
                   </ul>
-                </p>
+                </span>
                 <p>
                   If you need assistance with viewing the KMZ files, or with any aspect
                   of the RTP process, please email us at <Link href="mailto:connectingcommunitiesbc@gov.bc.ca">connectingcommunitiesbc@gov.bc.ca</Link>.
@@ -66,7 +66,7 @@ export default function start() {
                 </p>
               </li>
             </ol>
-          </p>
+          </span>
           <form action="/login" method="post">
             <SButton type="submit">Login</SButton>
           </form>
