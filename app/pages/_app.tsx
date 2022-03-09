@@ -1,8 +1,9 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { Button, Footer, Navigation } from "@button-inc/bcgov-theme";
 import styled from "styled-components";
-import Menu from "../components/Menu";
+import FooterMenu from "../components/FooterLinks";
 import BCGovTypography from "../components/BCGovTypography";
+import NavBarLinks from "../components/NavBarLinks";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -28,6 +29,11 @@ const GlobalStyle = createGlobalStyle`
     .pg-radio {
     margin: 1em;
   }
+  .pg-card-header {
+    font-size: 1.75em;
+    font-weight: 700;
+    padding: 0.6em;
+  }
 `;
 
 const theme = {
@@ -47,7 +53,7 @@ const LogoutForm = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #fff;
+  background-color: #fff !important;
 `;
 
 const formStyle = {
@@ -60,7 +66,8 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <BCGovTypography />
-        <Navigation header="main" title="Request to Participate">
+        <Navigation header="main" title="Connecting Communities BC">
+          <NavBarLinks />
           <LogoutForm>
             <form action="/logout" method="POST" style={formStyle}>
               <StyledButton variant="secondary">Logout</StyledButton>
@@ -69,7 +76,7 @@ export default function App({ Component, pageProps }) {
         </Navigation>
         <Component {...pageProps} />
         <StyledFooter>
-          <Menu />
+          <FooterMenu />
         </StyledFooter>
       </ThemeProvider>
     </>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Menu() {
+export default function FooterLinks() {
   return (
     <>
       <ul>
