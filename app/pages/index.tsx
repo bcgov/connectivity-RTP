@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Card from '@button-inc/bcgov-theme/Card';
 import SButton from '../components/SButton';
-import MainStyledDiv from "../components/MainStyledDiv";
+import LandingStyledDiv from "../components/LandingStyledDiv";
 
 export default function start() {
   return (
     <>
-      <MainStyledDiv>
+      <LandingStyledDiv>
         <Card title="Request to Participate">
           <br />
           <p>
@@ -25,7 +25,7 @@ export default function start() {
           <p>
             To complete the form, ensure you have the RTP document printed or open
             so that you can reference it during the submission process, as well as 
-            the zone map (Appendix A) and supporting data (Appendix C).
+            the Zone Map (Appendix C) and supporting materials (linked in Appendix D).
           </p>
           <p>In addition, please access the information below:</p>
           <span>
@@ -34,7 +34,7 @@ export default function start() {
                 <p>
                   The KMZ files which describe the remaining gaps of underserved households
                   in the province can be viewed by anyone who has Google Earth. Please
-                  download the files from the BC Data Catalogue to your computer and open
+                  download the files from the <Link href="https://catalogue.data.gov.bc.ca/group/1849a583-98c1-452b-a5ec-3447edfc0cd9">BC Data Catalogue</Link> to your computer and open
                   as a project in Google Earth.
                 </p>
                 <span>
@@ -49,7 +49,7 @@ export default function start() {
                 <br/>
                 <p>
                   If you need assistance with viewing the KMZ files, or with any aspect
-                  of the RTP process, please email us at <Link href="mailto:connectingcommunitiesbc@gov.bc.ca">connectingcommunitiesbc@gov.bc.ca</Link>.
+                  of the RTP process, please email: <Link href="mailto:connectingcommunitiesbc@gov.bc.ca">connectingcommunitiesbc@gov.bc.ca</Link>.
                 </p>
               </li>
               <li><p>Prepare to answer the questions</p>
@@ -59,11 +59,10 @@ export default function start() {
                   of the RTP document.
                 </p>
                 <p>
-                  For Service Providers, we are assuming you’ll use the data in Appendix
-                  C of the RTP to overlay information on underserved households in a
-                  geographic format. This type of information will be uploaded to BC’s
-                  Geomark service at the end of the form. Please consult this analysis
-                  when answering the questions on the RTP.
+                  Note: There is a section at the end of this form for organizations to
+                  upload Geomarks for information provided. Providing Geomarks is a recommended
+                  step for organizations that have the capacity to do so, but is not mandatory.
+                  Information on creating Geomarks can be found in Appendix A, Q8 of the RTP document.
                 </p>
               </li>
             </ol>
@@ -72,7 +71,7 @@ export default function start() {
             <SButton type="submit">Login</SButton>
           </form>
         </Card>
-      </MainStyledDiv>
+      </LandingStyledDiv>
     </>
   );
 };

@@ -95,23 +95,21 @@ export default function Home() {
           Thank you for providing feedback in this Request to Participate form.
         </p>
         <p>
-          This form contains eight sections of question and is designed to collect
-          input from internet service providers, as well as feedback from regional
-          local governments and First Nations organizations into regarding connectivity
-          gaps in the province. Please enter the information you would like to share
-          applicable to your organization.
+          This form contains eight sections of questions and is designed to collect
+          input from internet service providers, as well as feedback from local
+          governments and First Nations organizations into connectivity gaps in the
+          province. Please enter the information applicable to your organization.
         </p>
         <p>
           The form will autosave when you click “Continue” on each page. After you
           begin the form, you may log out and return later to complete it.
         </p>
         <p>
-          Please ensure all responses are submitted before the RTP closes on April 18, 2022. 2:00 pm PST.
+          Please ensure all responses are submitted before the RTP closes on April 22, 2022. 2:00 pm PST.
         </p>
-        <BCGovTitle>Materials</BCGovTitle>
+        <BCGovTitle>Instructions</BCGovTitle>
         <p>
-          For RTP information and Form Instructions, please refer to the Request to
-          Participate materials on BC Bid.
+          Instructions for this form are in the RTP document (Appendix A).
         </p>
         <SButton onClick={pageRouter}>{buttonText}</SButton>
       </MainStyledDiv>
