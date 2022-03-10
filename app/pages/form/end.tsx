@@ -35,12 +35,7 @@ export default function end() {
         <h4 style={styles.cardText}>Your reference number</h4>
         <h2 style={styles.cardTitle}>{referenceNumber}</h2>
       </ConfirmDiv>
-      <h2>What happpens next</h2>
-      <p>Your data will be sent to Network BC.</p>
-      <p>
-        You will be contacted to confirm the areas covered in your geomarks, and
-        we will be in touch regarding the available funding program.
-      </p>
+      <h2 style={{textAlign: "center"}}>Thank you for participating in this request. We have received your response</h2>
     </MainStyledDiv>
   );
 }
