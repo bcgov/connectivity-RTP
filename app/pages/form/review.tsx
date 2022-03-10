@@ -137,7 +137,7 @@ export default function review() {
           <ReviewDiv>
             <BCGovTitle>Proposed zone feedback</BCGovTitle>
             <h4>Which zones are you providing feedback for?</h4>
-            <span><ul>{reviewData.zoneInformation.map(item => <li key={Math.random()}>{item}</li>)}</ul></span>
+            <span><ul>{reviewData.zoneInformation ? reviewData.zoneInformation.map(item => <li key={Math.random()}>{item}</li>) : "N/A"}</ul></span>
             <p></p>
             <h4>
               Do you have any feedback on the proposed zone boundaries? If you

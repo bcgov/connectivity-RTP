@@ -11,11 +11,6 @@ const schema = {
     "postion",
     "contactEmail",
     "telephone",
-    "zoneFeedback",
-    "zoneInformation",
-    "wiredBroadband",
-    "fixedWireless",
-    "lastMileSupport",
   ],
   "properties": {
     "organizationInfo": {
