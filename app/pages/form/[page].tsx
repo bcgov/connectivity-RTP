@@ -4,7 +4,7 @@ import { applySession } from "next-session";
 import { useRouter } from "next/router";
 import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
-import FormStyledDiv from "../../components/FormStyledDiv";
+import MainStyledDiv from "../../components/MainStyledDiv";
 import BCGovTitle from "../../components/BCGovTitle";
 import { LAST_PAGE } from "../../services/application";
 import { queryData, queryUser } from "../../utils/query-data";
@@ -43,8 +43,8 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This question is to indicate which zones or regions of the province
-            you are providing feedback for in the RTP.
+            This section refers to the areas of the province, or zones, you are providing
+            feedback for. Details on zones are in the RTP document.
           </p>
         </div>
       )
@@ -64,12 +64,10 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section focuses on existing backbone infrastructure. For the information
-            described in Q3, is there existing backbone infrastructure to deliver the last
-            mile projects as specified? Existing backbone is defined by connecting to a
-            point of presence (“PoP”) in the community. New backbone is defined by requiring
-            fibre or microwave transport to access a PoP in another community to support
-            your last mile project.
+            This section focuses on existing backbone infrastructure. Existing backbone
+            is defined by connecting to a point of presence (“PoP”) in the community. New
+            backbone is defined by requiring fibre or microwave transport to access a PoP
+            in another community to support your last mile project.
           </p>
         </div>
       )
@@ -78,12 +76,8 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section provides an opportunity to provide additional specific information
-            that will help meet the objectives outlined in the RTP.
-          </p>
-          <p>
-            This section asks respondents about any upcoming connectivity plans or projects
-            we should know about to understand the remaining gaps in the province.
+            This section is for local governments and First Nations to offer additional feedback
+            on internet connectivity in their communities.
           </p>
         </div>
       )
@@ -92,11 +86,20 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section is to provide feedback on the gaps in highway cellular coverage
-            in the province. The Province has identified gaps in cellular service along
-            highways (with power) in B.C. The gaps are highlighted in the KMZ file for Highway
-            Cellular. Information on how to download the KMZ files is linked in Appendix D
-            of the Request to Participate.
+            This section provides an opportunity to add internet connectivity infrastructure
+            information that will help meet the objectives outlined in the RTP document.
+          </p>
+        </div>
+      )
+    }
+    if (formIndex === 8) {
+      return (
+        <div>
+          <p>
+            This section is to provide feedback on the gaps in highway cellular coverage in
+            the province. The Province has identified gaps in cellular service along highways
+            (with power) in B.C. The gaps are highlighted in the KMZ file for Highway Cellular.
+            Information on how to download the KMZ files is linked in Appendix D.
           </p>
         </div>
       )
@@ -105,11 +108,13 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section is for any project mentioned in the RTP. Assuming that whole or part
-            of capital costs of building connectivity infrastructure could be covered by a
-            funding program, please paste a Geomark URL for the projects you have referred to
-            in earlier sections of your response. Note this is for underserved areas where
-            the following technology is most viable and suitable:
+            This section is for organizations to upload Geomarks for any information mentioned
+            in your response. This is a recommended step for organizations that have the
+            capacity to do this but is not mandatory. Please paste a Geomark URL for the
+            information you have referred to in earlier sections of your response. Note this
+            is for underserved areas where the following technology is most viable and suitable.
+            For instructions on creating a Geomark, or for help with creating a Geomark, please
+            refer to Appendix A, Q8 in the RTP Document.
           </p>
         </div>
       )
@@ -122,11 +127,11 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       setStatus(response.data.allApplications.nodes[0].status);
     }
     fetchData();
-  }, [FormStyledDiv]);
+  }, [MainStyledDiv]);
 
   return (
     <>
-      <FormStyledDiv>
+      <MainStyledDiv>
         <BCGovTitle>{pageTitle(schema, formIndex)}</BCGovTitle>
         {renderDesc(formIndex)}
         {validPage && (
@@ -146,7 +151,7 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
             </SButton>
           </Form>
         )}
-      </FormStyledDiv>
+      </MainStyledDiv>
     </>
   );
 }
