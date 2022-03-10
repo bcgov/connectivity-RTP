@@ -14,25 +14,30 @@ const GlobalStyle = createGlobalStyle`
   .pg-textarea-input {
     width: 80%;
     height: 8rem;
+    margin-top: 0.75em;
     margin-bottom: 1em;
   }
   label {
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.4;
   }
   .pg-input-input {
+    margin-top: 0.75em;
     margin-bottom: 1em;
   }
   .form-group .field:first-of-type {
     padding-top: 1em;
   }
-    .pg-radio {
+  .pg-radio {
     margin: 1em;
   }
   .pg-card-header {
     font-size: 1.75em;
     font-weight: 700;
-    padding: 0.6em;
+    padding: 20px;
+  }
+  p {
+    line-height: 1.4;
   }
 `;
 
