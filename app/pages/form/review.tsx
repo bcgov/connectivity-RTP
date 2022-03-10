@@ -24,16 +24,19 @@ export default function review() {
     fixedWireless: "",
     primaryContact: "",
     wiredBroadband: "",
+    zoneInformation: [],
+    pendingProjects: "",
     lastMileSupport: "",
     organizationName: "",
+    organizationType: [],
     underservedAreas: "",
     satelliteProposal: "",
     capitalCostFunding: "",
     registrationNumber: "",
-    anticipatedProjects: "",
     newBackboneTechnology: [],
     capitalCostExplanation: "",
     highwayCellularGeomark: "",
+    govtIndigenousConnFocus: "",
     multipleBackboneDetails: "",
     lastMileBroadbandGeomark: "",
     lastMileNewBackboneGeomark: "",
@@ -99,12 +102,14 @@ export default function review() {
         <div>
           <ReviewDiv>
             <BCGovTitle>Organization Information</BCGovTitle>
+            <h4>Organization type</h4>
+            <span><ul>{reviewData.organizationType ? reviewData.organizationType.map(item => <li key={Math.random()}>{item}</li>) : "N/A"}</ul></span>
             <h4>Organization name (legal name)</h4>
             <p>{reviewData.organizationName}</p>
             <h4>
               Band number, society number, or business registration number
             </h4>
-            <p>{reviewData.registrationNumber}</p>
+            <p>{reviewData.registrationNumber ? reviewData.registrationNumber : "N/A"}</p>
             <h4>Unit number</h4>
             <p>{reviewData.unitNumber ? reviewData.unitNumber : "N/A"}</p>
             <h4>Street number</h4>
@@ -130,42 +135,44 @@ export default function review() {
             <p>{reviewData.extension ? reviewData.extension : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Proposed Zone Feedback</BCGovTitle>
+            <BCGovTitle>Proposed zone feedback</BCGovTitle>
+            <h4>Which zones are you providing feedback for?</h4>
+            <span><ul>{reviewData.zoneInformation ? reviewData.zoneInformation.map(item => <li key={Math.random()}>{item}</li>) : "N/A"}</ul></span>
+            <p></p>
             <h4>
-              What feedback do you have on the proposed zone boundaries? If you
-              were to apply to a funding program by zone, are there alterations
-              to the zone boundaries that would make that easier? <br />
-              <br /> 3500 characters
+              Do you have any feedback on the proposed zone boundaries? If you
+              were to apply to a funding program by zone, are there changes to
+              the zone boundaries that would make that process easier?
             </h4>
-            <p>{reviewData.zoneFeedback}</p>
+            <p>{reviewData.zoneFeedback ? reviewData.zoneFeedback : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Technology Viability</BCGovTitle>
+            <BCGovTitle>Technology viability</BCGovTitle>
             <h4>
               Approximately how many underserved households in the province
               could be reached by wired broadband?
             </h4>
-            <p>{reviewData.wiredBroadband}</p>
+            <p>{reviewData.wiredBroadband ? reviewData.wiredBroadband : "N/A"}</p>
             <h4>
               Approximately how many underserved households could be reached by
               fixed wireless?
             </h4>
-            <p>{reviewData.fixedWireless}</p>
+            <p>{reviewData.fixedWireless ? reviewData.fixedWireless : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Backbone to Support Last Mile</BCGovTitle>
+            <BCGovTitle>Backbone infrastructure to support last mile</BCGovTitle>
             <h4>
-              Would it be possible to leverage existing backbone to implement
-              the last mile technologies you indicated in the previous question?
+              For the information described on the previous page, is there existing
+              backbone infrastructure to deliver the last mile projects as specified?
             </h4>
             <p>{reviewData.lastMileSupport ? "Yes" : "No"}</p>
             <h4>
               If no, what type of new backbone technology would need to be
               built?
             </h4>
-            <p>{reviewData.newBackboneTechnology
-              ? reviewData.newBackboneTechnology.map((item) => <p>{item}</p>)
-              : "N/A"}</p>
+            <span><ul>{reviewData.newBackboneTechnology
+              ? reviewData.newBackboneTechnology.map((item) => <li key={Math.random()} >{item}</li>)
+              : "N/A"}</ul></span>
             <h4>
               Please add any important details for addressing gaps in backbone
               needed to reach underserved households.
@@ -183,40 +190,49 @@ export default function review() {
             </p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Additional Questions</BCGovTitle>
+            <BCGovTitle>Areas of focus for local governments and First Nations</BCGovTitle>
             <h4>
-              Are there any specific planned or anticipated projects you want to
-              tell us about?
+              What additional feedback on internet connectivity do you have for your community?
+              Please include information on areas that are underserved, as well as any other
+              local information considered relevant. This response will be related to the zone(s)
+              specified in your response and could include any particular area of focus, including
+              challenges with infrastructure or information pertinent to the area.
             </h4>
-            <p>{reviewData.anticipatedProjects ? reviewData.anticipatedProjects : "N/A"}</p>
-            <h4>
-              For underserved areas where your Geomark does not indicate a wired
-              or wireless technology viability or to serve those households, how
-              could internet service providers be incentivized to serve those
-              areas?
-            </h4>
-            <p>{reviewData.underservedAreas ? reviewData.underservedAreas : "N/A"}</p>
-            <h4>
-              In the information linked in Appendix C of the RTP, some areas
-              were proposed to be best served by satellite. How do these
-              proposed areas align with the expectations of your organization?
-              Please provide feedback on the modelling assumptions.
-            </h4>
-            <p>{reviewData.satelliteProposal ? reviewData.satelliteProposal : "N/A"}</p>
+            <p>{reviewData.govtIndigenousConnFocus ? reviewData.govtIndigenousConnFocus : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Highway Cellular</BCGovTitle>
+            <BCGovTitle>Additional information</BCGovTitle>
             <h4>
-              If funding was available for capital costs, which sections of
-              highway could be completed? Please consider traffic and
-              consumption factors. Please list the sections of highway.
+              Are there any pending projects you would like to inform the Province about?
+            </h4>
+            <p>{reviewData.pendingProjects ? reviewData.pendingProjects : "N/A"}</p>
+            <h4>
+              In the KMZ file for Household Density Data linked in Appendix D of the
+              Request to Participate document, some areas were proposed to be best
+              served by satellite. How do these proposed areas align with the expectations
+              of your organization or your community? Please provide feedback on the
+              modelling assumptions.
+            </h4>
+            <p>{reviewData.satelliteProposal ? reviewData.satelliteProposal : "N/A"}</p>
+            <h4>
+              In underserved areas where your Geomark does not indicate a wired or wireless
+              technology viability to serve those households, how could service providers be
+              incentivized to serve those areas?
+            </h4>
+            <p>{reviewData.underservedAreas ? reviewData.underservedAreas : "N/A"}</p>
+          </ReviewDiv>
+          <ReviewDiv>
+            <BCGovTitle>Highway cellular</BCGovTitle>
+            <h4>
+              If funding was available for capital costs, which sections of highway would be
+              your priority to be completed? Please consider traffic, consumption and other factors.
             </h4>
             <p>{reviewData.capitalCostFunding ? reviewData.capitalCostFunding : "N/A"}</p>
             <h4>Please explain why you chose those sections.</h4>
             <p>{reviewData.capitalCostExplanation ? reviewData.capitalCostExplanation : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Geomarks</BCGovTitle>
+            <BCGovTitle>Upload geomarks</BCGovTitle>
             <h4>Wired broadband last mile </h4>
             <p>{reviewData.lastMileBroadbandGeomark ? reviewData.lastMileBroadbandGeomark : "N/A"}</p>
             <h4>Fixed wireless last mile </h4>
