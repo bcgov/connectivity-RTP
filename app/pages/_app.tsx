@@ -57,10 +57,6 @@ const LogoutForm = styled.div`
   margin: 0 5px 0 auto;
 `;
 
-const StyledButton = styled(Button)`
-  background-color: #fff !important;
-`;
-
 const formStyle = {
   marginBottom: "0",
 };
@@ -75,7 +71,7 @@ export default function App({ Component, pageProps }) {
           <NavBarLinks />
           <LogoutForm>
             <form action="/logout" method="POST" style={formStyle}>
-              <StyledButton variant="secondary">Logout</StyledButton>
+              <Button variant="secondary-inverse">Logout</Button>
             </form>
           </LogoutForm>
         </Navigation>
