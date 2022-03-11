@@ -1,7 +1,6 @@
 const schema = {
   "type": "object",
   "required": [
-    "organizationType",
     "organizationName",
     "streetNumber",
     "streetName",
@@ -146,6 +145,10 @@ const schema = {
             true,
             false
           ],
+          "enumNames": [
+            "Yes",
+            "No"
+          ]
         },
         "newBackboneTechnology": {
           "type": "array",
