@@ -60,3 +60,11 @@ spilo:
 
   persistentVolume:
     size: "200Mi"
+  env:
+  - name: SPILO_CONFIGURATION
+    value: |
+      bootstrap:
+        dcs:
+        postgresql:
+          parameters:
+            max_wal_size: 10
