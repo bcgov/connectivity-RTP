@@ -66,4 +66,5 @@ spilo:
         dcs:
           postgresql:
             parameters:
-              max_wal_size: 10
+              max_wal_size: 64
+              min_wal_size: 32
