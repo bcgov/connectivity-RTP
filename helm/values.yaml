@@ -56,7 +56,7 @@ db:
 spilo:
   continuousArchive:
     pvc:
-      size: "300Mi"
+      size: "150Mi"
 
   persistentVolume:
-    size: "150Mi"
+    size: "300Mi"
