@@ -61,6 +61,7 @@ spilo:
   persistentVolume:
     size: "200Mi"
   env:
+    USE_WALE: "true"
     SPILO_CONFIGURATION: |
       bootstrap:
         dcs:
