@@ -55,8 +55,16 @@ db:
 
 spilo:
   continuousArchive:
-    pvc:
-      size: "400Mi"
+    enabled: false
 
   persistentVolume:
-    size: "200Mi"
+    size: "300Mi"
+
+  env:
+    SPILO_CONFIGURATION: |
+      bootstrap:
+        dcs:
+          postgresql:
+            parameters:
+              max_wal_size: 64
+              min_wal_size: 32
