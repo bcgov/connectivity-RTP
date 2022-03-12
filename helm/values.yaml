@@ -61,7 +61,7 @@ spilo:
   persistentVolume:
     size: "200Mi"
   env:
-    USE_WALE: "true"
+    WALG_SSH_PREFIX: "ssh://localhost/archive"
     SPILO_CONFIGURATION: |
       bootstrap:
         dcs:
