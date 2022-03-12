@@ -112,10 +112,10 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
             information mentioned in your response. This is a recommended step
             for organizations that have the capacity, but is not mandatory.
             Please paste a Geomark URL for the information you have referred to
-            in earlier sections of your response. Note this is for underserved
+            in earlier sections of your response. Note: this is for underserved
             areas where the following technology is most viable and suitable.
             For instructions on creating a Geomark, or for help with creating a
-            Geomark, please refer to Appendix A, Q8 in the RTP Document.
+            Geomark, please refer to Appendix A, Q8 in the RTP document.
           </p>
         </div>
       );

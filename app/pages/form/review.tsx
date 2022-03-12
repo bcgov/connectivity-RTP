@@ -232,7 +232,7 @@ export default function review() {
             <p>{reviewData.capitalCostExplanation ? reviewData.capitalCostExplanation : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Upload geomarks</BCGovTitle>
+            <BCGovTitle>Upload Geomarks</BCGovTitle>
             <h4>Wired broadband last mile </h4>
             <p>{reviewData.lastMileBroadbandGeomark ? reviewData.lastMileBroadbandGeomark : "N/A"}</p>
             <h4>Fixed wireless last mile </h4>
