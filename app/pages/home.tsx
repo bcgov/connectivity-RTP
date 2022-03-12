@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <>
       <MainStyledDiv>
-        <BCGovTitle>About this Form</BCGovTitle>
+        <BCGovTitle>About this form</BCGovTitle>
         <p>
           Thank you for providing feedback in this Request to Participate form.
         </p>

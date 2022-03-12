@@ -229,7 +229,7 @@ const schema = {
       }
     },
     "geomarks": {
-      "title": "Upload geomarks",
+      "title": "Upload Geomarks",
       "type": "object",
       "properties": {
         "lastMileBroadbandGeomark": {
