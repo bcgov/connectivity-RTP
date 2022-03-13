@@ -20,6 +20,7 @@ app:
   port: "3000"
   probesPort: "9000"
   namespace: ""
+  enableAnalytics: true
 route:
   host: ""  # The host value must be passed in via the deploy script: connectivity-rtp.apps.silver.devops.gov.bc.ca
 

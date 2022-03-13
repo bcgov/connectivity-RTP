@@ -14,6 +14,7 @@ module.exports = {
     ORIGIN: process.env.ORIGIN,
     PORT: process.env.PORT,
     HOST: process.env.HOST,
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
+    ENABLE_ANALYTICS: process.env.ENABLE_ANALYTICS,
   }
 };
