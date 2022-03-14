@@ -1,5 +1,10 @@
-import Document from 'next/document'
+import React from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import getConfig from 'next/config';
 import { ServerStyleSheet } from 'styled-components'
+import Analytics from 'components/Analytics';
+
+const CONFIG = getConfig()?.publicRuntimeConfig;
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -26,5 +31,18 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal()
     }
+  }
+
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+          {CONFIG?.ENABLE_ANALYTICS === "true" && <Analytics />}
+        </body>
+      </Html>
+    );
   }
 }

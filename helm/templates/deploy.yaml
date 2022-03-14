@@ -163,6 +163,8 @@ spec:
             value: {{ .Values.route.host }}
           - name: NAMESPACE
             value: {{ .Values.app.namespace }}
+          - name: ENABLE_ANALYTICS
+            value: {{ .Values.app.enableAnalytics | quote }}
           resources:
             requests:
               memory: {{ .Values.resources.app.requests.memory }}
