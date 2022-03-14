@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { applySession } from "next-session";
 import { useRouter } from "next/router";
 import { Forms, getHandler } from "../../form-schema";
 import SButton from "../../components/SButton";
@@ -168,7 +167,6 @@ export const getServerSideProps = async (context) => {
       },
     };
   }
-  await applySession(context.req, context.res);
   const { formIndex, validPage, prevPageUrl = null } = getHandler(context.req);
   const props = { formIndex, validPage, prevPageUrl };
   const res = await queryData(context.req);

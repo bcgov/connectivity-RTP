@@ -1,4 +1,3 @@
-import { withSession } from 'next-session';
 import { postMiddleware } from '../../form-schema';
 
 function runMiddleware(req, res, fn) {
@@ -16,4 +15,4 @@ function handler(req, res) {
   runMiddleware(req, res, postMiddleware);
 }
 
-export default withSession(handler);
+export default handler;
