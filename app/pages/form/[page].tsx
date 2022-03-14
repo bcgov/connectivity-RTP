@@ -54,11 +54,12 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
           <p>
             This section is to provide feedback on potential areas for expansion
             of high-speed internet. We are looking for respondents to identify
-            areas were fibre, coax or fixed wireless could be expanded. If this
-            is not your area of expertise, please skip to the next section.
+            areas where fibre, coax or fixed wireless could be expanded in the
+            zones that you specified. If this is not your area of expertise,
+            please skip to the next section.
           </p>
         </div>
-      )
+      );
     }
     if (formIndex === 5) {
       return (
