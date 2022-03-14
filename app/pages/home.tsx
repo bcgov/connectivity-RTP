@@ -92,14 +92,15 @@ export default function Home() {
       <MainStyledDiv>
         <BCGovTitle>About this form</BCGovTitle>
         <p>
-          Thank you for providing feedback in this Request to Participate form.
+          Thank you for providing feedback in this RTP form.
         </p>
         <p>
-          This form contains eight sections of questions and is designed to
-          collect input from internet service providers, as well as feedback
-          from local governments and First Nations organizations into
-          connectivity gaps in the province. Please enter the information
-          applicable to your organization.
+          This form contains eight sections of questions. Some sections
+          are designed to collect information from internet service
+          providers. Other sections are designed to collect information from
+          local governments and First Nations. Please complete the sections
+          applicable to you.
+
         </p>
         <p>
           The form will autosave when you click “Continue” on each page. After

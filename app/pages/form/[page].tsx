@@ -43,8 +43,8 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section refers to the areas of the province, or zones, you are providing
-            feedback for. Details on zones are in the RTP document.
+            This section refers to the areas of the province, or zones, you are
+            providing information for. Details on zones are in the RTP document.
           </p>
         </div>
       )
@@ -53,9 +53,10 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section is to provide feedback on potential areas for expansion of
-            high-speed internet. We are looking for respondents to identify areas where
-            fibre, coax or fixed wireless could be expanded.
+            This section is to provide feedback on potential areas for expansion
+            of high-speed internet. We are looking for respondents to identify
+            areas were fibre, coax or fixed wireless could be expanded. If this
+            is not your area of expertise, please skip to the next section.
           </p>
         </div>
       )
@@ -64,10 +65,12 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section focuses on existing backbone infrastructure. Existing backbone
-            is defined by connecting to a point of presence (“PoP”) in the community. New
-            backbone is defined by requiring fibre or microwave transport to access a PoP
-            in another community to support your last mile project.
+            This section focuses on existing backbone infrastructure. If this is not
+            your area of expertise, skip to the next section. Existing backbone is
+            defined as transport that connects to an existing point of present (“PoP”)
+            in the community. New backbone is defined by requiring fibre or microwave
+            transport to access a PoP in another community to support your last mile
+            project.
           </p>
         </div>
       )
@@ -76,8 +79,8 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section is for local governments and First Nations to offer additional feedback
-            on internet connectivity in their communities.
+            This section is for local and regional governments and First Nations to
+            offer additional feedback on internet connectivity in their communities.
           </p>
         </div>
       )
@@ -108,14 +111,13 @@ export default function home({ formIndex, formData, validPage, prevPageUrl }) {
       return (
         <div>
           <p>
-            This section is for organizations to upload Geomarks for any
-            information mentioned in your response. This is a recommended step
-            for organizations that have the capacity, but is not mandatory.
-            Please paste a Geomark URL for the information you have referred to
-            in earlier sections of your response. Note: this is for underserved
-            areas where the following technology is most viable and suitable.
-            For instructions on creating a Geomark, or for help with creating a
-            Geomark, please refer to Appendix A, Q8 in the RTP document.
+            This section is for organizations to upload Geomarks for any information
+            mentioned in your response. This is a recommended step for organizations
+            that have the capacity, but is not mandatory. Please paste a Geomark URL for
+            the information you have referred to in earlier sections of your response.
+            Note: This is for underserved areas where the specified technology is most
+            viable and suitable. For instructions on creating a Geomark, or for help
+            with creating a Geomark, please refer to Appendix A, Q8 in the RTP document.
           </p>
         </div>
       );
