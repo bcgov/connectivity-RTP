@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { Button, Footer, Navigation } from "@button-inc/bcgov-theme";
 import styled from "styled-components";
@@ -64,6 +65,34 @@ const formStyle = {
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <title>Connecting Communities BC</title>
+        <link
+          rel="apple-touch-icon"
+          href="/static/icons/bcid-apple-touch-icon.png"
+          sizes="180x180"
+        />
+        <link
+          rel="icon"
+          href="/static/icons/bcid-favicon-32x32.png"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/static/icons/bcid-favicon-16x16.png"
+          sizes="16x16"
+          type="image/png"
+        />
+        <link
+          rel="mask-icon"
+          href="/static/icons/bcid-apple-icon.svg"
+          color="#036"
+        />
+        <link rel="icon" href="/static/icons/bcid-favicon-32x32.png" />
+      </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <BCGovTypography />
