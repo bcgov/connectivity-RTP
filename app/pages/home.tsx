@@ -107,7 +107,7 @@ export default function Home() {
         </p>
         <p>
           Please ensure all responses are submitted before the RTP closes on
-          April 22, 2022. 2:00 pm PST.
+          April 25, 2022 at 2:00 pm PST.
         </p>
         <SButton onClick={pageRouter}>{buttonText}</SButton>
       </MainStyledDiv>
