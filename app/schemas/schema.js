@@ -24,7 +24,7 @@ const schema = {
             "enum": [
               "Service provider",
               "Local or regional government",
-              "First nation",
+              "First Nation",
               "Other"
             ]
           },

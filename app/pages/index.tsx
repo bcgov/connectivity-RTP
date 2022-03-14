@@ -86,6 +86,7 @@ export default function start() {
               </li>
             </ol>
           </span>
+          <p>If you are having trouble logging in or creating a BCeID, please clear your cookies and try again.</p>
           <form action="/login" method="post">
             <SButton type="submit">Login</SButton>
           </form>
