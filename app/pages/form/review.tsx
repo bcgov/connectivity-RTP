@@ -103,13 +103,25 @@ export default function review() {
           <ReviewDiv>
             <BCGovTitle>Organization Information</BCGovTitle>
             <h4>Organization type</h4>
-            <span><ul>{reviewData.organizationType ? reviewData.organizationType.map(item => <li key={Math.random()}>{item}</li>) : "N/A"}</ul></span>
+            <span>
+              <ul>
+                {reviewData.organizationType
+                  ? reviewData.organizationType.map((item) => (
+                      <li key={Math.random()}>{item}</li>
+                    ))
+                  : "N/A"}
+              </ul>
+            </span>
             <h4>Organization name (legal name)</h4>
             <p>{reviewData.organizationName}</p>
             <h4>
               Band number, society number, or business registration number
             </h4>
-            <p>{reviewData.registrationNumber ? reviewData.registrationNumber : "N/A"}</p>
+            <p>
+              {reviewData.registrationNumber
+                ? reviewData.registrationNumber
+                : "N/A"}
+            </p>
             <h4>Unit number</h4>
             <p>{reviewData.unitNumber ? reviewData.unitNumber : "N/A"}</p>
             <h4>Street number</h4>
@@ -137,7 +149,15 @@ export default function review() {
           <ReviewDiv>
             <BCGovTitle>Proposed zone feedback</BCGovTitle>
             <h4>Which zones are you providing information for?</h4>
-            <span><ul>{reviewData.zoneInformation ? reviewData.zoneInformation.map(item => <li key={Math.random()}>{item}</li>) : "N/A"}</ul></span>
+            <span>
+              <ul>
+                {reviewData.zoneInformation
+                  ? reviewData.zoneInformation.map((item) => (
+                      <li key={Math.random()}>{item}</li>
+                    ))
+                  : "N/A"}
+              </ul>
+            </span>
             <p></p>
             <h4>
               Do you have any feedback on the proposed zone boundaries? If you
@@ -147,12 +167,16 @@ export default function review() {
             <p>{reviewData.zoneFeedback ? reviewData.zoneFeedback : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Technology viability</BCGovTitle>
+            <BCGovTitle>
+              Areas of focus for broadband technology viability
+            </BCGovTitle>
             <h4>
               Approximately how many underserved households in the province
               could be reached by wired broadband?
             </h4>
-            <p>{reviewData.wiredBroadband ? reviewData.wiredBroadband : "N/A"}</p>
+            <p>
+              {reviewData.wiredBroadband ? reviewData.wiredBroadband : "N/A"}
+            </p>
             <h4>
               Approximately how many underserved households could be reached by
               fixed wireless?
@@ -160,18 +184,28 @@ export default function review() {
             <p>{reviewData.fixedWireless ? reviewData.fixedWireless : "N/A"}</p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Backbone infrastructure to support last mile</BCGovTitle>
+            <BCGovTitle>
+              Backbone infrastructure to support last mile
+            </BCGovTitle>
             <h4>
-              Are there any areas within the zones you have specified that require
-              new backbone infrastructure to deliver services and last mile projects?
+              Are there any areas within the zones you have specified that
+              require new backbone infrastructure to deliver services and last
+              mile projects?
             </h4>
             <p>{reviewData.lastMileSupport ? "Yes" : "No"}</p>
             <h4>
-              If yes, what type of new backbone technology would need to be built?
+              If yes, what type of new backbone technology would need to be
+              built?
             </h4>
-            <span><ul>{reviewData.newBackboneTechnology
-              ? reviewData.newBackboneTechnology.map((item) => <li key={Math.random()}>{item}</li>)
-              : "N/A"}</ul></span>
+            <span>
+              <ul>
+                {reviewData.newBackboneTechnology
+                  ? reviewData.newBackboneTechnology.map((item) => (
+                      <li key={Math.random()}>{item}</li>
+                    ))
+                  : "N/A"}
+              </ul>
+            </span>
             <h4>
               Please add any important details for addressing gaps in backbone
               needed to reach underserved households.
@@ -189,58 +223,101 @@ export default function review() {
             </p>
           </ReviewDiv>
           <ReviewDiv>
-            <BCGovTitle>Areas of focus for local governments and First Nations</BCGovTitle>
+            <BCGovTitle>
+              Areas of focus for local governments and First Nations
+            </BCGovTitle>
             <h4>
-              What additional feedback on internet connectivity would you like to
-              provide about your community? Please include information on areas
-              that are underserved, as well as any other local information considered
-              relevant. This response will be related to the zone(s) specified in
-              your response and could include any particular area of focus, including
-              challenges with infrastructure or information pertinent to the area.
+              What additional feedback on internet connectivity would you like
+              to provide about your community? Please include information on
+              areas that are underserved, as well as any other local information
+              considered relevant. This response will be related to the zone(s)
+              specified in your response and could include any particular area
+              of focus, including challenges with infrastructure or information
+              pertinent to the area.
             </h4>
-            <p>{reviewData.govtIndigenousConnFocus ? reviewData.govtIndigenousConnFocus : "N/A"}</p>
+            <p>
+              {reviewData.govtIndigenousConnFocus
+                ? reviewData.govtIndigenousConnFocus
+                : "N/A"}
+            </p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Additional information</BCGovTitle>
             <h4>
-              Are there any pending projects you would like to inform the Province about?
+              Are there any pending projects you would like to inform the
+              Province about?
             </h4>
-            <p>{reviewData.pendingProjects ? reviewData.pendingProjects : "N/A"}</p>
+            <p>
+              {reviewData.pendingProjects ? reviewData.pendingProjects : "N/A"}
+            </p>
             <h4>
-              In the KMZ file for Household Density Data linked in Appendix D of the
-              Request to Participate document, some areas were proposed to be best
-              served by satellite. How do these proposed areas align with the expectations
-              of your organization or your community? Please provide feedback on the
-              modelling assumptions.
+              In the KMZ file for Household Density Data linked in Appendix D of
+              the Request to Participate document, some areas were proposed to
+              be best served by satellite. How do these proposed areas align
+              with the expectations of your organization or your community?
+              Please provide feedback on the modelling assumptions.
             </h4>
-            <p>{reviewData.satelliteProposal ? reviewData.satelliteProposal : "N/A"}</p>
+            <p>
+              {reviewData.satelliteProposal
+                ? reviewData.satelliteProposal
+                : "N/A"}
+            </p>
             <h4>
-              In underserved areas where your Geomark does not indicate a wired or wireless
-              technology viability to serve those households, how could service providers be
-              incentivized to serve those areas?
+              In underserved areas where your Geomark does not indicate a wired
+              or wireless technology viability to serve those households, how
+              could service providers be incentivized to serve those areas?
             </h4>
-            <p>{reviewData.underservedAreas ? reviewData.underservedAreas : "N/A"}</p>
+            <p>
+              {reviewData.underservedAreas
+                ? reviewData.underservedAreas
+                : "N/A"}
+            </p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Highway cellular</BCGovTitle>
             <h4>
-              If funding was available for capital costs, which sections of highway would be
-              your priority to be completed? Please consider traffic, consumption and other factors.
+              If funding was available for capital costs, which sections of
+              highway would be your priority to be completed? Please consider
+              traffic, consumption and other factors.
             </h4>
-            <p>{reviewData.capitalCostFunding ? reviewData.capitalCostFunding : "N/A"}</p>
+            <p>
+              {reviewData.capitalCostFunding
+                ? reviewData.capitalCostFunding
+                : "N/A"}
+            </p>
             <h4>Please explain why you chose those sections.</h4>
-            <p>{reviewData.capitalCostExplanation ? reviewData.capitalCostExplanation : "N/A"}</p>
+            <p>
+              {reviewData.capitalCostExplanation
+                ? reviewData.capitalCostExplanation
+                : "N/A"}
+            </p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Upload Geomarks</BCGovTitle>
             <h4>Wired broadband last mile </h4>
-            <p>{reviewData.lastMileBroadbandGeomark ? reviewData.lastMileBroadbandGeomark : "N/A"}</p>
+            <p>
+              {reviewData.lastMileBroadbandGeomark
+                ? reviewData.lastMileBroadbandGeomark
+                : "N/A"}
+            </p>
             <h4>Fixed wireless last mile </h4>
-            <p>{reviewData.lastMileFixedWirelessGeomark ? reviewData.lastMileFixedWirelessGeomark : "N/A"}</p>
+            <p>
+              {reviewData.lastMileFixedWirelessGeomark
+                ? reviewData.lastMileFixedWirelessGeomark
+                : "N/A"}
+            </p>
             <h4>New backbone technology possibly needed for last mile</h4>
-            <p>{reviewData.lastMileNewBackboneGeomark ? reviewData.lastMileNewBackboneGeomark : "N/A"}</p>
+            <p>
+              {reviewData.lastMileNewBackboneGeomark
+                ? reviewData.lastMileNewBackboneGeomark
+                : "N/A"}
+            </p>
             <h4>Cellular along powered highways</h4>
-            <p>{reviewData.highwayCellularGeomark ? reviewData.highwayCellularGeomark : "N/A"}</p>
+            <p>
+              {reviewData.highwayCellularGeomark
+                ? reviewData.highwayCellularGeomark
+                : "N/A"}
+            </p>
           </ReviewDiv>
         </div>
         <div>
