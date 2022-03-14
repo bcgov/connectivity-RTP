@@ -10,6 +10,7 @@ const schema = {
     "postion",
     "contactEmail",
     "telephone",
+    "zoneInformation"
   ],
   "properties": {
     "organizationInfo": {
@@ -17,7 +18,7 @@ const schema = {
       "type": "object",
       "properties": {
         "organizationType": {
-          "title": "Organization type",
+          "title": "Organization type (optional)",
           "type": "array",
           "items": {
             "type": "string",
@@ -101,7 +102,7 @@ const schema = {
       "type": "object",
       "properties": {
         "zoneInformation": {
-          "title": "Referring to the Internet Zone Map (Appendix C) or the KMZ Internet Zones data (Appendix D), which zones are you providing feedback for? Please check all zones that apply.",
+          "title": "Referring to the Internet Zone Map (Appendix C) or the KMZ Internet Zones data (Appendix D), which zones are you providing information for? Please check all zones that apply.",
           "type": "array",
           "items": {
             "type": "string",
@@ -113,22 +114,22 @@ const schema = {
         },
         "zoneFeedback": {
           "type": "string",
-          "title": "Do you have any feedback on the proposed zone boundaries?  If you were to apply to a funding program by zone, are there changes to the zone boundaries that would make that process easier? Please list the zone, any proposed amendment and why (if applicable)."
+          "title": "Do you have any feedback on the proposed zone boundaries?  If you were to apply to a funding program by zone, are there changes to the zone boundaries that would make that process easier? Please list the zone, any proposed amendment and why. (Optional)"
         }
       }
     },
     "technologyViability": {
-      "title": "Areas of focus for technology viability",
+      "title": "Areas of focus for broadband technology viability",
       "type": "object",
       "properties": {
         "wiredBroadband": {
           "type": "number",
-          "title": "Based on the household numbers and locations provided in the KMZ file labeled “Underserved Households in B.C.” approximately how many of the remaining underserved households in the province could be reached by wired broadband?  Please enter a whole number (if applicable).",
+          "title": "Based on the household numbers and locations provided in the KMZ file labeled “Underserved Households in B.C.” approximately how many of the remaining underserved households in the province could be reached by wired broadband?  Please enter a whole number. (Optional)",
           "description": "Approximately how many underserved households in the province could be reached by wired broadband?",
         },
         "fixedWireless": {
           "type": "number",
-          "title": "Based on the household numbers and locations provided in the KMZ file labeled “Underserved Households in B.C.” approximately how many of the remaining underserved households in the province could be reached by fixed wireless? Please enter a whole number (if applicable).",
+          "title": "Based on the household numbers and locations provided in the KMZ file labeled “Underserved Households in B.C.” approximately how many of the remaining underserved households in the province could be reached by fixed wireless? Please enter a whole number. (Optional)",
           "description": "Approximately how many underserved households could be reached by fixed wireless?"
         }
       }
@@ -139,7 +140,7 @@ const schema = {
       "properties": {
         "lastMileSupport": {
           "type": "boolean",
-          "title": "For the information described in the previous question, is there existing backbone infrastructure to deliver the last mile projects as specified? (if applicable)",
+          "title": "Are there any areas within the zones you have specified that require new backbone infrastructure to deliver services and last mile projects? (Optional)",
           "description": "Existing backbone is defined by connecting to a point of presence (PoP) in the community. New backbone is defined by requiring fibre or microwave transport to access a PoP in another community or use of satellite backbone to support your last mile project.",
           "enum": [
             true,
@@ -152,7 +153,7 @@ const schema = {
         },
         "newBackboneTechnology": {
           "type": "array",
-          "title": "If no, what type of new backbone technology would need to be built? Check all that apply (if applicable)",
+          "title": "If yes, what type of new backbone technology would need to be built? Check all that apply. (Optional)",
           "items": {
             "type": "string",
             "enum": [
@@ -164,13 +165,13 @@ const schema = {
           "uniqueItems": true,
         },
         "backboneGaps": {
-          "title": "Please add any important details for addressing gaps (existing or new) in backbone infrastructure needed to reach underserved households. For example, technology considerations, impactive geography, or connections to existing PoP (if applicable).",
-          "description": "For example, technology considerations, impactive geography, or connections to existing PoP. Max. 3500 characters",
+          "title": "Please add any important details for addressing gaps (existing or new) in backbone infrastructure needed to reach underserved households. For example, technology considerations, impactive geography, or connections to existing PoP. (Optional)",
+          "description": "For example, technology considerations, impactive geography, or connections to existing PoP.",
           "type": "string",
           "maxLength": 10000
         },
         "multipleBackboneDetails": {
-          "title": "If multiple backbone technologies are indicated, please describe at a high level where each backbone technology could be implemented and any transport requirements (if applicable).",
+          "title": "If multiple backbone technologies are indicated, please describe at a high level where each backbone technology could be implemented and any transport requirements. (Optional)",
           "type": "string",
           "maxLength": 10000
         },
@@ -181,7 +182,7 @@ const schema = {
       "type": "object",
       "properties": {
         "govtIndigenousConnFocus": {
-          "title": "What additional feedback on internet connectivity do you have for your community? Please include information on areas that are underserved, as well as any other local information considered relevant. This response will be related to the zone(s) specified in your response and could include any particular area of focus, including challenges with infrastructure or information pertinent to the area (if applicable).",
+          "title": "What additional feedback on internet connectivity would you like to provide about your community? Please include information on areas that are underserved, as well as any other local information considered relevant. This response will be related to the zone(s) specified in your response and could include any particular area of focus, including challenges with infrastructure or information pertinent to the area. (Optional)",
           "type": "string"
         }
       }
@@ -191,20 +192,20 @@ const schema = {
       "type": "object",
       "properties": {
         "pendingProjects": {
-          "title": "Are there any pending projects you would like to inform the Province about? For example, any additional information on planned projects including technology, number of households, communities reached, existing backbone leveraged, new backbone that you like to include, or any consultation on a proposed project taking place (if applicable). Max. 3500 characters",
-          "description": "For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include? Max. 3500 characters",
+          "title": "Are there any pending projects you would like to inform the Province about? For example, any additional information on planned projects including technology, number of households, communities reached, existing backbone leveraged, new backbone that you like to include, or any consultation on a proposed project taking place. (Optional)",
+          "description": "For example, is there any additional information on technology, number of households, communities reached, existing backbone leveraged, and new backbone that you'd like to include?",
           "type": "string",
           "maxLength": 10000
         },
         "satelliteProposal": {
-          "title": "In the KMZ file for Household Density Data linked in Appendix D of the RTP document, some areas were proposed to be best served by satellite. How do these proposed areas align with the expectations of your organization or your community? Please provide feedback on the modelling assumptions (if applicable).",
-          "description": "Please note, Geomark files are uploaded on the final page of this form. Max. 3500 characters",
+          "title": "In the KMZ file for Household Density Data linked in Appendix D of the RTP document, some areas were proposed to be best served by satellite. How do these proposed areas align with the expectations of your organization or your community? Please provide feedback on the modelling assumptions. (Optional)",
+          "description": "Please note, Geomark files are uploaded on the final page of this form.",
           "type": "string",
           "maxLength": 10000
         },
         "underservedAreas": {
-          "title": "In underserved areas where your Geomark does not indicate a wired or wireless technology viability to serve those households, how could service providers be incentivized to serve those areas? Please note, Geomark files are uploaded on the final page of this form (if applicable).",
-          "description": "Max. 3500 characters",
+          "title": "In underserved areas where your Geomark does not indicate a wired or wireless technology viability to serve those households, how could service providers be incentivized to serve those areas? Please note, Geomark files are uploaded on the final page of this form. (Optional)",
+          "description": "",
           "type": "string",
           "maxLength": 10000
         }
@@ -215,14 +216,14 @@ const schema = {
       "type": "object",
       "properties": {
         "capitalCostFunding": {
-          "title": "If funding was available for capital costs, which sections of highway would be your priority to be completed? Please consider traffic, consumption and other factors.",
-          "description": "Max. 3500 characters",
+          "title": "If funding was available for capital costs, which sections of highway would be your priority to be completed? Please consider traffic, consumption and other factors. (Optional)",
+          "description": "",
           "type": "string",
           "maxLength": 10000
         },
         "capitalCostExplanation": {
-          "title": "Please explain why you chose those sections",
-          "description": "Max. 3500 characters",
+          "title": "Please explain why you chose those sections. (Optional)",
+          "description": "",
           "type": "string",
           "maxLength": 10000
         }
@@ -233,19 +234,19 @@ const schema = {
       "type": "object",
       "properties": {
         "lastMileBroadbandGeomark": {
-          "title": "Wired broadband last mile (paste link to the Geomark below) (if applicable)",
+          "title": "Wired broadband last mile (paste link to the Geomark below - optional)",
           "type": "string"
         },
         "lastMileFixedWirelessGeomark": {
-          "title": "Fixed wireless last mile (paste link to the Geomark below) (if applicable)",
+          "title": "Fixed wireless last mile (paste link to the Geomark below - optional) ",
           "type": "string"
         },
         "lastMileNewBackboneGeomark": {
-          "title": "New backbone technology possibly needed for last mile (paste link to the Geomark below) (if applicable)",
+          "title": "New backbone technology possibly needed for last mile (paste link to the Geomark below - optional)",
           "type": "string"
         },
         "highwayCellularGeomark": {
-          "title": "Cellular along powered highways (paste link to the Geomark below) (if applicable)",
+          "title": "Cellular along powered highways for last mile (paste link to the Geomark below - optional)",
           "type": "string"
         }
       }

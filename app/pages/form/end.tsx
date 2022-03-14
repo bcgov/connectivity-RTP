@@ -35,7 +35,7 @@ export default function end() {
         <h4 style={styles.cardText}>Your reference number</h4>
         <h2 style={styles.cardTitle}>{referenceNumber}</h2>
       </ConfirmDiv>
-      <h2 style={{textAlign: "center"}}>Thank you for participating in this request. We have received your response</h2>
+      <h2 style={{textAlign: "center"}}>Thank you for participating in this request. We have received your response.</h2>
     </MainStyledDiv>
   );
 }

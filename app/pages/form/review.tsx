@@ -136,7 +136,7 @@ export default function review() {
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Proposed zone feedback</BCGovTitle>
-            <h4>Which zones are you providing feedback for?</h4>
+            <h4>Which zones are you providing information for?</h4>
             <span><ul>{reviewData.zoneInformation ? reviewData.zoneInformation.map(item => <li key={Math.random()}>{item}</li>) : "N/A"}</ul></span>
             <p></p>
             <h4>
@@ -162,16 +162,15 @@ export default function review() {
           <ReviewDiv>
             <BCGovTitle>Backbone infrastructure to support last mile</BCGovTitle>
             <h4>
-              For the information described on the previous page, is there existing
-              backbone infrastructure to deliver the last mile projects as specified?
+              Are there any areas within the zones you have specified that require
+              new backbone infrastructure to deliver services and last mile projects?
             </h4>
             <p>{reviewData.lastMileSupport ? "Yes" : "No"}</p>
             <h4>
-              If no, what type of new backbone technology would need to be
-              built?
+              If yes, what type of new backbone technology would need to be built?
             </h4>
             <span><ul>{reviewData.newBackboneTechnology
-              ? reviewData.newBackboneTechnology.map((item) => <li key={Math.random()} >{item}</li>)
+              ? reviewData.newBackboneTechnology.map((item) => <li key={Math.random()}>{item}</li>)
               : "N/A"}</ul></span>
             <h4>
               Please add any important details for addressing gaps in backbone
@@ -192,10 +191,11 @@ export default function review() {
           <ReviewDiv>
             <BCGovTitle>Areas of focus for local governments and First Nations</BCGovTitle>
             <h4>
-              What additional feedback on internet connectivity do you have for your community?
-              Please include information on areas that are underserved, as well as any other
-              local information considered relevant. This response will be related to the zone(s)
-              specified in your response and could include any particular area of focus, including
+              What additional feedback on internet connectivity would you like to
+              provide about your community? Please include information on areas
+              that are underserved, as well as any other local information considered
+              relevant. This response will be related to the zone(s) specified in
+              your response and could include any particular area of focus, including
               challenges with infrastructure or information pertinent to the area.
             </h4>
             <p>{reviewData.govtIndigenousConnFocus ? reviewData.govtIndigenousConnFocus : "N/A"}</p>
