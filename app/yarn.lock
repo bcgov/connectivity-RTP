@@ -4533,7 +4533,7 @@ nanoid@^2.1.0:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
   integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
-nanoid@^3.1.23, nanoid@^3.1.25:
+nanoid@^3.1.23:
   version "3.1.30"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.30.tgz#63f93cc548d2a113dc5dfbc63bfa09e2b9b64362"
   integrity sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==
@@ -4542,14 +4542,6 @@ negotiator@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
-
-next-session@^3.4.0:
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/next-session/-/next-session-3.4.3.tgz#4ad2f5c8b44b07bb586359a00cfabab8710a30f4"
-  integrity sha512-d7gwzHzTwkhoRCKuf1R8NL/+U5Bpc6N1Uot/A+nqLyxKfPskffU6wDIrAKcp74DGqzJpu/KRyHtXdjdMgN5TLA==
-  dependencies:
-    cookie "^0.4.1"
-    nanoid "^3.1.25"
 
 next@latest:
   version "12.0.7"
