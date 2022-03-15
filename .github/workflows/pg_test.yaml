@@ -4,24 +4,34 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_DB: connectivity_intake
+
 jobs:
-  Run-pgTAP-tests:
+  pgTAP-tests:
     runs-on: ubuntu-latest
-    container: node:16-alpine
+    container: 
+      image: node:16-alpine
     services: 
       postgres:
         image: postgres:14
         env:
-          PG_PASSWORD: postgres
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          - 5432:5432
     steps:
       - uses: actions/checkout@v2
+      - name: install sudo
+        run: apt update && apt install sudo -y
       - name: install pg_prove
         run: sudo cpan TAP::Parser::SourceHandler::pgTAP
         env:
@@ -36,13 +46,13 @@ jobs:
           ref: v1.2.0
       - name: install pgtap
         working-directory: pgtap
-        run: make && psql --host localhost --username postgres --dbname connectivity_intake --file sql/pgtap.sql
+        run: make && psql --host localhost --username ${{ env.POSTGRES_USER }} --dbname ${{ env.POSTGRES_DB }} --file sql/pgtap.sql
         env:
-          PGPASSWORD: postgres
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
       - name: Provision database
         working-directory: db
         run: sqitch deploy
       - name: Run tests
-        run: pg_prove --host localhost --username postgres --dbname connectivity_intake app/pgTap/*_test.sql
+        run: pg_prove --host localhost --username ${{ env.POSTGRES_USER }} --dbname ${{ env.POSTGRES_DB }} app/pgTap/*_test.sql
         env:
-          PGPASSWORD: postgres
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
