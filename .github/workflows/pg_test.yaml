@@ -30,14 +30,14 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - name: install sudo
-        run: apt update && apt install sudo -y
+      # - name: install sudo
+      #   run: apt update && apt install sudo -y
       - name: install pg_prove
         run: sudo cpan TAP::Parser::SourceHandler::pgTAP
         env:
           SHELL: /bin/bash
       - name: install postgres dev
-        run: sudo apt-get install -y --no-install-recomends postgresql-server-dev-all
+        run: sudo apt-get install -y --no-install-recommends postgresql-server-dev-all
       - name: Checkout pgtap
         uses: actions/checkout@v2
         with:
