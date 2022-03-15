@@ -30,8 +30,8 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      # - name: install sudo
-      #   run: apt update && apt install sudo -y
+      - name: install sudo
+        run: apt update && apt install sudo -y
       - name: install pg_prove
         run: sudo cpan TAP::Parser::SourceHandler::pgTAP
         env:
