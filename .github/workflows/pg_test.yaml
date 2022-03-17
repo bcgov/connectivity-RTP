@@ -5,9 +5,10 @@ on:
     branches: [ main ]
 
 env:
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_USER: postgres
-  POSTGRES_DB: connectivity_intake
+  PGPASSWORD: postgres
+  PGUSER: postgres
+  PGDATABASE: connectivity_intake
+  PGHOST: postgres
 
 jobs:
   pgTAP-tests:
@@ -18,9 +19,9 @@ jobs:
       postgres:
         image: postgres:14
         env:
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_PASSWORD: ${{ env.PGPASSWORD }}
+          POSTGRES_USER: ${{ env.PGUSER }}
+          POSTGRES_DB: ${{ env.PGDATABASE }}
         ports:
           - 5432:5432
         options: >-
@@ -36,8 +37,13 @@ jobs:
         run: sudo cpan TAP::Parser::SourceHandler::pgTAP
         env:
           SHELL: /bin/bash
-      - name: install postgres dev
-        run: sudo apt-get install -y --no-install-recommends postgresql-server-dev-all && sudo apt-get install postgresql-client
+      - name: install postgres and sqitch
+        run: sudo apt-get install -y --no-install-recommends postgresql-server-dev-all postgresql-client sqitch libdbd-pg-perl;
+      - name: provision database
+        working-directory: db
+        run: sqitch deploy -h ${{ env.PGHOST }};
+        env:
+          SHELL: /bin/bash
       - name: Checkout pgtap
         uses: actions/checkout@v2
         with:
@@ -46,13 +52,6 @@ jobs:
           ref: v1.2.0
       - name: install pgtap
         working-directory: pgtap
-        run: make && psql --host localhost --username ${{ env.POSTGRES_USER }} --dbname ${{ env.POSTGRES_DB }} --file sql/pgtap.sql
-        env:
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
-      - name: Provision database
-        working-directory: db
-        run: sqitch deploy
+        run: make
       - name: Run tests
-        run: pg_prove --host localhost --username ${{ env.POSTGRES_USER }} --dbname ${{ env.POSTGRES_DB }} app/pgTap/*_test.sql
-        env:
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        run: PGPASSWORD=${{ env.PGPASSWORD }} pg_prove --host ${{ env.PGHOST }} --port ${{ job.services.postgres.ports[5432] }} --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
