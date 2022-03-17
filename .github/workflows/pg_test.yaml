@@ -44,14 +44,16 @@ jobs:
         run: sqitch deploy -h ${{ env.PGHOST }};
         env:
           SHELL: /bin/bash
-      - name: Checkout pgtap
-        uses: actions/checkout@v2
-        with:
-          repository: theory/pgtap
-          path: pgtap
-          ref: v1.2.0
+      # - name: Checkout pgtap
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: theory/pgtap
+      #     path: pgtap
+      #     ref: v1.2.0
+      # - name: install pgtap
+      #   working-directory: pgtap
+      #   run: make
       - name: install pgtap
-        working-directory: pgtap
-        run: make
+        run: make && psql -d connectivity_intake -c 'CREATE EXTENSION IF NOT EXISTS pgtap;'
       - name: Run tests
         run: PGPASSWORD=${{ env.PGPASSWORD }} pg_prove --host ${{ env.PGHOST }} --port ${{ job.services.postgres.ports[5432] }} --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
