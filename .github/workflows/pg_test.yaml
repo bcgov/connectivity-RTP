@@ -1,10 +1,7 @@
 name: Postgres tests with pg-tap
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  [workflow_call]
 
 env:
   PGPASSWORD: postgres
@@ -12,7 +9,8 @@ env:
   PGDATABASE: connectivity_intake
 
 jobs:
-  pgTAP-tests:
+  pgtap-tests:
+    name: pgtap-tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
