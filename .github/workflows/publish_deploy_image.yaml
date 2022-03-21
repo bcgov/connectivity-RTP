@@ -82,6 +82,8 @@ jobs:
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
   deploy-to-openshift-development:
+    pgtap-tests: 
+      uses: ./.github/workflows/pg_test.yaml
     if: github.event_name == 'pull_request'
     needs: [pgtap-tests, build-and-push-image]
     runs-on: ubuntu-latest
