@@ -41,7 +41,7 @@ jobs:
           make
           make install
       - name: Run Tests
-        run: PGPASSWORD=${{ env.PGPASSWORD }} pg_prove --port ${{ job.services.postgres.ports[5432] }} --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
+        run: pg_prove --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
 
     # container: 
     #   image: node:16
