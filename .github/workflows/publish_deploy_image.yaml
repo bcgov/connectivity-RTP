@@ -81,12 +81,12 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-  pgtap-tests: 
+  tests: 
     uses: ./.github/workflows/pg_test.yaml
 
   deploy-to-openshift-development:
     if: github.event_name == 'pull_request'
-    needs: [pgtap-tests, build-and-push-image]
+    needs: [tests, build-and-push-image]
     runs-on: ubuntu-latest
     environment:
       name: Development
