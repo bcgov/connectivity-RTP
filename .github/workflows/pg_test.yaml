@@ -8,45 +8,125 @@ env:
   PGPASSWORD: postgres
   PGUSER: postgres
   PGDATABASE: connectivity_intake
-  PGHOST: postgres
 
 jobs:
   pgTAP-tests:
     runs-on: ubuntu-latest
-    container: 
-      image: node:16
-    services: 
-      postgres:
-        image: postgres:14
-        env:
-          POSTGRES_PASSWORD: ${{ env.PGPASSWORD }}
-          POSTGRES_USER: ${{ env.PGUSER }}
-          POSTGRES_DB: ${{ env.PGDATABASE }}
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
     steps:
       - uses: actions/checkout@v2
-      - name: install sudo
-        run: apt update && apt install sudo -y
-      - name: install postgres and sqitch
-        run: sudo apt-get install -y --no-install-recommends postgresql-server-dev-all postgresql-client sqitch libdbd-pg-perl;
-      - name: install pg_prove
-        run: sudo cpan TAP::Parser::SourceHandler::pgTAP
-        env:
-          SHELL: /bin/bash
-      - name: install pgtap
-        run: make install_pgtap PSQL='psql -h postgres'
-      - name: create extension
-        run: PGPASSWORD=${{ env.PGPASSWORD }} psql -d ${{ env.PGDATABASE }} -h ${{ env.PGHOST }} -c 'CREATE EXTENSION IF NOT EXISTS pgtap;' 
-      - name: provision database
-        working-directory: db
-        run: sqitch deploy -h ${{ env.PGHOST }};
-        env:
-          SHELL: /bin/bash
-      - name: Run tests
-        run: PGPASSWORD=${{ env.PGPASSWORD }} pg_prove --host ${{ env.PGHOST }} --port ${{ job.services.postgres.ports[5432] }} --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - name: Setup Postgres DB
+        run: |
+          sudo apt-get update
+          sudo apt-get install -yqq sqitch libdbd-pg-perl postgresql-client
+          asdf plugin-add postgres || true
+          asdf plugin-update --all
+          asdf install postgres 14.1
+          asdf reshim
+          pg_ctl start
+          createdb connectivity_intake
+          sqitch deploy
+        working-directory: ./db
+
+    # container: 
+    #   image: node:16
+    # services: 
+    #   postgres:
+    #     image: postgres:14
+    #     env:
+    #       POSTGRES_PASSWORD: ${{ env.PGPASSWORD }}
+    #       POSTGRES_USER: ${{ env.PGUSER }}
+    #       POSTGRES_DB: ${{ env.PGDATABASE }}
+    #     ports:
+    #       - 5432:5432
+    #     options: >-
+    #       --health-cmd pg_isready
+    #       --health-interval 10s
+    #       --health-timeout 5s
+    #       --health-retries 5
+    # steps:
+    #   - uses: actions/checkout@v2
+    #   - name: install sudo
+    #     run: apt update && apt install sudo -y
+    #   - name: install postgres and sqitch
+    #     run: sudo apt-get install -y --no-install-recommends postgresql-server-dev-all postgresql-client sqitch libdbd-pg-perl;
+    #   - name: install pg_prove
+    #     run: sudo cpan TAP::Parser::SourceHandler::pgTAP
+    #     env:
+    #       SHELL: /bin/bash
+    #   - name: install pgtap
+    #     run: make install_pgtap PSQL='psql -h postgres'
+    #   - name: create extension
+    #     run: PGPASSWORD=${{ env.PGPASSWORD }} psql -d ${{ env.PGDATABASE }} -h ${{ env.PGHOST }} -c 'CREATE EXTENSION IF NOT EXISTS pgtap;' 
+    #   - name: provision database
+    #     working-directory: db
+    #     run: sqitch deploy -h ${{ env.PGHOST }};
+    #     env:
+    #       SHELL: /bin/bash
+    #   - name: Run tests
+    #     run: PGPASSWORD=${{ env.PGPASSWORD }} pg_prove --host ${{ env.PGHOST }} --port ${{ job.services.postgres.ports[5432] }} --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
+
+# jobs:
+#   tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Get yarn cache directory path
+#         id: yarn-cache-dir-path
+#         run: echo "::set-output name=dir::$(yarn cache dir)"
+#       - uses: actions/cache@v2
+#         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+#         with:
+#           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+#           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+#           restore-keys: |
+#             ${{ runner.os }}-yarn-
+#       - name: Run unit tests
+#         run: |
+#           yarn
+#           yarn test
+#         working-directory: ./app
+#       - name: Install asdf
+#         uses: asdf-vm/actions/setup@v1
+#       - uses: actions/cache@v2
+#         id: asdf-postgres-cache
+#         with:
+#           path: |
+#             /home/runner/.asdf
+#           key: ${{ runner.os }}-postgres-11.4-postgis-3.0.2
+#       - name: Setup postgres db
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install -yqq libxml2-dev libgeos-dev libproj-dev libgdal-dev
+#           asdf plugin-add postgres || true
+#           asdf plugin-add postgis https://github.com/junminahn/asdf-postgis.git || true
+#           asdf plugin-update --all
+#           asdf install postgres 11.4
+#           asdf reshim
+#           ASDF_POSTGRES_VERSION=11.4 asdf install postgis 3.0.2
+#           asdf reshim
+#           pg_ctl start
+#           createdb runner || true
+#         working-directory: ./db
+#       - name: Install pg_prove
+#         run: sudo cpan TAP::Parser::SourceHandler::pgTAP
+#         env:
+#           SHELL: /bin/bash
+#       - name: Install pgtap
+#         run: |
+#           git clone https://github.com/theory/pgtap.git
+#           cd pgtap
+#           git checkout v1.1.0
+#           git branch
+#           make
+#           make install
+#       - name: Setup DB & run pgtap tests
+#         run: |
+#           chmod +x ./setup.sh
+#           psql -c "drop database if exists sbrg"
+#           psql -c "drop database if exists sbrg_test"
+#           ./setup.sh sbrg
+#           ./setup.sh sbrg_test
+#           pg_prove -U sbrg -d sbrg test/*
+#         working-directory: ./db
