@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_run:
+    workflows: ["pgTAP-tests"]
+    types: 
+      - completed
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -81,8 +85,8 @@ jobs:
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
   deploy-to-openshift-development:
-    if: github.event_name == 'pull_request'
-    needs: [build-and-push-image, pgTAP-tests]
+    if: github.event_name == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    needs: [build-and-push-image]
     runs-on: ubuntu-latest
     environment:
       name: Development

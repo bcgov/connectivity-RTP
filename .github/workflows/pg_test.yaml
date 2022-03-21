@@ -1,6 +1,8 @@
 name: Postgres tests with pg-tap
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
