@@ -25,7 +25,7 @@ jobs:
             ${{ runner.os }}-postgres-14.1-${{ env.cache-name }}
       - name: Install asdf
         uses: asdf-vm/actions/setup@v1
-      - name: Setup Postgres DB
+      - name: Setup Postgres Database
         run: |
           sudo apt-get update
           sudo apt-get install -yqq sqitch libdbd-pg-perl postgresql-client
