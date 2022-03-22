@@ -34,7 +34,7 @@ jobs:
           asdf install postgres 14.1
           asdf reshim
           pg_ctl start
-          createdb ${{ env.PGDATABASE }}
+          createdb ${{ env.PGDATABASE }} || true
           sqitch deploy
         working-directory: ./db
       - name: Install pg_prove
