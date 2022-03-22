@@ -7,22 +7,20 @@ const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 const landingPage =
   runtimeConfig.NODE_ENV === "production"
     ? `https://${runtimeConfig.HOST}`
-    : `https://${runtimeConfig.HOST}:${runtimeConfig.PORT}`;
+    : `http://${runtimeConfig.HOST}:${runtimeConfig.PORT}`;
 
 export default function Custom500() {
   return (
     <>
       <LandingStyledDiv>
-        <Card title="Uh Oh - Error">
+        <Card title="500 Error - Server Error">
           <p>
-            It appears the servers got some wires crossed. Luckily, your
-            responses were auto-saved the last time you pressed Continue.
+            Don't worry, your responses were auto-saved the last time you pressed Continue.
           </p>
           <p>
-            <Link href={landingPage}>
-              Return back to the main page
-            </Link>
-            and log back in to pick up where you left off.
+            Please <Link href={landingPage}>
+              return back to the main page
+            </Link> and log back in.
           </p>
           <p>
             If that doesn't work, trying clearing your cookies then logging in again.
