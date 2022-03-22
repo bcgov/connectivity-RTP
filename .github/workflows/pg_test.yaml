@@ -45,7 +45,7 @@ jobs:
         run: |
           git clone https://github.com/theory/pgtap.git
           cd pgtap
-          git checkout v1.1.0
+          git checkout v1.2.0
           git branch
           make
           make install
