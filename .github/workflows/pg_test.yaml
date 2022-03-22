@@ -49,6 +49,6 @@ jobs:
           git branch
           make
           make install
-          psql -c 'CREATE EXTENSION pgtap;'
+          psql -c 'CREATE EXTENSION pgtap;' || true
       - name: Run Tests
         run: pg_prove --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
