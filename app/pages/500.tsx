@@ -7,7 +7,7 @@ const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 const landingPage =
   runtimeConfig.NODE_ENV === "production"
     ? `https://${runtimeConfig.HOST}`
-    : `http://${runtimeConfig.HOST}:${runtimeConfig.PORT}`;
+    : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
 export default function Custom500() {
   return (
