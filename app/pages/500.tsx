@@ -19,7 +19,7 @@ export default function Custom500() {
             If that doesn't work, please clear any cookies and restart your browser.
           </p>
           </Card>
-        </LandingStyledDiv> 
+        </LandingStyledDiv>
     </>
   )
 }
