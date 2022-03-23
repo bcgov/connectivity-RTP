@@ -16,7 +16,7 @@ export default function Custom404() {
             </Link> and log back in.
           </p>
           <p>
-            If that doesn't work, please clear any cookies and restart your browser.
+            If logging back in does not work, please clear any cookies and restart your browser.
           </p>
           </Card>
         </LandingStyledDiv>
