@@ -1,5 +1,5 @@
-import Card from "@button-inc/bcgov-theme/Card"
-import Link from "@button-inc/bcgov-theme/Link"
+import Card from "@button-inc/bcgov-theme/Card";
+import Link from "@button-inc/bcgov-theme/Link";
 import LandingStyledDiv from "../components/LandingStyledDiv";
 import getConfig from "next/config";
 
