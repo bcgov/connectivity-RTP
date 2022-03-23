@@ -2,5 +2,8 @@ dependencies:
 - name: spilo
   repository: https://bcgov.github.io/spilo-chart
   version: 0.2.0
-digest: sha256:45fdfbfb1147b2ebe1a9f16ab4f3c5f08bc66c48ec94acb2424842e588e54663
-generated: "2022-03-08T08:11:02.699169661-08:00"
+- name: cas-metabase
+  repository: https://bcgov.github.io/cas-metabase/
+  version: 0.2.14
+digest: sha256:4178cae9b20b43dbd8d5c571b24902eb4e3b47438294a937e81b7a14e3007ffd
+generated: "2022-03-22T14:40:47.432997104-07:00"
