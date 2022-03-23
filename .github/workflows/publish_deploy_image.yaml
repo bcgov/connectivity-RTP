@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -80,9 +81,12 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
+  tests: 
+    uses: ./.github/workflows/pg_test.yaml
+
   deploy-to-openshift-development:
     if: github.event_name == 'pull_request'
-    needs: [build-and-push-image]
+    needs: [tests, build-and-push-image]
     runs-on: ubuntu-latest
     environment:
       name: Development
