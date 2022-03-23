@@ -1,0 +1,15 @@
+apiVersion: ops.gov.bc.ca/v1alpha1
+kind: SysdigTeam
+metadata:
+  name: bc5936-sysdigteam
+  namespace: bc5936-tools
+spec:
+  team:
+    description: The Sysdig Team for the Connectivity RTP
+    users:
+    - name: bryan@button.is
+      role: ROLE_TEAM_MANAGER
+    - name: alec@button.is
+      role: ROLE_TEAM_MANAGER
+    - name: rachel.greenspan@gov.bc.ca
+      role: ROLE_TEAM_MANAGER
