@@ -1,13 +1,6 @@
 import Card from "@button-inc/bcgov-theme/Card";
 import Link from "@button-inc/bcgov-theme/Link";
 import LandingStyledDiv from "../../components/LandingStyledDiv";
-import getConfig from "next/config";
-
-const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
-const landingPage =
-  runtimeConfig.NODE_ENV === "production"
-    ? `https://${runtimeConfig.HOST}`
-    : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
 export default function error() {
   return (
@@ -17,7 +10,7 @@ export default function error() {
             Something has gone wrong with the form. Your responses were auto-saved the last time you pressed Continue.
           </p>
           <p>
-            Please <Link href={landingPage}>
+            Please <Link href="/">
               return home
             </Link> and log back in.
           </p>
