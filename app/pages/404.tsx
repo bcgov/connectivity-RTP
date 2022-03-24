@@ -1,13 +1,14 @@
 import Card from "@button-inc/bcgov-theme/Card";
 import Link from "@button-inc/bcgov-theme/Link";
-import LandingStyledDiv from "../../components/LandingStyledDiv";
+import LandingStyledDiv from "../components/LandingStyledDiv";
 
-export default function error() {
+export default function Custom404() {
   return (
+    <>
       <LandingStyledDiv>
-        <Card title="Form Error">
+        <Card title="404 Error - Page Not Found">
           <p>
-            Something has gone wrong with the form. Your responses were auto-saved the last time you pressed Continue.
+            Your responses were auto-saved the last time you pressed Continue.
           </p>
           <p>
             Please <Link href="/">
@@ -19,5 +20,6 @@ export default function error() {
           </p>
           </Card>
         </LandingStyledDiv>
+    </>
   )
 }
