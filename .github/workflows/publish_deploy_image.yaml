@@ -11,6 +11,8 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   TAG: sha-${{ github.sha }}
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
+  SYSDIG_FILEPATH: ./helm/monitoring/sysdig.yaml
+  MONITORING_NAMESPACE: bc5936-tools
 
 jobs:
   build-and-push-image:
@@ -103,6 +105,8 @@ jobs:
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
+          sysdig_file: ${{ env.SYSDIG_FILEPATH }}
+          monitoring_namespace: ${{ env.MONITORING_NAMESPACE }}
 
   deploy-to-openshift-test:
     if: github.event.ref == 'refs/heads/main'
@@ -123,6 +127,8 @@ jobs:
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
+          sysdig_file: ${{ env.SYSDIG_FILEPATH }}
+          monitoring_namespace: ${{ env.MONITORING_NAMESPACE }}
 
   deploy-to-openshift-production:
     needs: [deploy-to-openshift-test]
@@ -142,3 +148,5 @@ jobs:
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
+          sysdig_file: ${{ env.SYSDIG_FILEPATH }}
+          monitoring_namespace: ${{ env.MONITORING_NAMESPACE }}

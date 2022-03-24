@@ -19,6 +19,12 @@ inputs:
   route:
     description: "URL where the application can be accessed"
     required: true
+  sysdig_file:
+    description: "The path to the sysdig monitoring yaml"
+    required: true
+  monitoring_namespace:
+    description: "The namespace where monitoring tools are deployed"
+    required: true
 runs:
   using: composite
   steps:
@@ -30,6 +36,12 @@ runs:
       namespace: ${{ inputs.namespace }}
       insecure_skip_tls_verify: true
   - run: |
-      chmod +x ./lib/helm_deploy.sh
-      ./lib/helm_deploy.sh -n ${{ inputs.namespace }} --set app.namespace=${{ inputs.namespace }} --set image.app.tag=${{ inputs.tag }} --set image.db.tag=${{ inputs.tag  }} --set image.app.clientSecret=${{ inputs.client_secret }} --set route.host=${{ inputs.route }}
+      chmod +x ./lib/helm_deploy.sh ./lib/sysdig_montoring.sh
+      ./lib/helm_deploy.sh -n ${{ inputs.namespace }} \
+        --set app.namespace=${{ inputs.namespace }} \
+        --set image.app.tag=${{ inputs.tag }} \
+        --set image.db.tag=${{ inputs.tag  }} \
+        --set image.app.clientSecret=${{ inputs.client_secret }} \
+        --set route.host=${{ inputs.route }}
+      ./lib/sysdig_montoring.sh -n ${{ inputs.monitoring_namespace }} -f ${{ inputs.sysdig_file }}
     shell: bash
