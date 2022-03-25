@@ -1,8 +1,8 @@
 apiVersion: ops.gov.bc.ca/v1alpha1
 kind: SysdigTeam
 metadata:
-  name: bc5936-sysdigteam
-  namespace: bc5936-tools
+  name: {{ .Values.sysdig.name }}
+  namespace: {{ .Values.namespace }}
 spec:
   team:
     description: The Sysdig Team for the Connectivity RTP
