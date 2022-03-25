@@ -162,6 +162,7 @@ rules:
   - apiGroups:
       - "rbac.authorization.k8s.io"
       - "authorization.openshift.io"
+      - "ops.gov.bc.ca"
     resources:
       - roles
       - rolebindings
