@@ -166,6 +166,7 @@ rules:
     resources:
       - roles
       - rolebindings
+      - sysdig-teams
     verbs:
       - get
       - list
