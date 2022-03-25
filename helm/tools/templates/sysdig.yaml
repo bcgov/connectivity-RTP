@@ -1,0 +1,13 @@
+apiVersion: ops.gov.bc.ca/v1alpha1
+kind: SysdigTeam
+metadata:
+  name: {{ .Values.sysdig.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  team:
+    description: The Sysdig Team for the Connectivity RTP
+    users: |-
+      {{- range $users := .Values.sysdig.users }}
+        - name: {{ $users.name }}
+          role: {{ $users.role -}}
+      {{ end }}

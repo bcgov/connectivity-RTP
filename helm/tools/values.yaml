@@ -1,0 +1,16 @@
+fullnameOverride: connectivity-intake-tools
+namespace: bc5936-tools
+
+sysdig:
+  name: bc5936-sysdigteam
+  users:
+  - name: bryan@button.is
+    role: ROLE_TEAM_MANAGER
+  - name: alec@button.is
+    role: ROLE_TEAM_MANAGER
+  - name: rachel.greenspan@gov.bc.ca
+    role: ROLE_TEAM_MANAGER
+
+deployer:
+  serviceAccount:
+    enabled: true

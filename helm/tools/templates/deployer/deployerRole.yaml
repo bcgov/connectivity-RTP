@@ -1,0 +1,52 @@
+{{ if .Values.deployer.serviceAccount.enabled }} 
+
+apiVersion: authorization.openshift.io/v1
+kind: Role
+metadata:
+  labels:
+{{ include "connectivity-intake.labels" . | indent 4}}
+  annotations:
+    openshift.io/description: A user who can deploy applications
+    openshift.io/reconcile-protect: "false"
+  name: {{ .Release.Name }}-deployer
+rules:
+  - apiGroups:
+      - "ops.gov.bc.ca"
+    resources:
+      - sysdig-teams
+    verbs:
+      - delete
+      - deletecollection
+      - get
+      - list
+      - patch
+      - create
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - serviceaccounts
+      - secrets
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - "rbac.authorization.k8s.io"
+      - "authorization.openshift.io"
+    resources:
+      - roles
+      - rolebindings
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - delete
+
+{{ end }}

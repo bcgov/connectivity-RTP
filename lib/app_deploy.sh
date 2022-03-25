@@ -2,9 +2,9 @@
 
 set -euxo pipefail
 
-echo "Creating Helm installation $*"
+echo "Deploying application to openshift $*"
 
-cd helm
+cd helm/app
 helm dep up
 helm upgrade --install --atomic -f ./values.yaml "$@" connectivity-intake . \
   --debug --timeout=8m0s
