@@ -162,11 +162,9 @@ rules:
   - apiGroups:
       - "rbac.authorization.k8s.io"
       - "authorization.openshift.io"
-      - "ops.gov.bc.ca"
     resources:
       - roles
-      - rolebindings
-      - sysdig-teams
+      - rolebindings   
     verbs:
       - get
       - list
@@ -174,6 +172,19 @@ rules:
       - update
       - patch
       - delete
+  - apiGroups:
+      - "ops.gov.bc.ca"
+    resources:
+      - sysdig-teams
+    verbs:
+      - delete
+      - deletecollection
+      - get
+      - list
+      - patch
+      - create
+      - update
+      - watch
   - apiGroups:
       - extensions
       - apps
