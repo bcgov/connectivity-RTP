@@ -1,8 +1,8 @@
 name: Deploy application tools
 
 on:
-  push:
-    branches: [ main ]
+  push
+    # branches: [ main ]
 
 env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
