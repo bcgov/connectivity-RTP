@@ -19,12 +19,6 @@ inputs:
   route:
     description: "URL where the application can be accessed"
     required: true
-  sysdig_file:
-    description: "The path to the sysdig monitoring yaml"
-    required: true
-  monitoring_namespace:
-    description: "The namespace where monitoring tools are deployed"
-    required: true
 runs:
   using: composite
   steps:
