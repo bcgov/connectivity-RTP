@@ -2,7 +2,7 @@
 
 set -euxo pipefail
 
-echo "Creating Helm installation $*"
+echo "Deploying application to openshift $*"
 
 cd helm/app
 helm dep up
