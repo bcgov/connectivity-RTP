@@ -43,5 +43,4 @@ runs:
         --set image.db.tag=${{ inputs.tag  }} \
         --set image.app.clientSecret=${{ inputs.client_secret }} \
         --set route.host=${{ inputs.route }}
-      ./lib/sysdig_montoring.sh -n ${{ inputs.monitoring_namespace }} -f ${{ inputs.sysdig_file }}
     shell: bash
