@@ -23,5 +23,28 @@ rules:
       - create
       - update
       - watch
+  - apiGroups:
+      - ""
+    resources:
+      - serviceaccounts
+      - secrets
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - "authorization.openshift.io"
+    resources:
+      - roles
+    verbs:
+      - get
+      - list
+      - create
+      - update
+      - patch
+      - delete
 
 {{ end }}
