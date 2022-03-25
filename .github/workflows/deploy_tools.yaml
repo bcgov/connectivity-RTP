@@ -4,6 +4,9 @@ on:
   push
     # branches: [main]
 
+env:
+  OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
+
 jobs:
   deploy-tools:
     runs-on: ubuntu-latest
@@ -12,6 +15,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Authenticate, set context, and run deploy script
+        uses: redhat-actions/oc-login@v1
+        with:
+          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          namespace: ${{ secrets.OPENSHIFT_TOOLS_NAMESPACE }}
+          insecure_skip_tls_verify: true
       - name: Deploy sysdig
         run: |
           chmod +x ./lib/tools_deploy.sh
