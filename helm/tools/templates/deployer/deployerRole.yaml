@@ -40,6 +40,7 @@ rules:
       - "authorization.openshift.io"
     resources:
       - roles
+      - rolebindings
     verbs:
       - get
       - list
