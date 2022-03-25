@@ -30,7 +30,7 @@ runs:
       namespace: ${{ inputs.namespace }}
       insecure_skip_tls_verify: true
   - run: |
-      chmod +x ./lib/helm_deploy.sh ./lib/sysdig_montoring.sh
+      chmod +x ./lib/helm_deploy.sh
       ./lib/helm_deploy.sh -n ${{ inputs.namespace }} \
         --set app.namespace=${{ inputs.namespace }} \
         --set image.app.tag=${{ inputs.tag }} \
