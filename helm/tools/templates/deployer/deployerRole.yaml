@@ -36,6 +36,7 @@ rules:
       - patch
       - delete
   - apiGroups:
+      - "rbac.authorization.k8s.io"
       - "authorization.openshift.io"
     resources:
       - roles
