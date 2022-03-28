@@ -6,7 +6,7 @@ metadata:
 spec:
   team:
     description: The Sysdig Team for the Connectivity RTP
-    users: |-
+    users:
       {{- range $users := .Values.sysdig.users }}
         - name: {{ $users.name }}
           role: {{ $users.role -}}

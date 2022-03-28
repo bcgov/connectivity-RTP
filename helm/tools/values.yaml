@@ -8,7 +8,9 @@ sysdig:
     role: ROLE_TEAM_MANAGER
   - name: alec@button.is
     role: ROLE_TEAM_MANAGER
-  - name: rachel.greenspan@gov.bc.ca
+  - name: rachel.greenspan@gmail.com
+    role: ROLE_TEAM_MANAGER
+  - name: raj.gurtata@gov.bc.ca
     role: ROLE_TEAM_MANAGER
 
 deployer:
