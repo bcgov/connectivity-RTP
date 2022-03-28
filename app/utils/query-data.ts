@@ -44,6 +44,7 @@ export async function queryData(req) {
 }
 
 export async function queryUser() {
+  console.log("BaseURL", baseUrl);
   const userQuery = JSON.stringify({
     query: `query MyQuery { session { sub } allApplications { nodes { id formData referenceNumber status } } }`,
   });
