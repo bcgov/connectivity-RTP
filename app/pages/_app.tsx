@@ -5,6 +5,9 @@ import styled from "styled-components";
 import FooterMenu from "../components/FooterLinks";
 import BCGovTypography from "../components/BCGovTypography";
 import NavBarLinks from "../components/NavBarLinks";
+import { useEffect, useState } from "react";
+import { queryUser } from "../utils/query-data";
+import App from "next/app";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -62,7 +65,22 @@ const formStyle = {
   marginBottom: "0",
 };
 
-export default function App({ Component, pageProps }) {
+
+export default function MyApp({ Component, pageProps }) {
+  const [buttonText, setButtonText] = useState("Logout");
+  const [buttonAction, setButtonAction] = useState("/logout");
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await queryUser();
+      if (response.data.session === null) {
+        setButtonAction("/login");
+        setButtonText("Login");
+      }
+    }
+    fetchData();
+  }, [GlobalStyle]);
+  
   return (
     <>
       <Head>
@@ -99,8 +117,8 @@ export default function App({ Component, pageProps }) {
         <Navigation header="main" title="Connecting Communities BC">
           <NavBarLinks />
           <LogoutForm>
-            <form action="/logout" method="POST" style={formStyle}>
-              <Button variant="secondary-inverse">Logout</Button>
+            <form action={buttonAction} method="POST" style={formStyle}>
+              <Button variant="secondary-inverse">{buttonText}</Button>
             </form>
           </LogoutForm>
         </Navigation>
@@ -111,4 +129,9 @@ export default function App({ Component, pageProps }) {
       </ThemeProvider>
     </>
   );
+};
+
+MyApp.getInitialProps = async (context) => {
+  const props = await App.getInitialProps(context);
+  return { ...props }
 };
