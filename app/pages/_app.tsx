@@ -7,6 +7,7 @@ import BCGovTypography from "../components/BCGovTypography";
 import NavBarLinks from "../components/NavBarLinks";
 import { useEffect, useState } from "react";
 import { queryUser } from "../utils/query-data";
+import App from "next/app";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -65,7 +66,7 @@ const formStyle = {
 };
 
 
-export default function App({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   const [buttonText, setButtonText] = useState("Logout");
   const [buttonAction, setButtonAction] = useState("/logout");
 
@@ -128,4 +129,9 @@ export default function App({ Component, pageProps }) {
       </ThemeProvider>
     </>
   );
+};
+
+MyApp.getInitialProps = async (context) => {
+  const props = await App.getInitialProps(context);
+  return { ...props }
 };
