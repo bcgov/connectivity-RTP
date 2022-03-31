@@ -1,0 +1,6 @@
+dependencies:
+- name: metabase
+  repository: https://bcgov.github.io/cas-metabase/
+  version: 0.12.1
+digest: sha256:13e88047d3369c27a0e97416fa9d340f0fbcd580818e3459092e521ad36781fa
+generated: "2022-03-31T11:16:07.769173206-07:00"

@@ -1,10 +1,10 @@
 apiVersion: v2
-name: connecting-communities-bc-metabase
+name: ccbc-metabase
 description: A Helm chart for CCBC Metabase
 type: application
 version: 0.1.0
 appVersion: "0.1.0"
 dependencies:
-  - name: cas-metabase
+  - name: metabase
     version: 0.12.1
     repository: https://bcgov.github.io/cas-metabase/

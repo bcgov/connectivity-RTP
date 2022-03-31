@@ -1,1 +1,31 @@
 fullnameOverride: ccbc-metabase
+
+metabase:
+  replicaCount: 2
+  image:
+    repository: gcr.io/ggl-cas-storage/metabase
+    tag: latest
+  # database:
+  #   type: postgres
+  #   host: ccbc-patroni
+  #   port: 5432
+  #   dbname: metabase
+  #   existingSecret: ccbc-metabase
+  #   existingSecretUsernameKey: database-user
+  #   existingSecretPasswordKey: database-password
+  resources:
+    limits:
+      cpu: 500m
+      memory: 500Mi
+    requests:
+      cpu: 250m
+      memory: 500Mi
+  podLabels:
+    app.kubernetes.io/component: app
+
+deployer:
+  serviceAccount:
+    enabled: true
+
+networkPolicies:
+  enable: true
