@@ -69,3 +69,6 @@ spilo:
             parameters:
               max_wal_size: 64
               min_wal_size: 32
+
+metabase:
+  instanceName: ccbc-metabase
