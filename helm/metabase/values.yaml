@@ -1,10 +1,10 @@
 fullnameOverride: ccbc-metabase
 
 metabase:
-  replicaCount: 2
+  # replicaCount: 2
   image:
     repository: gcr.io/ggl-cas-storage/metabase
-    tag: latest
+    tag: 0889179dcad8fd7ec10216ae66386748b6517086
   # database:
   #   type: postgres
   #   host: ccbc-patroni
@@ -20,12 +20,17 @@ metabase:
     requests:
       cpu: 250m
       memory: 500Mi
-  podLabels:
-    app.kubernetes.io/component: app
+  # podLabels:
+  #   app.kubernetes.io/component: app
+
+route:
+  host: ccbc-metabase-dev-silver.devops.gov.bc.ca
+  ports:
+    targetPort: 3000
 
 deployer:
   serviceAccount:
     enabled: true
 
-networkPolicies:
-  enable: true
+# networkPolicies:
+#   enable: true
