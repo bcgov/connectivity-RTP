@@ -22,6 +22,8 @@ metabase:
       memory: 500Mi
   # podLabels:
   #   app.kubernetes.io/component: app
+  service:
+    name: metabase
 
 route:
   host: ccbc-metabase-dev-silver.devops.gov.bc.ca
@@ -33,4 +35,4 @@ deployer:
     enabled: true
 
 networkPolicies:
-  enable: true
+  enabled: true

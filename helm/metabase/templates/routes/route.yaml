@@ -7,11 +7,11 @@ metadata:
 spec:
   host: {{ .Values.route.host }}
   port:
-    targetPort: {{ .Values.route.ports.targetPorts }}
+    targetPort: {{ .Values.route.ports.targetPort }}
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
   to:
     kind: Service
-    name: {{ template "ccbc-metabase.fullname" . }}
+    name: {{ .Values.metabase.service.name }}
     weight: 100
