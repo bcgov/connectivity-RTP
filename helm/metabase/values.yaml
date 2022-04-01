@@ -16,19 +16,17 @@ metabase:
   resources:
     limits:
       cpu: 500m
-      memory: 500Mi
+      memory: 1500Mi
     requests:
       cpu: 250m
-      memory: 500Mi
+      memory: 750Mi
   # podLabels:
   #   app.kubernetes.io/component: app
   service:
     name: metabase
 
 route:
-  host: ccbc-metabase-dev-silver.devops.gov.bc.ca
-  ports:
-    targetPort: 3000
+  host: ccbc-metabase-dev.apps.silver.devops.gov.bc.ca
 
 deployer:
   serviceAccount:
