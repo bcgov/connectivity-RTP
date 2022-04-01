@@ -11,8 +11,8 @@ spec:
   ingress:
   - from:
     - namespaceSelector:
-      matchLabels:
-        kubernetes.io/metadata.name: {{ .Values.app.namespace }}
+        matchLabels:
+          kubernetes.io/metadata.name: {{ .Values.app.namespace }}
       podSelector:
         matchLabels:
           app.kubernetes.io/instance: {{ .Values.metabase.instanceName }}
