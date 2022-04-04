@@ -52,6 +52,7 @@ db:
   name: connectivity_intake
   appUser: connectivity_intake_app
   ownerUser: connectivity_intake
+  readonlyUser: connectivity_intake_readonly
   preInitCommand: ""
 
 spilo:
@@ -72,3 +73,4 @@ spilo:
 
 metabase:
   instanceName: ccbc-metabase
+  namespace: b40eb8-dev
