@@ -55,6 +55,16 @@ spec:
             secretKeyRef:
               key: database-app-password
               name: {{ template "connectivity-intake.fullname" . }}
+        - name: PGUSER_READONLY
+          valueFrom:
+            secretKeyRef:
+              key: database-readonly-user
+              name: {{ template "connectivity-intake.fullname" . }}
+        - name: PGPASSWORD_READONLY
+          valueFrom:
+            secretKeyRef:
+              key: database-readonly-password
+              name: {{ template "connectivity-intake.fullname" . }}
         - name: PGPORT
           value: "5432"
         - name: PGHOST
@@ -77,6 +87,7 @@ spec:
             create-user-db -d $(PGDATABASE_OWNER) -u $(PGUSER_OWNER) -p $(PGPASSWORD_OWNER) --owner;
             alter-role $(PGUSER_OWNER) createrole;
             create-user-db -d $(PGDATABASE_OWNER) -u $(PGUSER_APP) -p $(PGPASSWORD_APP);
+            create-user-db -d $(PGDATABASE_OWNER) -u $(PGUSER_READONLY) -p $(PGPASSWORD_READONLY);
       - env:
         - name: SQITCH_TARGET
           value: "db:pg:"
