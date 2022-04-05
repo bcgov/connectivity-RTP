@@ -19,7 +19,7 @@ spec:
         - "ReadWriteOnce"
         resources:
           requests:
-            storage: 333Mi
+            storage: 200Mi
         storageClassName: netapp-block-standard
       affinity:
         podAntiAffinity:
@@ -48,22 +48,5 @@ spec:
             - "ReadWriteOnce"
             resources:
               requests:
-                storage: 333Mi
+                storage: 300Mi
             storageClassName: netapp-file-backup
-  proxy:
-    pgBouncer:
-      config:
-        global:
-          client_tls_sslmode: disable
-      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbouncer:centos8-1.15-3
-      replicas: 2
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            podAffinityTerm:
-              topologyKey: kubernetes.io/hostname
-              labelSelector:
-                matchLabels:
-                  postgres-operator.crunchydata.com/cluster: hippo-ha
-                  postgres-operator.crunchydata.com/role: pgbouncer
