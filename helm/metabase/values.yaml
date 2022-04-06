@@ -15,15 +15,22 @@ metabase:
   #   existingSecretPasswordKey: database-password
   resources:
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 200m
+      memory: 300Mi
     requests:
-      cpu: 250m
-      memory: 750Mi
+      cpu: 100m
+      memory: 150Mi
   # podLabels:
   #   app.kubernetes.io/component: app
   service:
     name: metabase
+  database:
+    type: postgres
+    host: hippo-ha-primary.b40eb8-dev.svc
+    port: 5432
+    dbname: hippo-ha
+    username: hippo-ha
+    password: prlDPx}K[yRmN9H?JeMqw1o*
 
 route:
   host: ccbc-metabase-dev.apps.silver.devops.gov.bc.ca

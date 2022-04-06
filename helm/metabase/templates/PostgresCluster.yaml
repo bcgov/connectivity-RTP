@@ -5,15 +5,22 @@ metadata:
   labels:
 {{ include "ccbc-metabase.labels" . | indent 4}}
 spec:
-  monitoring:
-    pgmonitor:
-      exporter:
-        image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres-exporter:ubi8-5.0.4-0
+  # monitoring:
+  #   pgmonitor:
+  #     exporter:
+  #       image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres-exporter:ubi8-5.0.4-0
   image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:centos8-13.5-0
   postgresVersion: 13
   instances:
     - name: pgha1
-      replicas: 3
+      replicas: 2
+      resources:
+        requests:
+          cpu: 25m
+          memory: 25Mi
+        limits:
+          cpu: 50m
+          memory: 50Mi
       dataVolumeClaimSpec:
         accessModes:
         - "ReadWriteOnce"
@@ -35,7 +42,7 @@ spec:
   backups:
     pgbackrest:
       global:
-        repo1-retention-full: "2"
+        repo1-retention-full: "1"
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:centos8-2.35-0
       repos:
       - name: repo1
@@ -48,5 +55,5 @@ spec:
             - "ReadWriteOnce"
             resources:
               requests:
-                storage: 300Mi
+                storage: 200Mi
             storageClassName: netapp-file-backup
