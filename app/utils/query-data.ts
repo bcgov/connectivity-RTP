@@ -31,7 +31,8 @@ export async function queryData(req) {
   const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
   if (cookie) headers["Cookie"] = cookie;
   console.log("\n\nRequest Headers:", req.headers, "\n\n");
-  console.log("\n\nCookie:", cookie, "\n\n");
+  console.log("\n\nCookie in req", req.headers.cookie, "\n\n");
+  console.log("\n\nCookie with find", cookie, "\n\n");
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
     headers,
