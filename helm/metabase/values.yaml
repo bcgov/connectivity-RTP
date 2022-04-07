@@ -1,0 +1,43 @@
+fullnameOverride: ccbc-metabase
+
+metabase:
+  # replicaCount: 2
+  image:
+    repository: gcr.io/ggl-cas-storage/metabase
+    tag: 0889179dcad8fd7ec10216ae66386748b6517086
+  # database:
+  #   type: postgres
+  #   host: ccbc-patroni
+  #   port: 5432
+  #   dbname: metabase
+  #   existingSecret: ccbc-metabase
+  #   existingSecretUsernameKey: database-user
+  #   existingSecretPasswordKey: database-password
+  resources:
+    limits:
+      cpu: 1
+      memory: 1500Mi
+    requests:
+      cpu: 500m
+      memory: 750Mi
+  # podLabels:
+  #   app.kubernetes.io/component: app
+  service:
+    name: metabase
+  database:
+    type: postgres
+    host: hippo-ha-primary.b40eb8-dev.svc
+    port: 5432
+    dbname: hippo-ha
+    username: hippo-ha
+    password: ""
+
+route:
+  host: ccbc-metabase-dev.apps.silver.devops.gov.bc.ca
+
+deployer:
+  serviceAccount:
+    enabled: true
+
+networkPolicies:
+  enabled: true

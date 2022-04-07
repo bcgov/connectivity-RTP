@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ template "ccbc-metabase.fullname" . }}
+  labels:
+{{ include "ccbc-metabase.labels" . | indent 4}}
+spec:
+  host: {{ .Values.route.host }}
+  port:
+    targetPort: {{ .Values.metabase.service.name }}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  to:
+    kind: Service
+    name: {{ template "ccbc-metabase.fullname" . }}
+    weight: 100
