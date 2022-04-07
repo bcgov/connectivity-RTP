@@ -30,13 +30,14 @@ export async function queryData(req) {
   };
   const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
   if (cookie) headers["Cookie"] = cookie;
-
+  console.log("\n\nCookie:", cookie, "\n\n");
   const res = await fetch(`${baseUrl}/graphql`, {
     method: "POST",
     headers,
     body: oldFormDataQuery,
   });
   const response = await res.json();
+  console.log("\n\nresponse:", response.data, "\n\n");
   const oldFormData = response.data.allApplications.nodes[0].formData;
   const applicationId = response.data.allApplications.nodes[0].id;
 
