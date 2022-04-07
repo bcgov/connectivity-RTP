@@ -15,11 +15,11 @@ metabase:
   #   existingSecretPasswordKey: database-password
   resources:
     limits:
-      cpu: 200m
-      memory: 300Mi
+      cpu: 1
+      memory: 1500Mi
     requests:
-      cpu: 100m
-      memory: 150Mi
+      cpu: 500m
+      memory: 750Mi
   # podLabels:
   #   app.kubernetes.io/component: app
   service:
