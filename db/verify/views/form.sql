@@ -2,6 +2,6 @@
 
 BEGIN;
 
--- select pg_catalog.has_table_privilege('', 'select');
+select pg_catalog.has_table_privilege('connectivity_intake_public.form', 'select');
 
 ROLLBACK;
