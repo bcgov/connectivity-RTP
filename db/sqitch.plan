@@ -16,3 +16,4 @@ trigger_functions/update_timestamps [schemas/private] 2022-02-03T23:42:27Z Bryan
 trigger_functions/set_owner 2022-02-03T17:16:55Z Bryan Krauss <bryan@button.is> # Sets the current seesion sub to owner
 trigger_functions/set_random_reference_number [schemas/public] 2022-02-14T17:53:48Z Bryan Krauss <bryan@button.is> # A function to generate a random confirmation id
 tables/applications [schemas/public] 2022-01-18T23:25:33Z Bryan Krauss <bryan@button.is> # Creates table to store form data.
+views/form 2022-04-08T20:59:45Z marcel <mlmueller@protonmail.com> # Add schema for form data view
