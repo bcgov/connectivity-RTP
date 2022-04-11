@@ -31,7 +31,7 @@ begin;
 		archived_by,
 		archived_at,
 	  form_data ->> 'position' as position,
-	  form_data ->> 'extention' as extention,
+	  form_data ->> 'extension' as extension,
 	  form_data ->> 'telephone' as telephone,
 	  form_data ->> 'contactEmail' as contact_email,
     form_data ->> 'city' as city,
@@ -52,7 +52,7 @@ begin;
 	  form_data ->> 'underservedAreas' as underserved_areas,
 	  form_data ->> 'satelliteProposal' as satellite_proposal,
 		form_data ->> 'backboneGaps' as backbone_gaps,
-	  form_data ->> 'newBackboneTechnology' as newBackbone_technology,
+	  form_data ->> 'newBackboneTechnology' as new_backbone_technology,
 		form_data ->> 'multipleBackboneDetails' as multiple_backbone_details,
 	  form_data ->> 'govtIndigenousConnFocus' as govt_indigenous_conn_focus,
 		form_data ->> 'capitalCostFunding' as capital_cost_funding,
@@ -74,7 +74,7 @@ comment on column connectivity_intake_public.form.updated_at is 'The timestamp f
 comment on column connectivity_intake_public.form.archived_by is 'The token for the user that archived the form';
 comment on column connectivity_intake_public.form.archived_at is 'The timestamp for when the form was archived';
 comment on column connectivity_intake_public.form.position is 'The job position of the applicant';
-comment on column connectivity_intake_public.form.extention is 'The telephone extention';
+comment on column connectivity_intake_public.form.extension is 'The telephone extension';
 comment on column connectivity_intake_public.form.telephone is 'The telephone number of the primary contact';
 comment on column connectivity_intake_public.form.contact_email is 'The contact email for the primary contact';
 comment on column connectivity_intake_public.form.city is 'The city of the organization';
@@ -94,7 +94,7 @@ comment on column connectivity_intake_public.form.pending_projects is 'Additiona
 comment on column connectivity_intake_public.form.underserved_areas is 'Additional information on underserved areas';
 comment on column connectivity_intake_public.form.satellite_proposal is 'Additional information on satellite proposals';
 comment on column connectivity_intake_public.form.backbone_gaps is 'The details for addressing gaps in backbone infrastructure needed to reach underserved households';
-comment on column connectivity_intake_public.form.newBackbone_technology is 'The list of new backbone technology needed to be built';
+comment on column connectivity_intake_public.form.new_backbone_technology is 'The list of new backbone technology needed to be built';
 comment on column connectivity_intake_public.form.multiple_backbone_details is 'The high level description for how multiple backbone technologies would be implemented';
 comment on column connectivity_intake_public.form.govt_indigenous_conn_focus is 'Additional feedback for local govenmentss and First Nations';
 comment on column connectivity_intake_public.form.capital_cost_funding is 'Additional information on capital costs funding for highway cellular';
