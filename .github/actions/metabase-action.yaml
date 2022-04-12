@@ -1,0 +1,27 @@
+name: Deploy Metabase to OpenShift
+
+inputs:
+  app_route:
+    description: 'The route for metabase to be located at'
+    required: true
+  db_route:
+    description: 'Location of the CrunchyDB DB'
+    required: true
+  db_password:
+    description: 'Database password'
+    required: true
+  namespace:
+    description: 'The namespace to be deployed to'
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Run deploy script
+    - run: |
+        chmod +x ./lib/metabase_deploy.sh
+        ./lib/metabase_deploy.sh -n ${{ inputs.namespace }} \
+          --set namespace=${{ inputs.namespace }} \
+          --set metabase.database.host=${{ inputs.db_route }} \
+          --set metabase.database.password=${{ inputs.db_password  }} \
+          --set route.host=${{ inputs.app_route }}
+      shell: bash
