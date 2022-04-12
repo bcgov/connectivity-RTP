@@ -99,7 +99,7 @@ jobs:
         with:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
+          openshift_namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
@@ -119,7 +119,7 @@ jobs:
         with:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
+          openshift_namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
@@ -138,7 +138,7 @@ jobs:
         with:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
+          openshift_namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
@@ -158,7 +158,7 @@ jobs:
           app_route: ${{ env.APP_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
-          namespace: ${{ secrets.NAMESPACE }}
+          openshift_namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
 
   deploy-to-metabase-test:
     needs: [tests, build-and-push-image]
@@ -175,7 +175,7 @@ jobs:
           app_route: ${{ env.APP_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
-          namespace: ${{ secrets.NAMESPACE }}
+          openshift_namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
 
   deploy-to-metabase-production:
     needs: [deploy-metabase-to-openshift-test]
@@ -192,4 +192,4 @@ jobs:
           app_route: ${{ env.APP_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
-          namespace: ${{ secrets.NAMESPACE }}
+          openshift_namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}

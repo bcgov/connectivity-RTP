@@ -1,6 +1,15 @@
 name: Deploy Metabase to OpenShift
 
 inputs:
+  openshift_server_url:
+    description: 'URL of the OpenShift server'
+    required: true
+  openshift_token:
+    description: 'Unique login token for OpenShift'
+    required: true
+  openshift_namespace:
+    description: 'The namespace to be deployed to'
+    required: true
   app_route:
     description: 'The route for metabase to be located at'
     required: true
@@ -10,17 +19,14 @@ inputs:
   db_password:
     description: 'Database password'
     required: true
-  namespace:
-    description: 'The namespace to be deployed to'
-    required: true
 runs:
   using: composite
   steps:
-    - name: Run deploy script
+    - name: Authenticate, set context, and run deploy script
     - run: |
         chmod +x ./lib/metabase_deploy.sh
-        ./lib/metabase_deploy.sh -n ${{ inputs.namespace }} \
-          --set namespace=${{ inputs.namespace }} \
+        ./lib/metabase_deploy.sh -n ${{ inputs.openshift_namespace }} \
+          --set namespace=${{ inputs.openshift_namespace }} \
           --set metabase.database.host=${{ inputs.db_route }} \
           --set metabase.database.password=${{ inputs.db_password  }} \
           --set route.host=${{ inputs.app_route }}
