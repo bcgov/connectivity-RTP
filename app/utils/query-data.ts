@@ -28,7 +28,9 @@ export async function queryData(req) {
   const headers = {
     "Content-Type": "application/json",
   };
-  const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
+
+  const cookie = req.headers.cookie;
+
   if (cookie) headers["Cookie"] = cookie;
 
   const res = await fetch(`${baseUrl}/graphql`, {
