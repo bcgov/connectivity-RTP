@@ -1,7 +1,6 @@
 name: Postgres tests with pg-tap
 
-on:
-  [workflow_call]
+on: [workflow_call]
 
 env:
   PGPASSWORD: postgres
@@ -51,4 +50,4 @@ jobs:
           make install
           psql -c 'CREATE EXTENSION pgtap;' || true
       - name: Run Tests
-        run: pg_prove --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} app/pgTap/*_test.sql
+        run: pg_prove --username ${{ env.PGUSER }} --dbname ${{ env.PGDATABASE }} db/test/*/*_test.sql
