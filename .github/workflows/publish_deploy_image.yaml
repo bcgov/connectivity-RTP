@@ -2,9 +2,9 @@ name: Create and publish a Docker image to ghrc.io and deploy to openshift
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 env:
   REGISTRY: ghcr.io
@@ -81,7 +81,7 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-  tests: 
+  tests:
     uses: ./.github/workflows/pg_test.yaml
 
   deploy-to-openshift-development:
@@ -95,11 +95,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy
-        uses: ./.github/actions
+        uses: ./.github/actions/action
         with:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
+          openshift_app_namespace: ${{ secrets.OPENSHIFT_APP_NAMESPACE }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
@@ -115,11 +116,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy
-        uses: ./.github/actions
+        uses: ./.github/actions/action
         with:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
+          openshift_app_namespace: ${{ secrets.OPENSHIFT_APP_NAMESPACE }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
@@ -134,11 +136,69 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy
-        uses: ./.github/actions
+        uses: ./.github/actions/action
         with:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
+          openshift_app_namespace: ${{ secrets.OPENSHIFT_APP_NAMESPACE }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
+
+  deploy-to-metabase-development:
+    needs: [tests, build-and-push-image]
+    runs-on: ubuntu-latest
+    environment:
+      name: Metabase-Development
+      url: "ccbc-metabase-dev.apps.silver.devops.gov.bc.ca"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy
+        uses: ./.github/actions/metabase-action
+        with:
+          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
+          app_route: ${{ env.APP_ROUTE }}
+          db_route: ${{ secrets.DB_ROUTE }}
+          db_password: ${{ secrets.DB_PASSWORD }}
+
+  deploy-to-metabase-test:
+    needs: [tests, build-and-push-image]
+    runs-on: ubuntu-latest
+    environment:
+      name: Metabase-Test
+      url: "ccbc-metabase-dev.apps.silver.devops.gov.bc.ca"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy
+        uses: ./.github/actions/metabase-action
+        with:
+          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
+          app_route: ${{ env.APP_ROUTE }}
+          db_route: ${{ secrets.DB_ROUTE }}
+          db_password: ${{ secrets.DB_PASSWORD }}
+
+  deploy-to-metabase-production:
+    needs: [deploy-metabase-to-openshift-test]
+    runs-on: ubuntu-latest
+    environment:
+      name: Metabase-Production
+      url: "ccbc-metabase-prod.apps.silver.devops.gov.bc.ca"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy
+        uses: ./.github/actions/metabase-action
+        with:
+          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
+          app_route: ${{ env.APP_ROUTE }}
+          db_route: ${{ secrets.DB_ROUTE }}
+          db_password: ${{ secrets.DB_PASSWORD }}
