@@ -185,7 +185,7 @@ jobs:
           db_password: ${{ secrets.DB_PASSWORD }}
 
   deploy-to-metabase-production:
-    needs: [deploy-metabase-to-openshift-test]
+    needs: [deploy-to-metabase-test]
     runs-on: ubuntu-latest
     environment:
       name: Metabase-Production
