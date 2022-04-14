@@ -2,22 +2,22 @@ name: Deploy Metabase to OpenShift
 
 inputs:
   openshift_server_url:
-    description: 'URL of the OpenShift server'
+    description: "URL of the OpenShift server"
     required: true
   openshift_token:
-    description: 'Unique login token for OpenShift'
+    description: "Unique login token for OpenShift"
     required: true
-  openshift_namespace:
-    description: 'The namespace to be deployed to'
+  openshift_metabase_namespace:
+    description: "The namespace to be deployed to"
     required: true
   app_route:
-    description: 'The route for metabase to be located at'
+    description: "The route for metabase to be located at"
     required: true
   db_route:
-    description: 'Location of the CrunchyDB DB'
+    description: "Location of the CrunchyDB DB"
     required: true
   db_password:
-    description: 'Database password'
+    description: "Database password"
     required: true
 runs:
   using: composite
@@ -27,12 +27,12 @@ runs:
       with:
         openshift_server_url: ${{ inputs.openshift_server_url }}
         openshift_token: ${{ inputs.openshift_token }}
-        openshift_namespace: ${{ inputs.openshift_namespace }}
+        openshift_metabase_namespace: ${{ inputs.openshift_metabase_namespace }}
         insecure_skip_tls_verify: true
     - run: |
         chmod +x ./lib/metabase_deploy.sh
-        ./lib/metabase_deploy.sh -n ${{ inputs.openshift_namespace }} \
-          --set namespace=${{ inputs.openshift_namespace }} \
+        ./lib/metabase_deploy.sh -n ${{ inputs.openshift_metabase_namespace }} \
+          --set namespace=${{ inputs.openshift_metabase_namespace }} \
           --set metabase.database.host=${{ inputs.db_route }} \
           --set metabase.database.password=${{ inputs.db_password  }} \
           --set route.host=${{ inputs.app_route }}
