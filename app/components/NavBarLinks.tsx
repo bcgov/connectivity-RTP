@@ -1,5 +1,5 @@
-import Link from "next/link";
-import styled from "styled-components";
+import Link from 'next/link';
+import styled from 'styled-components';
 
 const StyledLi = styled.li`
   display: flex;
@@ -10,7 +10,9 @@ export default function NavBavLinks() {
   return (
     <>
       <ul>
-        <StyledLi><Link href="mailto:connectingcommunitiesbc@gov.bc.ca">Help</Link></StyledLi>
+        <StyledLi>
+          <Link href="mailto:connectingcommunitiesbc@gov.bc.ca">Help</Link>
+        </StyledLi>
       </ul>
     </>
   );

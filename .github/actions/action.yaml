@@ -2,25 +2,25 @@ name: Deploy to OpenShift
 
 inputs:
   openshift_server_url:
-    description: "URL of the OpenShift server"
+    description: 'URL of the OpenShift server'
     required: true
   openshift_token:
-    description: "Unique login token for OpenShift"
+    description: 'Unique login token for OpenShift'
     required: true
   openshift_app_namespace:
-    description: "The namespace being deployed to"
+    description: 'The namespace being deployed to'
     required: true
   openshift_metabase_namespace:
-    description: "The metabase namespace being deployed to"
+    description: 'The metabase namespace being deployed to'
     required: true
   tag:
-    description: "the sha value from the latest build"
+    description: 'the sha value from the latest build'
     required: true
   client_secret:
-    description: "Client secret for sso keycloak login"
+    description: 'Client secret for sso keycloak login'
     required: true
   route:
-    description: "URL where the application can be accessed"
+    description: 'URL where the application can be accessed'
     required: true
 runs:
   using: composite

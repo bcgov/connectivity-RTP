@@ -3,15 +3,18 @@
 This document lists the agreed upon practices the team will be using. As they are discussed and changed, update this file accordingly.
 
 ## Guardrails
+
 The following guardrails are in place to ensure we keep a clean working tree, while avoiding merging breaking changes into our main branch.
+
 - The default branch for this repo is `main`.
 - All commits must be made to a non-protected branch and submitted via a pull request before they can be merged into `main`. (There can be no direct commits made to `main`.)
-<!-- - Pull requests require at least 1 approval before they can be merged to `main`. Any commits made to an approved branch will dismiss the approval. (If you commit new code to a branch after it gets approved but before you merge it, you have to get it approved again.) -->
-<!-- - Pull requests must pass CI checks in order to be merged to `main`. -->
+  <!-- - Pull requests require at least 1 approval before they can be merged to `main`. Any commits made to an approved branch will dismiss the approval. (If you commit new code to a branch after it gets approved but before you merge it, you have to get it approved again.) -->
+  <!-- - Pull requests must pass CI checks in order to be merged to `main`. -->
 - Branches are automatically deleted on Github when a PR is merged. Each teammate should set `git config fetch.prune true` to mirror this behaviour to their local workstation.
 - Squash merge has been disabled to increase efficiency of `git bisect`.
 
 ## Practices
+
 - Branch naming policy is as follows: [issue#]-brief-description. In the event that an issue does not already exist for the changes being made in a branch, one should be made.
 - Make draft pull requests early and often to facilitate a transparent process.
 - When a PR is ready, post a request for review with a link to the branch in the `bcgov/connectivity-intake` team in Teams.

@@ -11,11 +11,11 @@ import session from './backend/middleware/session';
 import graphQlMiddleware from './backend/middleware/graphql';
 import ssoMiddleware from './backend/middleware/sso';
 import createServer from './backend/create-server';
-import delay from "delay";
-import { pgPool } from "./backend/db/setup-pg";
-import { postMiddleware, getHandler } from "./form-schema";
+import delay from 'delay';
+import { pgPool } from './backend/db/setup-pg';
+import { postMiddleware, getHandler } from './form-schema';
 
-const dev = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -39,7 +39,7 @@ app.prepare().then(async () => {
     await pgPool.end();
   });
 
-  server.use(logger(!dev ? "combined" : "dev"));
+  server.use(logger(!dev ? 'combined' : 'dev'));
   server.use(json());
   server.use(urlencoded({ extended: false }));
   server.use(cookieParser());
@@ -57,18 +57,18 @@ app.prepare().then(async () => {
   );
 
   // lusca
-  server.use(p3p("ABCDEF"));
-  server.use(referrerPolicy("same-origin"));
+  server.use(p3p('ABCDEF'));
+  server.use(referrerPolicy('same-origin'));
 
   // At a minimum, disable X-Powered-By header
-  server.disable("x-powered-by");
+  server.disable('x-powered-by');
 
-  server.set("trust proxy", 1); // trust first proxy
+  server.set('trust proxy', 1); // trust first proxy
 
   server.use(
     compress({
       filter: (req, res) =>
-        /json|text|javascript|css|font|svg/.test(res.getHeader("Content-Type")),
+        /json|text|javascript|css|font|svg/.test(res.getHeader('Content-Type')),
       level: 9,
     })
   );
@@ -80,10 +80,10 @@ app.prepare().then(async () => {
 
   server.use(graphQlMiddleware());
 
-  server.post("/api/:submit", postMiddleware);
+  server.post('/api/:submit', postMiddleware);
 
   // catch all other routes and return the index file
-  server.all("*", async (req, res) => handle(req, res));
+  server.all('*', async (req, res) => handle(req, res));
 
   createServer(server, lightship);
 });

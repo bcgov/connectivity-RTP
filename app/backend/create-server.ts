@@ -1,10 +1,10 @@
-import Debug from "debug";
+import Debug from 'debug';
 import { createServer as _createServer } from 'http';
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 
 dotenv.config({ path: __dirname + '/../.env' });
 
-const debug = Debug("seq:server");
+const debug = Debug('seq:server');
 const hostname = process.env.ORIGIN || '0.0.0.0';
 const port = normalizePort(process.env.PORT || 3000);
 
@@ -46,7 +46,8 @@ const createServer = (expressServer, lightship) => {
 
   function onListening() {
     const addr = server.address();
-    const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+    const bind =
+      typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
     debug('Listening on ' + bind);
   }
 };

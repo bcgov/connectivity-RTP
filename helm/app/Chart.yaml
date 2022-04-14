@@ -3,7 +3,7 @@ name: connectivity-intake
 description: A Helm chart for the Connectivity Intake
 type: application
 version: 0.1.0
-appVersion: "0.1.0"
+appVersion: '0.1.0'
 dependencies:
   - name: spilo
     version: 0.2.0

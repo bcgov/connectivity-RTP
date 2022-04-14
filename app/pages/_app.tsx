@@ -1,13 +1,13 @@
-import Head from "next/head";
+import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { Button, Footer, Navigation } from "@button-inc/bcgov-theme";
-import styled from "styled-components";
-import FooterMenu from "../components/FooterLinks";
-import BCGovTypography from "../components/BCGovTypography";
-import NavBarLinks from "../components/NavBarLinks";
-import { useEffect, useState } from "react";
-import { queryUser } from "../utils/query-data";
-import App from "next/app";
+import { Button, Footer, Navigation } from '@button-inc/bcgov-theme';
+import styled from 'styled-components';
+import FooterMenu from '../components/FooterLinks';
+import BCGovTypography from '../components/BCGovTypography';
+import NavBarLinks from '../components/NavBarLinks';
+import { useEffect, useState } from 'react';
+import { queryUser } from '../utils/query-data';
+import App from 'next/app';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: "#0070f3",
+    primary: '#0070f3',
   },
 };
 
@@ -62,25 +62,24 @@ const LogoutForm = styled.div`
 `;
 
 const formStyle = {
-  marginBottom: "0",
+  marginBottom: '0',
 };
 
-
 export default function MyApp({ Component, pageProps }) {
-  const [buttonText, setButtonText] = useState("Logout");
-  const [buttonAction, setButtonAction] = useState("/logout");
+  const [buttonText, setButtonText] = useState('Logout');
+  const [buttonAction, setButtonAction] = useState('/logout');
 
   useEffect(() => {
     async function fetchData() {
       const response = await queryUser();
       if (response.data.session === null) {
-        setButtonAction("/login");
-        setButtonText("Login");
+        setButtonAction('/login');
+        setButtonText('Login');
       }
     }
     fetchData();
   }, [GlobalStyle]);
-  
+
   return (
     <>
       <Head>
@@ -129,9 +128,9 @@ export default function MyApp({ Component, pageProps }) {
       </ThemeProvider>
     </>
   );
-};
+}
 
 MyApp.getInitialProps = async (context) => {
   const props = await App.getInitialProps(context);
-  return { ...props }
+  return { ...props };
 };

@@ -24,18 +24,18 @@ let postgraphileOptions = {
   graphiql: true,
   enhanceGraphiql: true,
   retryOnInitFail: false,
-  allowExplain: false
+  allowExplain: false,
 };
 
 if (process.env.NODE_ENV === 'production') {
   postgraphileOptions = {
     ...postgraphileOptions,
-    retryOnInitFail: true
+    retryOnInitFail: true,
   };
 } else {
   postgraphileOptions = {
     ...postgraphileOptions,
-    allowExplain: true
+    allowExplain: true,
   };
 }
 
@@ -47,10 +47,10 @@ const postgraphileMiddleware = () => {
       ...postgraphileOptions,
       pgSettings: (req: Request) => {
         const opts = {
-          ...authenticationPgSettings(req)
+          ...authenticationPgSettings(req),
         };
         return opts;
-      }
+      },
     }
   );
 };

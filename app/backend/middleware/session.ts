@@ -17,7 +17,7 @@ const session = () => {
   const store = new PgSession({
     pool: pgPool,
     schemaName: 'connectivity_intake_private',
-    tableName: 'connect_session'
+    tableName: 'connect_session',
   });
 
   const middleware = expressSession({

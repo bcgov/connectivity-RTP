@@ -1,8 +1,8 @@
-import getConfig from "next/config";
+import getConfig from 'next/config';
 
 const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 const baseUrl =
-  runtimeConfig.NODE_ENV === "production"
+  runtimeConfig.NODE_ENV === 'production'
     ? `https://${runtimeConfig.HOST}`
     : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
@@ -13,7 +13,7 @@ export default function postStatus({ applicationId, status }) {
   }
 }`;
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   };
   const variables = {
     applicationId,
@@ -21,7 +21,7 @@ export default function postStatus({ applicationId, status }) {
   };
 
   fetch(`${baseUrl}/graphql`, {
-    method: "POST",
+    method: 'POST',
     headers,
     body: JSON.stringify({
       query: statusComplete,

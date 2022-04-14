@@ -2,9 +2,9 @@
   "presets": ["next/babel", "@babel/preset-typescript"],
   "plugins": [
     ["styled-components"],
-    [      
+    [
       "module-resolver",
-      { "root": [".", ".."], "extensions": [".js", ".jsx", ".ts", ".tsx"] } 
+      { "root": [".", ".."], "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ]
   ]
 }

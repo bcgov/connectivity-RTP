@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Development
-      url: "https://connectivity-rtp-dev.apps.silver.devops.gov.bc.ca"
+      url: 'https://connectivity-rtp-dev.apps.silver.devops.gov.bc.ca'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Test
-      url: "https://connectivity-rtp-test.apps.silver.devops.gov.bc.ca"
+      url: 'https://connectivity-rtp-test.apps.silver.devops.gov.bc.ca'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -131,7 +131,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Production
-      url: "https://connectivity-rtp.apps.silver.devops.gov.bc.ca"
+      url: 'https://connectivity-rtp.apps.silver.devops.gov.bc.ca'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -151,7 +151,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Metabase-Development
-      url: "ccbc-metabase-dev.apps.silver.devops.gov.bc.ca"
+      url: 'ccbc-metabase-dev.apps.silver.devops.gov.bc.ca'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -170,7 +170,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Metabase-Test
-      url: "ccbc-metabase-dev.apps.silver.devops.gov.bc.ca"
+      url: 'ccbc-metabase-dev.apps.silver.devops.gov.bc.ca'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -189,7 +189,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Metabase-Production
-      url: "ccbc-metabase-prod.apps.silver.devops.gov.bc.ca"
+      url: 'ccbc-metabase-prod.apps.silver.devops.gov.bc.ca'
     steps:
       - name: Checkout
         uses: actions/checkout@v2

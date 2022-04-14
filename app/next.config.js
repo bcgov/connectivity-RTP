@@ -1,7 +1,6 @@
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const dotenv = require('dotenv').config();
 
-
 module.exports = {
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -16,5 +15,5 @@ module.exports = {
     HOST: process.env.HOST,
     NODE_ENV: process.env.NODE_ENV,
     ENABLE_ANALYTICS: process.env.ENABLE_ANALYTICS,
-  }
+  },
 };

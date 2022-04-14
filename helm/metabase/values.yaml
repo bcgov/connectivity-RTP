@@ -30,7 +30,7 @@ metabase:
     port: 5432
     dbname: hippo-ha
     username: hippo-ha
-    password: ""
+    password: ''
 
 route:
   host: ccbc-metabase-dev.apps.silver.devops.gov.bc.ca

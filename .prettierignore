@@ -1,0 +1,5 @@
+# Helm
+
+helm/app/templates
+helm/metabase/templates
+helm/tools/templates

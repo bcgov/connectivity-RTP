@@ -11,12 +11,14 @@ A “ready” backlog item needs to be clear, feasible and testable:
 - A user story is feasible if it can be completed in one sprint, according to the Definition of Done. If this is not achievable, it needs be broken down further
 
 ## Structure
+
 ```md
 As a <user type>
 I want <goal of story>
 so that <reason behind goal>
 
 Acceptace Criteria:
+
 - [ ] Task
 - [ ] Task
 - [ ] Task

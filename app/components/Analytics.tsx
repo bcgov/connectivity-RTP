@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SNOWPLOW_TRACKER = `
 // <!-- Snowplow starts plowing - Standalone vE.2.14.0 -->

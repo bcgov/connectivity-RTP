@@ -1,8 +1,8 @@
-import getConfig from "next/config";
+import getConfig from 'next/config';
 
 const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 const baseUrl =
-  runtimeConfig.NODE_ENV === "production"
+  runtimeConfig.NODE_ENV === 'production'
     ? `https://${runtimeConfig.HOST}`
     : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
@@ -26,15 +26,15 @@ export async function queryData(req) {
   }`,
   });
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   };
 
   const cookie = req.headers.cookie;
 
-  if (cookie) headers["Cookie"] = cookie;
+  if (cookie) headers['Cookie'] = cookie;
 
   const res = await fetch(`${baseUrl}/graphql`, {
-    method: "POST",
+    method: 'POST',
     headers,
     body: oldFormDataQuery,
   });
@@ -50,10 +50,10 @@ export async function queryUser() {
     query: `query MyQuery { session { sub } allApplications { nodes { id formData referenceNumber status } } }`,
   });
   const res = await fetch(`${baseUrl}/graphql`, {
-    method: "POST",
-    credentials: "include",
+    method: 'POST',
+    credentials: 'include',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: userQuery,
   });

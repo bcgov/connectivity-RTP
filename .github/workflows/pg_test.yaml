@@ -1,7 +1,6 @@
 name: Postgres tests with pg-tap
 
-on:
-  [workflow_call]
+on: [workflow_call]
 
 env:
   PGPASSWORD: postgres

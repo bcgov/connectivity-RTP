@@ -1,9 +1,9 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 
 dotenv.config();
 
 const baseUrl =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV === 'production'
     ? `https://${process.env.HOST}`
     : `http://localhost:${process.env.PORT || 3000}`;
 
@@ -35,22 +35,22 @@ export default async function postData(
   }
 }`;
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   };
   const cookie = req.rawHeaders.find((h) => h.match(/^connect\.sid=/));
-  if (cookie) headers["Cookie"] = cookie;
+  if (cookie) headers['Cookie'] = cookie;
 
   const variables = {
     formData,
     applicationId,
   };
-  if (status) variables["status"] = status;
+  if (status) variables['status'] = status;
 
   try {
     const res = await fetch(`${baseUrl}/graphql`, {
-      method: "POST",
+      method: 'POST',
       headers,
-      credentials: "include",
+      credentials: 'include',
       body: JSON.stringify({
         query: applicationMutation,
         variables,
@@ -60,6 +60,6 @@ export default async function postData(
     return response.data.updateApplication.query;
   } catch (e) {
     console.error(e.response.data);
-    throw new Error("There was an error saving your information in post-data");
+    throw new Error('There was an error saving your information in post-data');
   }
 }

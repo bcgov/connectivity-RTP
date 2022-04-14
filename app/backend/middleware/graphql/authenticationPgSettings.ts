@@ -2,7 +2,7 @@ import { isAuthenticated } from '@bcgov-cas/sso-express';
 
 const authenticationPgSettings = (req) => {
   const claimsSettings = {
-    role: 'connectivity_intake_guest'
+    role: 'connectivity_intake_guest',
   };
 
   if (!isAuthenticated(req)) return claimsSettings;
@@ -28,7 +28,7 @@ const authenticationPgSettings = (req) => {
     'given_name',
     'family_name',
     'email',
-    'broker_session_id'
+    'broker_session_id',
   ];
   properties.forEach((property) => {
     claimsSettings[`jwt.claims.${property}`] = claims[property];
@@ -37,7 +37,7 @@ const authenticationPgSettings = (req) => {
   claimsSettings.role = 'connectivity_intake_auth_user';
 
   return {
-    ...claimsSettings
+    ...claimsSettings,
   };
 };
 

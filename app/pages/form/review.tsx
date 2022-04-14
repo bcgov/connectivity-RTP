@@ -1,62 +1,62 @@
-import MainStyledDiv from "../../components/MainStyledDiv";
-import BCGovTitle from "../../components/BCGovTitle";
-import SButton from "../../components/SButton";
-import ReviewDiv from "../../components/ReviewDiv";
-import { queryUser } from "../../utils/query-data";
-import postStatus from "../../utils/post-status";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import MainStyledDiv from '../../components/MainStyledDiv';
+import BCGovTitle from '../../components/BCGovTitle';
+import SButton from '../../components/SButton';
+import ReviewDiv from '../../components/ReviewDiv';
+import { queryUser } from '../../utils/query-data';
+import postStatus from '../../utils/post-status';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export default function review() {
   const [reviewData, setReviewData] = useState({
-    city: "",
-    poBox: "",
-    postion: "",
-    extension: "",
-    telephone: "",
-    postalCode: "",
-    streetName: "",
-    unitNumber: "",
-    backboneGaps: "",
-    contactEmail: "",
-    streetNumber: "",
-    zoneFeedback: "",
-    fixedWireless: "",
-    primaryContact: "",
-    wiredBroadband: "",
+    city: '',
+    poBox: '',
+    postion: '',
+    extension: '',
+    telephone: '',
+    postalCode: '',
+    streetName: '',
+    unitNumber: '',
+    backboneGaps: '',
+    contactEmail: '',
+    streetNumber: '',
+    zoneFeedback: '',
+    fixedWireless: '',
+    primaryContact: '',
+    wiredBroadband: '',
     zoneInformation: [],
-    pendingProjects: "",
-    lastMileSupport: "",
-    organizationName: "",
+    pendingProjects: '',
+    lastMileSupport: '',
+    organizationName: '',
     organizationType: [],
-    underservedAreas: "",
-    satelliteProposal: "",
-    capitalCostFunding: "",
-    registrationNumber: "",
+    underservedAreas: '',
+    satelliteProposal: '',
+    capitalCostFunding: '',
+    registrationNumber: '',
     newBackboneTechnology: [],
-    capitalCostExplanation: "",
-    highwayCellularGeomark: "",
-    govtIndigenousConnFocus: "",
-    multipleBackboneDetails: "",
-    lastMileBroadbandGeomark: "",
-    lastMileNewBackboneGeomark: "",
-    lastMileFixedWirelessGeomark: "",
+    capitalCostExplanation: '',
+    highwayCellularGeomark: '',
+    govtIndigenousConnFocus: '',
+    multipleBackboneDetails: '',
+    lastMileBroadbandGeomark: '',
+    lastMileNewBackboneGeomark: '',
+    lastMileFixedWirelessGeomark: '',
   });
   const [applicationId, setApplicationId] = useState();
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState('');
   const router = useRouter();
 
   const completeForm = async () => {
     const status = {
       applicationId,
-      status: "complete",
+      status: 'complete',
     };
     postStatus(status);
-    router.push("/form/end");
+    router.push('/form/end');
   };
 
   const buttonDisabled = () => {
-    if (status === "complete") return true;
+    if (status === 'complete') return true;
   };
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export default function review() {
         <div>
           <SButton
             variant="secondary"
-            onClick={() => router.push("/form/8")}
+            onClick={() => router.push('/form/8')}
             disabled={buttonDisabled()}
           >
             Back
@@ -109,7 +109,7 @@ export default function review() {
                   ? reviewData.organizationType.map((item) => (
                       <li key={Math.random()}>{item}</li>
                     ))
-                  : "N/A"}
+                  : 'N/A'}
               </ul>
             </span>
             <h4>Organization name (legal name)</h4>
@@ -120,14 +120,14 @@ export default function review() {
             <p>
               {reviewData.registrationNumber
                 ? reviewData.registrationNumber
-                : "N/A"}
+                : 'N/A'}
             </p>
             <h4>Unit number</h4>
-            <p>{reviewData.unitNumber ? reviewData.unitNumber : "N/A"}</p>
+            <p>{reviewData.unitNumber ? reviewData.unitNumber : 'N/A'}</p>
             <h4>Street number</h4>
             <p>{reviewData.streetNumber}</p>
             <h4>PO box</h4>
-            <p>{reviewData.poBox ? reviewData.poBox : "N/A"}</p>
+            <p>{reviewData.poBox ? reviewData.poBox : 'N/A'}</p>
             <h4>Street name</h4>
             <p>{reviewData.streetName}</p>
             <h4>Postal code</h4>
@@ -144,7 +144,7 @@ export default function review() {
             <h4>Telephone</h4>
             <p>{reviewData.telephone}</p>
             <h4>Extension</h4>
-            <p>{reviewData.extension ? reviewData.extension : "N/A"}</p>
+            <p>{reviewData.extension ? reviewData.extension : 'N/A'}</p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>Proposed zone feedback</BCGovTitle>
@@ -155,7 +155,7 @@ export default function review() {
                   ? reviewData.zoneInformation.map((item) => (
                       <li key={Math.random()}>{item}</li>
                     ))
-                  : "N/A"}
+                  : 'N/A'}
               </ul>
             </span>
             <p></p>
@@ -164,7 +164,7 @@ export default function review() {
               were to apply to a funding program by zone, are there changes to
               the zone boundaries that would make that process easier?
             </h4>
-            <p>{reviewData.zoneFeedback ? reviewData.zoneFeedback : "N/A"}</p>
+            <p>{reviewData.zoneFeedback ? reviewData.zoneFeedback : 'N/A'}</p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>
@@ -175,13 +175,13 @@ export default function review() {
               could be reached by wired broadband?
             </h4>
             <p>
-              {reviewData.wiredBroadband ? reviewData.wiredBroadband : "N/A"}
+              {reviewData.wiredBroadband ? reviewData.wiredBroadband : 'N/A'}
             </p>
             <h4>
               Approximately how many underserved households could be reached by
               fixed wireless?
             </h4>
-            <p>{reviewData.fixedWireless ? reviewData.fixedWireless : "N/A"}</p>
+            <p>{reviewData.fixedWireless ? reviewData.fixedWireless : 'N/A'}</p>
           </ReviewDiv>
           <ReviewDiv>
             <BCGovTitle>
@@ -192,7 +192,7 @@ export default function review() {
               require new backbone infrastructure to deliver services and last
               mile projects?
             </h4>
-            <p>{reviewData.lastMileSupport ? "Yes" : "No"}</p>
+            <p>{reviewData.lastMileSupport ? 'Yes' : 'No'}</p>
             <h4>
               If yes, what type of new backbone technology would need to be
               built?
@@ -203,14 +203,14 @@ export default function review() {
                   ? reviewData.newBackboneTechnology.map((item) => (
                       <li key={Math.random()}>{item}</li>
                     ))
-                  : "N/A"}
+                  : 'N/A'}
               </ul>
             </span>
             <h4>
               Please add any important details for addressing gaps in backbone
               needed to reach underserved households.
             </h4>
-            <p>{reviewData.backboneGaps ? reviewData.backboneGaps : "N/A"}</p>
+            <p>{reviewData.backboneGaps ? reviewData.backboneGaps : 'N/A'}</p>
             <h4>
               If multiple backbone technologies are indicated, please describe
               at a high level where each backbone technology could be
@@ -219,7 +219,7 @@ export default function review() {
             <p>
               {reviewData.multipleBackboneDetails
                 ? reviewData.multipleBackboneDetails
-                : "N/A"}
+                : 'N/A'}
             </p>
           </ReviewDiv>
           <ReviewDiv>
@@ -238,7 +238,7 @@ export default function review() {
             <p>
               {reviewData.govtIndigenousConnFocus
                 ? reviewData.govtIndigenousConnFocus
-                : "N/A"}
+                : 'N/A'}
             </p>
           </ReviewDiv>
           <ReviewDiv>
@@ -248,7 +248,7 @@ export default function review() {
               Province about?
             </h4>
             <p>
-              {reviewData.pendingProjects ? reviewData.pendingProjects : "N/A"}
+              {reviewData.pendingProjects ? reviewData.pendingProjects : 'N/A'}
             </p>
             <h4>
               In the KMZ file for Household Density Data linked in Appendix D of
@@ -260,7 +260,7 @@ export default function review() {
             <p>
               {reviewData.satelliteProposal
                 ? reviewData.satelliteProposal
-                : "N/A"}
+                : 'N/A'}
             </p>
             <h4>
               In underserved areas where your Geomark does not indicate a wired
@@ -270,7 +270,7 @@ export default function review() {
             <p>
               {reviewData.underservedAreas
                 ? reviewData.underservedAreas
-                : "N/A"}
+                : 'N/A'}
             </p>
           </ReviewDiv>
           <ReviewDiv>
@@ -283,13 +283,13 @@ export default function review() {
             <p>
               {reviewData.capitalCostFunding
                 ? reviewData.capitalCostFunding
-                : "N/A"}
+                : 'N/A'}
             </p>
             <h4>Please explain why you chose those sections.</h4>
             <p>
               {reviewData.capitalCostExplanation
                 ? reviewData.capitalCostExplanation
-                : "N/A"}
+                : 'N/A'}
             </p>
           </ReviewDiv>
           <ReviewDiv>
@@ -298,32 +298,32 @@ export default function review() {
             <p>
               {reviewData.lastMileBroadbandGeomark
                 ? reviewData.lastMileBroadbandGeomark
-                : "N/A"}
+                : 'N/A'}
             </p>
             <h4>Fixed wireless last mile </h4>
             <p>
               {reviewData.lastMileFixedWirelessGeomark
                 ? reviewData.lastMileFixedWirelessGeomark
-                : "N/A"}
+                : 'N/A'}
             </p>
             <h4>New backbone technology possibly needed for last mile</h4>
             <p>
               {reviewData.lastMileNewBackboneGeomark
                 ? reviewData.lastMileNewBackboneGeomark
-                : "N/A"}
+                : 'N/A'}
             </p>
             <h4>Cellular along powered highways</h4>
             <p>
               {reviewData.highwayCellularGeomark
                 ? reviewData.highwayCellularGeomark
-                : "N/A"}
+                : 'N/A'}
             </p>
           </ReviewDiv>
         </div>
         <div>
           <SButton
             variant="secondary"
-            onClick={() => router.push("/form/8")}
+            onClick={() => router.push('/form/8')}
             disabled={buttonDisabled()}
           >
             Back
@@ -345,7 +345,7 @@ export const getServerSideProps = async (context) => {
   if (!context.req.claims) {
     return {
       redirect: {
-        destination: "/",
+        destination: '/',
         permanent: false,
       },
     };

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Card from '@button-inc/bcgov-theme/Card';
 import SButton from '../components/SButton';
-import LandingStyledDiv from "../components/LandingStyledDiv";
+import LandingStyledDiv from '../components/LandingStyledDiv';
 
 export default function start() {
   return (
@@ -40,4 +40,4 @@ export default function start() {
       </LandingStyledDiv>
     </>
   );
-};
+}

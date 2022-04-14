@@ -1,19 +1,19 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import SButton from "../components/SButton";
-import MainStyledDiv from "../components/MainStyledDiv";
-import getConfig from "next/config";
-import BCGovTitle from "../components/BCGovTitle";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import SButton from '../components/SButton';
+import MainStyledDiv from '../components/MainStyledDiv';
+import getConfig from 'next/config';
+import BCGovTitle from '../components/BCGovTitle';
 
 const runtimeConfig = getConfig()?.publicRuntimeConfig ?? {};
 
 const baseUrl =
-  runtimeConfig.NODE_ENV === "production"
+  runtimeConfig.NODE_ENV === 'production'
     ? `https://${runtimeConfig.HOST}`
     : `http://localhost:${runtimeConfig.PORT || 3000}`;
 
 export default function Home() {
-  const [buttonText, setButtonText] = useState("");
+  const [buttonText, setButtonText] = useState('');
   const router = useRouter();
 
   const provisionApplicationForm = async () => {
@@ -21,10 +21,10 @@ export default function Home() {
       query: `mutation MyMutation { createApplication ( input: { application: { } } ) { application { id } } }`,
     });
     await fetch(`${baseUrl}/graphql`, {
-      method: "POST",
-      credentials: "include",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: createApplication,
     })
@@ -42,23 +42,23 @@ export default function Home() {
       const isExistingApplication = response.data.allApplications.nodes[0]
         ? true
         : false;
-      if (applicationStatus === "complete") {
-        setButtonText("View Responses");
+      if (applicationStatus === 'complete') {
+        setButtonText('View Responses');
       } else if (isExistingApplication) {
-        setButtonText("Resume");
+        setButtonText('Resume');
       }
     } else {
-      setButtonText("Begin");
+      setButtonText('Begin');
     }
   };
 
   const pageRouter = async () => {
-    if (buttonText === "Begin") {
+    if (buttonText === 'Begin') {
       provisionApplicationForm();
-    } else if (buttonText === "View Responses") {
-      router.push("/form/review");
+    } else if (buttonText === 'View Responses') {
+      router.push('/form/review');
     } else {
-      router.push("/form/1");
+      router.push('/form/1');
     }
   };
 
@@ -67,10 +67,10 @@ export default function Home() {
       query: `query MyQuery { session { sub } allApplications { nodes { id status } } }`,
     });
     await fetch(`${baseUrl}/graphql`, {
-      method: "POST",
-      credentials: "include",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: userQuery,
     })
@@ -91,16 +91,12 @@ export default function Home() {
     <>
       <MainStyledDiv>
         <BCGovTitle>About this form</BCGovTitle>
+        <p>Thank you for providing feedback in this RTP form.</p>
         <p>
-          Thank you for providing feedback in this RTP form.
-        </p>
-        <p>
-          This form contains eight sections of questions. Some sections
-          are designed to collect information from internet service
-          providers. Other sections are designed to collect information from
-          local governments and First Nations. Please complete the sections
-          applicable to you.
-
+          This form contains eight sections of questions. Some sections are
+          designed to collect information from internet service providers. Other
+          sections are designed to collect information from local governments
+          and First Nations. Please complete the sections applicable to you.
         </p>
         <p>
           The form will autosave when you click “Continue” on each page. After
@@ -114,18 +110,18 @@ export default function Home() {
       </MainStyledDiv>
     </>
   );
-};
+}
 
 export const getServerSideProps = async (context) => {
   if (!context.req.claims) {
     return {
       redirect: {
         destination: '/',
-        permanent: false
-      }
-    }
+        permanent: false,
+      },
+    };
   }
   return {
-    props: {}
-  }
+    props: {},
+  };
 };
