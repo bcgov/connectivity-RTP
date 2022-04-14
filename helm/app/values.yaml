@@ -22,14 +22,14 @@ app:
   namespace: ""
   enableAnalytics: true
 route:
-  host: ""  # The host value must be passed in via the deploy script: connectivity-rtp.apps.silver.devops.gov.bc.ca
+  host: "" # The host value must be passed in via the deploy script: connectivity-rtp.apps.silver.devops.gov.bc.ca
 
 networkPolicies:
   enabled: true
 
 resources:
   app:
-    requests: 
+    requests:
       cpu: "50m"
       memory: "128Mi"
     limits:
@@ -73,4 +73,4 @@ spilo:
 
 metabase:
   instanceName: ccbc-metabase
-  namespace: b40eb8-dev
+  namespace: "" # The value must be passed in via the deploy script

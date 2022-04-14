@@ -100,6 +100,7 @@ jobs:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           openshift_app_namespace: ${{ secrets.OPENSHIFT_APP_NAMESPACE }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
@@ -120,6 +121,7 @@ jobs:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           openshift_app_namespace: ${{ secrets.OPENSHIFT_APP_NAMESPACE }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
@@ -139,6 +141,7 @@ jobs:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           openshift_app_namespace: ${{ secrets.OPENSHIFT_APP_NAMESPACE }}
+          openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
           tag: ${{ env.TAG }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           route: ${{ secrets.ROUTE }}
