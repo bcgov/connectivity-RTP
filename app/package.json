@@ -38,7 +38,7 @@
     "lodash": "^4.17.21",
     "lusca": "^1.7.0",
     "morgan": "^1.10.0",
-    "next": "latest",
+    "next": "^12.1.5",
     "openid-client": "^5.1.2",
     "pg": "^8.7.1",
     "postgraphile": "^4.12.8",
