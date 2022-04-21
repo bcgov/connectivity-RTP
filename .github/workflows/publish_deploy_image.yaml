@@ -161,7 +161,7 @@ jobs:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
-          app_route: ${{ env.APP_ROUTE }}
+          app_route: ${{ secrets.APP_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
 
@@ -180,7 +180,7 @@ jobs:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
-          app_route: ${{ env.APP_ROUTE }}
+          app_route: ${{ secrets.APP_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
 
@@ -199,6 +199,6 @@ jobs:
           openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
           openshift_metabase_namespace: ${{ secrets.OPENSHIFT_METABASE_NAMESPACE }}
-          app_route: ${{ env.APP_ROUTE }}
+          app_route: ${{ secrets.APP_ROUTE }}
           db_route: ${{ secrets.DB_ROUTE }}
           db_password: ${{ secrets.DB_PASSWORD }}
