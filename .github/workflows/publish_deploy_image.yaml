@@ -151,7 +151,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Metabase-Development
-      url: "ccbc-metabase-dev.apps.silver.devops.gov.bc.ca"
+      url: "https://ccbc-metabase-dev.apps.silver.devops.gov.bc.ca"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -170,7 +170,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Metabase-Test
-      url: "ccbc-metabase-test.apps.silver.devops.gov.bc.ca"
+      url: "https://ccbc-metabase-test.apps.silver.devops.gov.bc.ca"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -189,7 +189,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Metabase-Production
-      url: "ccbc-metabase.apps.silver.devops.gov.bc.ca"
+      url: "https://ccbc-metabase.apps.silver.devops.gov.bc.ca"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
