@@ -118,7 +118,7 @@ export default function MyApp({ Component, pageProps }) {
           <NavBarLinks />
           <LogoutForm>
             <form action={buttonAction} method="POST" style={formStyle}>
-              <Button variant="secondary-inverse">{buttonText}</Button>
+              <Button variant="secondary-inverse" disabled>{buttonText}</Button>
             </form>
           </LogoutForm>
         </Navigation>
