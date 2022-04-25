@@ -33,8 +33,12 @@ export default function start() {
             If you are having trouble logging in or creating a BCeID, please
             clear your cookies or open an incognito window and try again.
           </p>
+          <p>
+            Thank you for your interest in responding to the RTP. The response
+            deadline has now passed. Please direct any further questions to <a href="mailto:connectingcommunitiesbc@gov.bc.ca">connectingcommunitiesbc@gov.bc.ca</a>
+          </p>
           <form action="/login" method="post">
-            <SButton type="submit">Login</SButton>
+            <SButton type="submit" disabled>Login</SButton>
           </form>
         </Card>
       </LandingStyledDiv>
