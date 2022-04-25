@@ -34,8 +34,8 @@ export default function start() {
             clear your cookies or open an incognito window and try again.
           </p>
           <p>
-            Thank you for your interest in responding to the RTP. The response
-            deadline has now passed. Please direct any further questions to <a href="mailto:connectingcommunitiesbc@gov.bc.ca">connectingcommunitiesbc@gov.bc.ca</a>
+            <strong>Thank you for your interest in responding to the RTP. The response
+            deadline has now passed. Please direct any further questions to <a href="mailto:connectingcommunitiesbc@gov.bc.ca">connectingcommunitiesbc@gov.bc.ca</a>.</strong>
           </p>
           <form action="/login" method="post">
             <SButton type="submit" disabled>Login</SButton>
