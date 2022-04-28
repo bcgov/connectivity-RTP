@@ -30,36 +30,38 @@ begin;
 		updated_at,
 		archived_by,
 		archived_at,
-	  form_data ->> 'position' as position,
-	  form_data ->> 'extension' as extension,
-	  form_data ->> 'telephone' as telephone,
-	  form_data ->> 'contactEmail' as contact_email,
-    form_data ->> 'city' as city,
-	  form_data ->> 'poBox' as po_box,
-	  form_data ->> 'postalCode' as postal_code,
-	  form_data ->> 'streetName' as street_name,
-	  form_data ->> 'unitNumber' as unit_number,
-	  form_data ->> 'streetNumber' as street_number,
-	  form_data ->> 'primaryContact' as primary_contact,
-	  form_data ->> 'zoneInformation' as zone_information,
+		form_data ->> 'position' as position,
+		form_data ->> 'extension' as extension,
+		form_data ->> 'telephone' as telephone,
+		form_data ->> 'contactEmail' as contact_email,
+		form_data ->> 'city' as city,
+		form_data ->> 'poBox' as po_box,
+		form_data ->> 'postalCode' as postal_code,
+		form_data ->> 'streetName' as street_name,
+		form_data ->> 'unitNumber' as unit_number,
+		form_data ->> 'streetNumber' as street_number,
+		form_data ->> 'primaryContact' as primary_contact,
+		form_data ->> 'zoneInformation' as zone_information,
 		form_data ->> 'zoneFeedback' as zone_feedback,
-	  form_data ->> 'organizationName' as organization_name,
-	  form_data ->> 'organizationType' as organization_type,
-	  form_data ->> 'registrationNumber' as registration_number,
-	  form_data ->> 'fixedWireless' as fixed_wireless,
-	  form_data ->> 'wiredBroadband' as wired_broadband,
-	  form_data ->> 'pendingProjects' as pending_projects,
-	  form_data ->> 'underservedAreas' as underserved_areas,
-	  form_data ->> 'satelliteProposal' as satellite_proposal,
+		form_data ->> 'organizationName' as organization_name,
+		form_data ->> 'organizationType' as organization_type,
+		form_data ->> 'registrationNumber' as registration_number,
+		form_data ->> 'fixedWireless' as fixed_wireless,
+		form_data ->> 'wiredBroadband' as wired_broadband,
+		form_data ->> 'pendingProjects' as pending_projects,
+		form_data ->> 'underservedAreas' as underserved_areas,
+		form_data ->> 'satelliteProposal' as satellite_proposal,
 		form_data ->> 'backboneGaps' as backbone_gaps,
-	  form_data ->> 'newBackboneTechnology' as new_backbone_technology,
+		form_data ->> 'lastMileSupport' as last_mile_support,
+		form_data ->> 'newBackboneTechnology' as new_backbone_technology,
 		form_data ->> 'multipleBackboneDetails' as multiple_backbone_details,
-	  form_data ->> 'govtIndigenousConnFocus' as govt_indigenous_conn_focus,
+		form_data ->> 'govtIndigenousConnFocus' as govt_indigenous_conn_focus,
 		form_data ->> 'capitalCostFunding' as capital_cost_funding,
-	  form_data ->> 'capitalCostExplanation' as capital_cost_explanation,
-	  form_data ->> 'highwayCellularGeomark' as highway_cellular_geomark,
-	  form_data ->> 'lastMileBroadbandGeomark' as last_mile_broadband_geomark,
-	  form_data ->> 'lastMileNewBackboneGeomark' as last_mile_new_backbone_geomark
+		form_data ->> 'capitalCostExplanation' as capital_cost_explanation,
+		form_data ->> 'highwayCellularGeomark' as highway_cellular_geomark,
+		form_data ->> 'lastMileBroadbandGeomark' as last_mile_broadband_geomark,
+		form_data ->> 'lastMileFixedWirelessGeomark' as last_mile_fixed_wireless_geomark,
+		form_data ->> 'lastMileNewBackboneGeomark' as last_mile_new_backbone_geomark
 	  from form_data
  );
 
@@ -94,6 +96,7 @@ comment on column connectivity_intake_public.form.pending_projects is 'Additiona
 comment on column connectivity_intake_public.form.underserved_areas is 'Additional information on underserved areas';
 comment on column connectivity_intake_public.form.satellite_proposal is 'Additional information on satellite proposals';
 comment on column connectivity_intake_public.form.backbone_gaps is 'The details for addressing gaps in backbone infrastructure needed to reach underserved households';
+comment on column connectivity_intake_public.form.last_mile_support is 'Areas that require new backbone infrastructure to deliver services and last mile projects? ';
 comment on column connectivity_intake_public.form.new_backbone_technology is 'The list of new backbone technology needed to be built';
 comment on column connectivity_intake_public.form.multiple_backbone_details is 'The high level description for how multiple backbone technologies would be implemented';
 comment on column connectivity_intake_public.form.govt_indigenous_conn_focus is 'Additional feedback for local govenmentss and First Nations';
@@ -101,6 +104,7 @@ comment on column connectivity_intake_public.form.capital_cost_funding is 'Addit
 comment on column connectivity_intake_public.form.capital_cost_explanation is 'The explanation of why the capital costs section of the highway cellular KMZ file was chosen ';
 comment on column connectivity_intake_public.form.highway_cellular_geomark is 'The  highway cellular Geomark link';
 comment on column connectivity_intake_public.form.last_mile_broadband_geomark is 'The wired broadband last mile Geomark link';
+comment on column connectivity_intake_public.form.last_mile_fixed_wireless_geomark is 'The fixed wireless last mile Geomark link';
 comment on column connectivity_intake_public.form.last_mile_new_backbone_geomark is 'The new backbone technology for last mile Geomark link';
 
 
