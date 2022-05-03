@@ -1,0 +1,688 @@
+"""Table containing application form data."""
+type Application implements Node {
+  """When the row was archived."""
+  archivedAt: Datetime
+
+  """Owner uuid the row was archived by."""
+  archivedBy: UUID
+
+  """When the form was created."""
+  createdAt: Datetime!
+
+  """Owner uuid the form was created by."""
+  createdBy: UUID
+
+  """The form data the project is collecting."""
+  formData: JSON!
+
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+
+  """The owner of the form data."""
+  owner: UUID
+
+  """Serialized integer unique to the form application."""
+  rowId: Int!
+  status: String
+
+  """When the form was last updated."""
+  updatedAt: Datetime!
+
+  """Owner uuid the form was updated by."""
+  updatedBy: UUID
+}
+
+"""
+A condition to be used against `Application` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input ApplicationCondition {
+  """Checks for equality with the object’s `archivedAt` field."""
+  archivedAt: Datetime
+
+  """Checks for equality with the object’s `archivedBy` field."""
+  archivedBy: UUID
+
+  """Checks for equality with the object’s `createdAt` field."""
+  createdAt: Datetime
+
+  """Checks for equality with the object’s `createdBy` field."""
+  createdBy: UUID
+
+  """Checks for equality with the object’s `formData` field."""
+  formData: JSON
+
+  """Checks for equality with the object’s `owner` field."""
+  owner: UUID
+
+  """Checks for equality with the object’s `rowId` field."""
+  rowId: Int
+
+  """Checks for equality with the object’s `status` field."""
+  status: String
+
+  """Checks for equality with the object’s `updatedAt` field."""
+  updatedAt: Datetime
+
+  """Checks for equality with the object’s `updatedBy` field."""
+  updatedBy: UUID
+}
+
+"""An input for mutations affecting `Application`"""
+input ApplicationInput {
+  """When the row was archived."""
+  archivedAt: Datetime
+
+  """Owner uuid the row was archived by."""
+  archivedBy: UUID
+
+  """When the form was created."""
+  createdAt: Datetime
+
+  """Owner uuid the form was created by."""
+  createdBy: UUID
+
+  """The form data the project is collecting."""
+  formData: JSON
+
+  """The owner of the form data."""
+  owner: UUID
+  status: String
+
+  """When the form was last updated."""
+  updatedAt: Datetime
+
+  """Owner uuid the form was updated by."""
+  updatedBy: UUID
+}
+
+"""
+Represents an update to a `Application`. Fields that are set will be updated.
+"""
+input ApplicationPatch {
+  """When the row was archived."""
+  archivedAt: Datetime
+
+  """Owner uuid the row was archived by."""
+  archivedBy: UUID
+
+  """When the form was created."""
+  createdAt: Datetime
+
+  """Owner uuid the form was created by."""
+  createdBy: UUID
+
+  """The form data the project is collecting."""
+  formData: JSON
+
+  """The owner of the form data."""
+  owner: UUID
+  status: String
+
+  """When the form was last updated."""
+  updatedAt: Datetime
+
+  """Owner uuid the form was updated by."""
+  updatedBy: UUID
+}
+
+"""A connection to a list of `Application` values."""
+type ApplicationsConnection {
+  """
+  A list of edges which contains the `Application` and cursor to aid in pagination.
+  """
+  edges: [ApplicationsEdge!]!
+
+  """A list of `Application` objects."""
+  nodes: [Application]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Application` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Application` edge in the connection."""
+type ApplicationsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Application` at the end of the edge."""
+  node: Application
+}
+
+"""Methods to use when ordering `Application`."""
+enum ApplicationsOrderBy {
+  ARCHIVED_AT_ASC
+  ARCHIVED_AT_DESC
+  ARCHIVED_BY_ASC
+  ARCHIVED_BY_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  CREATED_BY_ASC
+  CREATED_BY_DESC
+  FORM_DATA_ASC
+  FORM_DATA_DESC
+  ID_ASC
+  ID_DESC
+  NATURAL
+  OWNER_ASC
+  OWNER_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+  STATUS_ASC
+  STATUS_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  UPDATED_BY_ASC
+  UPDATED_BY_DESC
+}
+
+"""All input for the create `Application` mutation."""
+input CreateApplicationInput {
+  """The `Application` to be created by this mutation."""
+  application: ApplicationInput!
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+}
+
+"""The output of our create `Application` mutation."""
+type CreateApplicationPayload {
+  """The `Application` that was created by this mutation."""
+  application: Application
+
+  """An edge for our `Application`. May be used by Relay 1."""
+  applicationEdge(
+    """The method to use when ordering `Application`."""
+    orderBy: [ApplicationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ApplicationsEdge
+
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""A location in a connection that can be used for resuming pagination."""
+scalar Cursor
+
+"""
+A point in time as described by the [ISO
+8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
+"""
+scalar Datetime
+
+"""All input for the `deleteApplicationByOwner` mutation."""
+input DeleteApplicationByOwnerInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The owner of the form data."""
+  owner: UUID!
+}
+
+"""All input for the `deleteApplicationByRowId` mutation."""
+input DeleteApplicationByRowIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """Serialized integer unique to the form application."""
+  rowId: Int!
+}
+
+"""All input for the `deleteApplication` mutation."""
+input DeleteApplicationInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Application` to be deleted.
+  """
+  id: ID!
+}
+
+"""The output of our delete `Application` mutation."""
+type DeleteApplicationPayload {
+  """The `Application` that was deleted by this mutation."""
+  application: Application
+
+  """An edge for our `Application`. May be used by Relay 1."""
+  applicationEdge(
+    """The method to use when ordering `Application`."""
+    orderBy: [ApplicationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ApplicationsEdge
+
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  deletedApplicationId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""
+A JavaScript object encoded in the JSON format as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type KeycloakJwt {
+  """
+  OPTIONAL - Authentication Context Class Reference. String specifying an 
+    Authentication Context Class Reference value that identifies the Authentication 
+    Context Class that the authentication performed satisfied. The value "0" 
+    indicates the End-User authentication did not meet the requirements of ISO/IEC 29115 
+    [ISO29115] level 1. Authentication using a long-lived browser cookie, for instance, 
+    is one example where the use of "level 0" is appropriate. Authentications with 
+    level 0 SHOULD NOT be used to authorize access to any resource of any monetary 
+    value. (This corresponds to the OpenID 2.0 PAPE [OpenID.PAPE] nist_auth_level 0.) 
+    An absolute URI or an RFC 6711 [RFC6711] registered name SHOULD be used as the acr 
+    value; registered names MUST NOT be used with a different meaning than that which 
+    is registered. Parties using this claim will need to agree upon the meanings of 
+    the values used, which may be context-specific. The acr value is a case sensitive 
+    string.
+  """
+  acr: String
+
+  """
+  REQUIRED - The "aud" (audience) claim identifies the recipients that the JWT is
+     intended for.  Each principal intended to process the JWT MUST
+     identify itself with a value in the audience claim.  If the principal
+     processing the claim does not identify itself with a value in the
+     "aud" claim when this claim is present, then the JWT MUST be
+     rejected.  In the general case, the "aud" value is an array of case-
+     sensitive strings, each containing a StringOrURI value.  In the
+     special case when the JWT has one audience, the "aud" value MAY be a
+     single case-sensitive string containing a StringOrURI value.  The
+     interpretation of audience values is generally application specific.
+  """
+  aud: String
+
+  """
+  Time when the End-User authentication occurred. Its value is a JSON number
+     representing the number of seconds from 1970-01-01T0:0:0Z as measured 
+     in UTC until the date/time. When a max_age request is made or when auth_time 
+     is requested as an Essential Claim, then this Claim is REQUIRED; otherwise, 
+     its inclusion is OPTIONAL
+  """
+  authTime: Int
+
+  """
+  OPTIONAL - Authorized party - the party to which the ID Token was issued. If 
+    present, it MUST contain the OAuth 2.0 Client ID of this party. This 
+    Claim is only needed when the ID Token has a single audience value and 
+    that audience is different than the authorized party. It MAY be included 
+    even when the authorized party is the same as the sole audience. The azp
+    value is a case sensitive string containing a StringOrURI value.
+  """
+  azp: String
+
+  """
+  If created via a broker external login, this is an identifier that can be used to 
+    match external broker backchannel logout requests to a UserSession
+  """
+  brokerSessionId: String
+
+  """Email address as set and returned by login provider."""
+  email: String
+
+  """Whether or not a users email is verified with the login provider."""
+  emailVerified: Boolean
+
+  """
+  REQUIRED - The "exp" (expiration time) claim identifies the expiration time on
+     or after which the JWT MUST NOT be accepted for processing.  The
+     processing of the "exp" claim requires that the current date/time
+     MUST be before the expiration date/time listed in the "exp" claim.
+  """
+  exp: Int
+
+  """Last name as set and returned by login provider."""
+  familyName: String
+
+  """First name as set and returned by login provider."""
+  givenName: String
+
+  """
+  REQUIRED - The "iat" (issued at) claim identifies the time at which the JWT was
+     issued.  This claim can be used to determine the age of the JWT.  Its
+     value MUST be a number containing a NumericDate value.
+  """
+  iat: Int
+
+  """
+  REQUIRED - The "iss" (issuer) claim identifies the principal that issued the
+     JWT.  The processing of this claim is generally application specific.
+     The "iss" value is a case-sensitive string containing a StringOrURI
+     value.
+  """
+  iss: String
+
+  """
+  OPTIONAL - The "jti" (JWT ID) claim provides a unique identifier for the JWT.
+     The identifier value MUST be assigned in a manner that ensures that
+     there is a negligible probability that the same value will be
+     accidentally assigned to a different data object; if the application
+     uses multiple issuers, collisions MUST be prevented among values
+     produced by different issuers as well.  The "jti" claim can be used
+     to prevent the JWT from being replayed.  The "jti" value is a case-
+     sensitive string.
+  """
+  jti: UUID
+
+  """
+  Users full name by combining given_name and family_name set and returned by login provider.
+  """
+  name: String
+
+  """
+  OPTIONAL - The "nbf" (not before) claim identifies the time before which the JWT
+     MUST NOT be accepted for processing.  The processing of the "nbf"
+     claim requires that the current date/time MUST be after or equal to
+     the not-before date/time listed in the "nbf" claim.  Implementers MAY
+     provide for some small leeway, usually no more than a few minutes, to
+     account for clock skew.  Its value MUST be a number containing a
+     NumericDate value.
+  """
+  nbf: Int
+
+  """
+  Username as set and returned by provider including provider name separated by @. eg. username@github
+  """
+  preferredUsername: String
+
+  """
+  Session State. JSON string that represents the End-Users login state at the OP. 
+    It MUST NOT contain the space (" ") character. This value is opaque to the RP. 
+    This is REQUIRED if session management is supported. The Session State value is 
+    initially calculated on the server. The same Session State value is also 
+    recalculated by the OP iframe in the browser client. The generation of suitable 
+    Session State values is specified in Section 4.2, and is based on a salted 
+    cryptographic hash of Client ID, origin URL, and OP browser state. For the origin 
+    URL, the server can use the origin URL of the Authentication Response, following 
+    the algorithm specified in Section 4 of RFC 6454 [RFC6454].
+  """
+  sessionState: UUID
+
+  """
+  REQUIRED - The "sub" (subject) claim identifies the principal that is the
+     subject of the JWT.  The claims in a JWT are normally statements
+     about the subject.  The subject value MUST either be scoped to be
+     locally unique in the context of the issuer or be globally unique.
+     The processing of this claim is generally application specific.  The
+     "sub" value is a case-sensitive string containing a StringOrURI
+     value.
+  """
+  sub: UUID
+
+  """
+  OPTIONAL - The "typ" (type) Header Parameter defined by [JWS] and [JWE] is used
+     by JWT applications to declare the media type [IANA.MediaTypes] of
+     this complete JWT.  This is intended for use by the JWT application
+     when values that are not JWTs could also be present in an application
+     data structure that can contain a JWT object; the application can use
+     this value to disambiguate among the different kinds of objects that
+     might be present.  It will typically not be used by applications when
+     it is already known that the object is a JWT.  This parameter is
+     ignored by JWT implementations; any processing of this parameter is
+     performed by the JWT application.  If present, it is RECOMMENDED that
+     its value be "JWT" to indicate that this object is a JWT.  While
+     media type names are not case sensitive, it is RECOMMENDED that "JWT"
+     always be spelled using uppercase characters for compatibility with
+     legacy implementations.
+  """
+  typ: String
+}
+
+"""
+The root mutation type which contains root level fields which mutate data.
+"""
+type Mutation {
+  """Creates a single `Application`."""
+  createApplication(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateApplicationInput!
+  ): CreateApplicationPayload
+
+  """Deletes a single `Application` using its globally unique id."""
+  deleteApplication(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteApplicationInput!
+  ): DeleteApplicationPayload
+
+  """Deletes a single `Application` using a unique key."""
+  deleteApplicationByOwner(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteApplicationByOwnerInput!
+  ): DeleteApplicationPayload
+
+  """Deletes a single `Application` using a unique key."""
+  deleteApplicationByRowId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteApplicationByRowIdInput!
+  ): DeleteApplicationPayload
+
+  """
+  Updates a single `Application` using its globally unique id and a patch.
+  """
+  updateApplication(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateApplicationInput!
+  ): UpdateApplicationPayload
+
+  """Updates a single `Application` using a unique key and a patch."""
+  updateApplicationByOwner(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateApplicationByOwnerInput!
+  ): UpdateApplicationPayload
+
+  """Updates a single `Application` using a unique key and a patch."""
+  updateApplicationByRowId(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateApplicationByRowIdInput!
+  ): UpdateApplicationPayload
+}
+
+"""An object with a globally unique `ID`."""
+interface Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: Cursor
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: Cursor
+}
+
+"""The root query type which gives access points into the data universe."""
+type Query implements Node {
+  """Reads and enables pagination through a set of `Application`."""
+  allApplications(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: ApplicationCondition
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `Application`."""
+    orderBy: [ApplicationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ApplicationsConnection
+
+  """Reads a single `Application` using its globally unique `ID`."""
+  application(
+    """
+    The globally unique `ID` to be used in selecting a single `Application`.
+    """
+    id: ID!
+  ): Application
+  applicationByOwner(owner: UUID!): Application
+  applicationByRowId(rowId: Int!): Application
+
+  """
+  The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  """
+  id: ID!
+
+  """Fetches an object given its globally unique `ID`."""
+  node(
+    """The globally unique `ID`."""
+    id: ID!
+  ): Node
+
+  """
+  Exposes the root query type nested one level down. This is helpful for Relay 1
+  which can only query top level fields if they are in a particular form.
+  """
+  query: Query!
+  session: KeycloakJwt
+}
+
+"""
+A universally unique identifier as defined by [RFC 4122](https://tools.ietf.org/html/rfc4122).
+"""
+scalar UUID
+
+"""All input for the `updateApplicationByOwner` mutation."""
+input UpdateApplicationByOwnerInput {
+  """
+  An object where the defined keys will be set on the `Application` being updated.
+  """
+  applicationPatch: ApplicationPatch!
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The owner of the form data."""
+  owner: UUID!
+}
+
+"""All input for the `updateApplicationByRowId` mutation."""
+input UpdateApplicationByRowIdInput {
+  """
+  An object where the defined keys will be set on the `Application` being updated.
+  """
+  applicationPatch: ApplicationPatch!
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """Serialized integer unique to the form application."""
+  rowId: Int!
+}
+
+"""All input for the `updateApplication` mutation."""
+input UpdateApplicationInput {
+  """
+  An object where the defined keys will be set on the `Application` being updated.
+  """
+  applicationPatch: ApplicationPatch!
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Application` to be updated.
+  """
+  id: ID!
+}
+
+"""The output of our update `Application` mutation."""
+type UpdateApplicationPayload {
+  """The `Application` that was updated by this mutation."""
+  application: Application
+
+  """An edge for our `Application`. May be used by Relay 1."""
+  applicationEdge(
+    """The method to use when ordering `Application`."""
+    orderBy: [ApplicationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ApplicationsEdge
+
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
