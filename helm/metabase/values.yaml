@@ -3,8 +3,8 @@ fullnameOverride: ccbc-metabase
 metabase:
   # replicaCount: 2
   image:
-    repository: gcr.io/ggl-cas-storage/metabase
-    tag: 0889179dcad8fd7ec10216ae66386748b6517086
+    repository: metabase/metabase-enterprise
+    tag: v1.43.4
   # database:
   #   type: postgres
   #   host: ccbc-patroni
